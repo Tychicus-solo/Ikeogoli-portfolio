@@ -9,6 +9,6 @@ export const NAV_LINKS = [
   },
   {
     label: "Read CV",
-    href: "/cv.pdf",
+    href: "https://drive.google.com/file/d/1sJGNZzQVh9Ej9ewQCHFZP1Egj6BSqt3R/view?usp=drivesdk",
   },
 ];

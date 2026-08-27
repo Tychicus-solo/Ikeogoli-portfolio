@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
+import CaseHeroCarousel from "../../../components/CaseHeroCarousel";
+import CaseScrollProgress from "../../../components/CaseScrollProgress";
 import Contact from "../../Contact/page";
 import { Footer, Tags, ThemedImage, ThemeToggle } from "../../../components";
 import { CASE_STUDIES, CASE_STUDY_SLUGS } from "../../../constants/caseStudies";
@@ -125,17 +127,29 @@ const CaseStudyPage = async ({ params }) => {
 
   return (
     <main className={`case-study-page case-study-page--${slug}`}>
-      <div className="case-progress" aria-hidden="true" />
+      <CaseScrollProgress />
 
       <nav className="case-nav" aria-label="Case study navigation">
         <Link href="/#works" className="case-back-link">
           <span className="case-back-icon" aria-hidden="true">
-            <Image src={BackArrow} width={20} height={14} alt="" aria-hidden="true" />
+            <Image
+              src={BackArrow}
+              width={20}
+              height={14}
+              alt=""
+              aria-hidden="true"
+            />
           </span>
           <span>Back</span>
         </Link>
         <a className="case-nav-contact" href={`mailto:${EMAIL}`}>
-          <Image src={MessageIcon} width={24} height={24} alt="" aria-hidden="true" />
+          <Image
+            src={MessageIcon}
+            width={24}
+            height={24}
+            alt=""
+            aria-hidden="true"
+          />
           <span>Contact me</span>
         </a>
       </nav>
@@ -144,8 +158,20 @@ const CaseStudyPage = async ({ params }) => {
         <div className="case-hero-copy">
           <h1>{study.title}</h1>
           <Paragraphs text={study.intro} />
-          <a className="case-hero-button" href="#case-content">
-            View work
+          <a className="case-hero-button items-center gap-x-[8px]" href="#case-content">
+            Live site
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5 0V2H11.59L0 13.59L1.41 15L13 3.41V10H15V0H5Z"
+                fill="white"
+              />
+            </svg>
           </a>
         </div>
 
@@ -161,15 +187,16 @@ const CaseStudyPage = async ({ params }) => {
         </dl>
       </section>
 
-      <section className="case-hero-visual" aria-label={`${study.title} preview`}>
-        <ThemedImage
-          src={study.heroImage}
+      <section
+        className="case-hero-visual"
+        aria-label={`${study.title} preview`}
+      >
+        <CaseHeroCarousel
+          images={study.heroImages || [study.heroImage]}
           alt={`${study.title} project hero visual`}
           width={study.heroWidth || 1648}
           height={study.heroHeight || 1024}
           priority
-          quality={100}
-          className="case-hero-img"
           sizes="(max-width: 767px) 100vw, (max-width: 1279px) calc(100vw - 128px), 1648px"
         />
       </section>
@@ -177,7 +204,10 @@ const CaseStudyPage = async ({ params }) => {
 
       <div id="case-content">
         <section className="case-text-section">
-          <Tags label="THE CHALLENGE(S)" color={study.challengeColor || "#8C62FF"} />
+          <Tags
+            label="THE CHALLENGE(S)"
+            color={study.challengeColor || "#8C62FF"}
+          />
           <div className="case-points">
             {study.challenge.map((point) => (
               <article className="case-point" key={point.title}>
@@ -189,7 +219,10 @@ const CaseStudyPage = async ({ params }) => {
         </section>
 
         {study.visuals && (
-          <section className="case-visual-grid" aria-label={`${study.title} screens`}>
+          <section
+            className="case-visual-grid"
+            aria-label={`${study.title} screens`}
+          >
             {study.visuals.map((visual) => (
               <CaseVisual
                 visual={visual}
@@ -292,7 +325,10 @@ const CaseStudyPage = async ({ params }) => {
                   href={href}
                   aria-label={`Open ${work.title} project`}
                 >
-                  <span className="selected-work-arrow-window" aria-hidden="true">
+                  <span
+                    className="selected-work-arrow-window"
+                    aria-hidden="true"
+                  >
                     <span className="selected-work-arrow-stack">
                       <Image src={ArrowLight} width={15} height={15} alt="" />
                       <Image src={ArrowLight} width={15} height={15} alt="" />

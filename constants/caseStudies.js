@@ -4,6 +4,15 @@ export const CASE_STUDIES = {
     intro:
       "Working closely with product owners and a cross-functional team, I crafted refreshing mobile app designs for Lyvads - a platform that bridges businesses and individuals with creators to generate custom video content, from promotional ads to personalized shoutouts. The platform empowers creators to monetize their influence while helping clients get authentic, tailored video content.",
     heroImage: "/assets/dark mode images/case-studies/lyvads-hero.png",
+    heroImages: [
+      "/assets/dark mode images/case-studies/lyvads/hero-carousel/lyvads-hero-1.png",
+      "/assets/dark mode images/case-studies/lyvads/hero-carousel/lyvads-hero-2.png",
+      "/assets/dark mode images/case-studies/lyvads/hero-carousel/lyvads-hero-3.png",
+      "/assets/dark mode images/case-studies/lyvads/hero-carousel/lyvads-hero-4.png",
+      "/assets/dark mode images/case-studies/lyvads/hero-carousel/lyvads-hero-5.png",
+      "/assets/dark mode images/case-studies/lyvads/hero-carousel/lyvads-hero-6a.png",
+      "/assets/dark mode images/case-studies/lyvads/hero-carousel/lyvads-hero-6b.png",
+    ],
     meta: [
       {
         label: "Services",
@@ -220,6 +229,32 @@ export const CASE_STUDIES = {
     intro:
       "One app transforms real estate purchasing through our platform connecting users with affordable properties via flexible payments and co-ownership options.\n\nI led the design team that balanced these user needs with business objectives, creating a solution that increased conversion rates while establishing a distinctive market position in the competitive real estate space.",
     heroImage: "/assets/dark mode images/case-studies/oneapp-hero.png",
+    heroImages: [
+      {
+        src: "/assets/dark mode images/case-studies/oneapp/hero-carousel/oneapp-hero-1.png",
+        lightSrc: "/assets/dark mode images/case-studies/oneapp/hero-carousel/oneapp-hero-1.png",
+      },
+      {
+        src: "/assets/dark mode images/case-studies/oneapp/hero-carousel/oneapp-hero-2.png",
+        lightSrc: "/assets/dark mode images/case-studies/oneapp/hero-carousel/oneapp-hero-2.png",
+      },
+      {
+        src: "/assets/dark mode images/case-studies/oneapp/hero-carousel/oneapp-hero-3.png",
+        lightSrc: "/assets/dark mode images/case-studies/oneapp/hero-carousel/oneapp-hero-3.png",
+      },
+      {
+        src: "/assets/dark mode images/case-studies/oneapp/hero-carousel/oneapp-hero-4.png",
+        lightSrc: "/assets/dark mode images/case-studies/oneapp/hero-carousel/oneapp-hero-4.png",
+      },
+      {
+        src: "/assets/dark mode images/case-studies/oneapp/hero-carousel/oneapp-hero-5.png",
+        lightSrc: "/assets/dark mode images/case-studies/oneapp/hero-carousel/oneapp-hero-5.png",
+      },
+      {
+        src: "/assets/dark mode images/case-studies/oneapp/hero-carousel/oneapp-hero-6.png",
+        lightSrc: "/assets/dark mode images/case-studies/oneapp/hero-carousel/oneapp-hero-6.png",
+      },
+    ],
     heroWidth: 3296,
     heroHeight: 2048,
     challengeColor: "#FD6A6A",

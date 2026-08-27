@@ -13,17 +13,27 @@ const SOCIAL_LINKS = [
   { label: "Instagram", href: "https://www.instagram.com/" },
 ];
 
-const MobileMenuLink = ({ href, isOpen, label, onClick }) => (
-  <a href={href} onClick={onClick} tabIndex={isOpen ? 0 : -1}>
-    <span className="mobile-menu-label-window">
-      <span className="mobile-menu-label-stack" aria-hidden="true">
-        <span>{label}</span>
-        <span>{label}</span>
+const MobileMenuLink = ({ href, isOpen, label, onClick }) => {
+  const isExternal = href.startsWith("http");
+
+  return (
+    <a
+      href={href}
+      onClick={onClick}
+      tabIndex={isOpen ? 0 : -1}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noreferrer" : undefined}
+    >
+      <span className="mobile-menu-label-window">
+        <span className="mobile-menu-label-stack" aria-hidden="true">
+          <span>{label}</span>
+          <span>{label}</span>
+        </span>
+        <span className="sr-only">{label}</span>
       </span>
-      <span className="sr-only">{label}</span>
-    </span>
-  </a>
-);
+    </a>
+  );
+};
 
 const HeroNavigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

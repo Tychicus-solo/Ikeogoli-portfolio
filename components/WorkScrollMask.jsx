@@ -224,7 +224,7 @@ const WorkScrollMask = () => {
       const distance = firstGroup.getBoundingClientRect().height + gap;
 
       track.style.setProperty("--work-scroll-distance", `${distance}px`);
-      track.style.setProperty("--work-scroll-duration", "10s");
+      track.style.setProperty("--work-scroll-duration", "60s");
     };
 
     measureLoop();

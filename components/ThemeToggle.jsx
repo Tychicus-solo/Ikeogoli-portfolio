@@ -16,10 +16,10 @@ const ThemeToggle = ({ className = "" }) => {
       onClick={toggleTheme}
     >
       <span className="theme-toggle-icon theme-toggle-icon-sun" aria-hidden="true">
-        <ThemedImage src="/assets/dark mode images/figma/theme/sun.svg" alt="" width={32} height={32} className="theme-toggle-img" />
+        <ThemedImage src="/assets/dark mode images/figma/theme/sun.svg" alt="" width={29} height={29} className="theme-toggle-img" />
       </span>
       <span className="theme-toggle-icon theme-toggle-icon-moon" aria-hidden="true">
-        <ThemedImage src="/assets/dark mode images/figma/theme/moon.svg" alt="" width={32} height={32} className="theme-toggle-img" />
+        <ThemedImage src="/assets/dark mode images/figma/theme/moon.svg" alt="" width={24} height={24} className="theme-toggle-img" />
       </span>
       <span className="theme-toggle-knob" aria-hidden="true">
         <ThemedImage src="/assets/dark mode images/figma/theme/ellipse.svg" alt="" width={48} height={48} className="theme-toggle-img" />

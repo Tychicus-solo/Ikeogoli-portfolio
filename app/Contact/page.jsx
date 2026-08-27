@@ -36,18 +36,18 @@ const Contact = () => {
         </h2>
         <ThemedImage
           src="/assets/dark mode images/left-wreath.svg"
-          lightSrc="/assets/light mode images/left-wreath.svg"
-          width={83}
-          height={146}
+          lightSrc="/assets/light mode images/left-wreath-light.svg"
+          width={85}
+          height={131}
           alt=""
           className="contact-wreath contact-wreath-left"
           aria-hidden="true"
         />
         <ThemedImage
           src="/assets/dark mode images/right-wreath.svg"
-          lightSrc="/assets/light mode images/right-wreath.svg"
-          width={83}
-          height={146}
+          lightSrc="/assets/light mode images/right-wreath-light.svg"
+          width={85}
+          height={131}
           alt=""
           className="contact-wreath contact-wreath-right"
           aria-hidden="true"

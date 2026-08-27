@@ -6,11 +6,18 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const LandingMotion = () => {
   useEffect(() => {
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const setMainNavVisible = (visible) => {
+      document.querySelector(".main-nav")?.classList.toggle("is-visible", visible);
+      document.querySelector(".hero-nav-desktop")?.classList.toggle("is-hidden", visible);
+    };
 
-    if (reduceMotion) {
-      return;
-    }
+    const getMainNavHeight = () => {
+      const mainNav = document.querySelector(".main-nav");
+
+      return mainNav?.offsetHeight || 112;
+    };
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -21,6 +28,21 @@ const LandingMotion = () => {
     }
 
     const context = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: ".selected-works-section",
+        start: () => `top ${getMainNavHeight()}px`,
+        end: "max",
+        invalidateOnRefresh: true,
+        onEnter: () => setMainNavVisible(true),
+        onEnterBack: () => setMainNavVisible(true),
+        onLeaveBack: () => setMainNavVisible(false),
+        onRefresh: (self) => setMainNavVisible(self.isActive),
+      });
+
+      if (reduceMotion) {
+        return;
+      }
+
       const revealItems = gsap.utils.toArray(
         [
           ".section-header",
