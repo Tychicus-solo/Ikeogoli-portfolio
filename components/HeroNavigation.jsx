@@ -40,7 +40,7 @@ const HeroNavigation = () => {
 
   return (
     <>
-      <div className="hero-nav-desktop flex items-center gap-x-[67px] w-full justify-between">
+      <div className="hero-nav-desktop flex items-center w-full justify-between">
         <h1 className="hero-name font-inter font-medium text-[20px] leading-[32px] tracking-normal text-neutral-250 ">
           Ikeogoli Ishie
         </h1>

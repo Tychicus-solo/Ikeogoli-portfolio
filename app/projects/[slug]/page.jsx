@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
+import CaseImagePanels from "../../../components/CaseImagePanels";
 import CaseHeroCarousel from "../../../components/CaseHeroCarousel";
 import CaseScrollProgress from "../../../components/CaseScrollProgress";
 import Contact from "../../Contact/page";
@@ -34,8 +35,13 @@ export const generateMetadata = async ({ params }) => {
 const getRelatedWork = (slug) => {
   const study = CASE_STUDIES[slug];
   const slugToTitle = {
+    emmanuel: "Emmanuel's portfolio",
+    fitfam: "Fitfam",
+    icheta: "Icheta",
     lyvads: "Lyvads",
     oneapp: "Oneapp",
+    pettysave: "Pettysave",
+    ppl: "Pertinence Properties",
     realvest: "Realvest",
   };
 
@@ -68,6 +74,14 @@ const Paragraphs = ({ text }) =>
   text.split("\n\n").map((paragraph) => <p key={paragraph}>{paragraph}</p>);
 
 const CaseVisual = ({ visual, title }) => {
+  if (visual.lightPanels) {
+    return (
+      <CaseImagePanels panels={visual.lightPanels} alt={visual.alt || title}>
+        <CaseVisual visual={{ ...visual, lightPanels: undefined }} title={title} />
+      </CaseImagePanels>
+    );
+  }
+
   if (typeof visual === "string" || visual.type === "image") {
     const src = typeof visual === "string" ? visual : visual.src;
     const alt =
@@ -79,6 +93,7 @@ const CaseVisual = ({ visual, title }) => {
       <div className="case-visual-card">
         <ThemedImage
           src={src}
+          lightSrc={typeof visual === "string" ? undefined : visual.lightSrc}
           alt={alt}
           width={typeof visual === "string" ? 1280 : visual.width || 1280}
           height={typeof visual === "string" ? 800 : visual.height || 800}
@@ -280,7 +295,7 @@ const CaseStudyPage = async ({ params }) => {
 
         <section className="case-text-section case-conclusion">
           <Tags
-            label="CONCLUSION & KEY TAKEAWAY"
+            label={study.conclusionTag || "CONCLUSION & KEY TAKEAWAY"}
             color={study.conclusionColor || "#FFB31F"}
           />
           {study.conclusionPoints ? (

@@ -23,11 +23,7 @@ const Contact = () => {
         <div className="contact-status">
           <span />
           <span className="available-label-window">
-            <span className="available-label-stack" aria-hidden="true">
-              <span>Available for work</span>
-              <span>Available for work</span>
-            </span>
-            <span className="sr-only">Available for work</span>
+            Available for work
           </span>
         </div>
         <h2 className="contact-title" id="contact-title">

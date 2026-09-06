@@ -21,6 +21,7 @@ export const SELECTED_WORKS = [
       "Shopping meets socializing. Buy what you love, connect with who matters.",
     tags: ["E-COMMERCE", "SOCIAL MEDIA", "WEBSITE"],
     img: "/assets/dark mode images/icheta.png",
+    href: "/projects/icheta",
   },
   {
     title: "Pertinence Properties",
@@ -28,6 +29,7 @@ export const SELECTED_WORKS = [
       "Real estate engineered for wealth building. Homes, land, opportunities that multiply your money.",
     tags: ["REAL ESTATE", "WEBSITE"],
     img: "/assets/dark mode images/pertinenceproperties.png",
+    href: "/projects/ppl",
   },
   {
     title: "Fitfam",
@@ -35,6 +37,7 @@ export const SELECTED_WORKS = [
       "Crush goals, track health, build community. Fitfam turns your fitness journey into a shared victory.",
     tags: ["HEALTH", "SOCIAL MEDIA", "MOBILE APP"],
     img: "/assets/dark mode images/fitfam.png",
+    href: "/projects/fitfam",
   },
   {
     title: "Pettysave",
@@ -42,6 +45,7 @@ export const SELECTED_WORKS = [
       "Microfinance that actually moves. Smart tools, seamless payments, zero traditional banking limits.",
     tags: ["FINANCE", "WEBSITE"],
     img: "/assets/dark mode images/pettysave.png",
+    href: "/projects/pettysave",
   },
   {
     title: "Realvest",
@@ -49,6 +53,7 @@ export const SELECTED_WORKS = [
       "Property investment, simplified by technology. Secure allocations that turn apartments into assets.",
     tags: ["REAL ESTATE", "WEB APP", "WEBSITE"],
     img: "/assets/dark mode images/realvest.png",
+    href: "/projects/realvest",
   },
   {
     title: "Emmanuel's portfolio",
