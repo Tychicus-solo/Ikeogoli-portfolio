@@ -58,7 +58,7 @@ const Experience = () => {
       <div className="experience-copy">
         <Tags label="Experience" color="#375EFB" />
         <h2 className="experience-title">
-          Companies I&apos;ve worked with <br /> over the years
+          Companies I&apos;ve worked with over the years
         </h2>
         <p className="experience-description">
           Over the past 5+ years as a designer, I&apos;ve had the incredible

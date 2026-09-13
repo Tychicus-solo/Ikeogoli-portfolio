@@ -1,8 +1,11 @@
 "use client";
 
 import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 import React, { useEffect, useRef, useState } from "react";
 import { ThemedImage } from "../../components";
+
+gsap.registerPlugin(useGSAP);
 
 const SKILLS = [
   {
@@ -73,7 +76,7 @@ const TESTIMONIALS = [
 const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const directionRef = useRef(1);
-  const hasMountedRef = useRef(false);
+  const hasInteractedRef = useRef(false);
   const isAnimatingRef = useRef(false);
   const skillsTrackRef = useRef(null);
   const skillsGroupRef = useRef(null);
@@ -110,7 +113,7 @@ const Testimonials = () => {
     };
   }, []);
 
-  useEffect(() => {
+  const { contextSafe } = useGSAP(() => {
     const card = testimonialCardRef.current;
 
     if (!card) {
@@ -119,8 +122,7 @@ const Testimonials = () => {
 
     gsap.killTweensOf(card);
 
-    if (!hasMountedRef.current) {
-      hasMountedRef.current = true;
+    if (!hasInteractedRef.current) {
       gsap.set(card, { autoAlpha: 1, x: 0, filter: "blur(0px)" });
       return;
     }
@@ -144,13 +146,9 @@ const Testimonials = () => {
         },
       }
     );
+  }, { dependencies: [activeIndex], revertOnUpdate: true });
 
-    return () => {
-      gsap.killTweensOf(card);
-    };
-  }, [activeIndex]);
-
-  const showTestimonial = (nextIndex) => {
+  const showTestimonial = (nextIndex) => contextSafe(() => {
     if (nextIndex === activeIndex || isAnimatingRef.current) {
       return;
     }
@@ -166,6 +164,7 @@ const Testimonials = () => {
         : -1;
 
     directionRef.current = direction;
+    hasInteractedRef.current = true;
 
     if (!card) {
       setActiveIndex(nextIndex);
@@ -184,7 +183,7 @@ const Testimonials = () => {
         setActiveIndex(nextIndex);
       },
     });
-  };
+  })();
 
   const showPrevious = () => {
     showTestimonial(activeIndex === 0 ? TESTIMONIALS.length - 1 : activeIndex - 1);

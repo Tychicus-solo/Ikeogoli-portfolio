@@ -109,7 +109,9 @@ const Footer = () => {
         <a
           className="footer-avatar-link footer-avatar-link--owner"
           href="https://x.com/ikeogoliishie"
-          aria-label="Ikeogoli Ishie portfolio"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Ikeogoli Ishie on X (opens in a new tab)"
         >
           <span className="footer-credit" aria-hidden="true">
             <span>Ikeogoli Ishie</span>

@@ -2,8 +2,22 @@
 
 import React, { useEffect, useRef } from "react";
 import ThemedImage from "./ThemedImage";
+import { useTheme } from "./ThemeProvider";
+
+const LIGHT_LOGOS = [
+  { name: "Pettysave", file: "pettysave", width: 126, height: 35 },
+  { name: "RealVest", file: "realvest", width: 128, height: 33 },
+  { name: "Glocapro", file: "glocapro", width: 159, height: 56 },
+  { name: "Icheta", file: "icheta", width: 155, height: 48 },
+  { name: "FourierPay", file: "fourier-pay", width: 164, height: 32 },
+  { name: "Pertinence", file: "pertinence", width: 191, height: 32 },
+  { name: "Lyvads", file: "lyvads", width: 166, height: 40 },
+  { name: "OneApp", file: "oneapp", width: 117, height: 40 },
+  { name: "Mybuildingfile", file: "mybuildingfile", width: 215, height: 40 },
+];
 
 const TrustedBrands = () => {
+  const { isLight } = useTheme();
   const trackRef = useRef(null);
   const firstGroupRef = useRef(null);
 
@@ -21,7 +35,7 @@ const TrustedBrands = () => {
       const distance = firstGroup.getBoundingClientRect().width + gap;
 
       track.style.setProperty("--trusted-brands-distance", `${distance}px`);
-      track.style.setProperty("--trusted-brands-duration", "10s");
+      track.style.setProperty("--trusted-brands-duration", `${distance / 72}s`);
     };
 
     measureLoop();
@@ -49,6 +63,26 @@ const TrustedBrands = () => {
               key={groupIndex}
               ref={groupIndex === 0 ? firstGroupRef : null}
             >
+              {isLight ? (
+                LIGHT_LOGOS.map((logo) => (
+                  <span
+                    key={logo.file}
+                    className={`trusted-brands-light-logo trusted-brands-light-logo--${logo.file}`}
+                    role="img"
+                    aria-label={groupIndex === 0 ? logo.name : undefined}
+                    style={{ width: logo.width * 40 / 56, height: logo.height * 40 / 56 }}
+                  >
+                    <ThemedImage
+                      src={`/assets/light mode images/figma/trusted-brands/logos/${logo.file}.svg`}
+                      alt=""
+                      width={logo.width}
+                      height={logo.height}
+                      unoptimized
+                    />
+                  </span>
+                ))
+              ) : (
+                <>
               <ThemedImage
                 src="/assets/dark mode images/figma/trusted-brands/trusted-brands.svg"
                 alt={groupIndex === 0 ? "Trusted brand logos" : ""}
@@ -65,6 +99,8 @@ const TrustedBrands = () => {
                 className="trusted-brands-fourier-img"
                 sizes="116px"
               />
+                </>
+              )}
             </div>
           ))}
         </div>

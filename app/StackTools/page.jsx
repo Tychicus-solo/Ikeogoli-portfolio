@@ -15,6 +15,14 @@ const SERVICES = [
   "No-code development",
 ];
 
+// Preserve the four service rows in the desktop Figma composition.
+const SERVICE_ROWS = [
+  SERVICES.slice(0, 3),
+  SERVICES.slice(3, 6),
+  SERVICES.slice(6, 9),
+  SERVICES.slice(9),
+];
+
 const TOOLS = [
   {
     name: "Figma",
@@ -60,10 +68,10 @@ const TOOLS = [
 
 const StackTools = () => {
   return (
-    <section className="stack-tools-section">
+    <section className="stack-tools-section" aria-labelledby="stack-tools-heading">
       <div className="stack-tools-header">
-        <Tags label="Stack" color="#F6517F" />
-        <h2 className="stack-tools-title">Stack &amp; Tools</h2>
+        <Tags label="Stack" color="#FF3489" />
+        <h2 id="stack-tools-heading" className="stack-tools-title">Stack &amp; Tools</h2>
       </div>
 
       <div className="stack-tools-grid">
@@ -73,10 +81,14 @@ const StackTools = () => {
           </h3>
 
           <div className="stack-tools-services">
-            {SERVICES.map((service) => (
-              <span className="stack-tools-pill" key={service}>
-                {service}
-              </span>
+            {SERVICE_ROWS.map((row) => (
+              <div className="stack-tools-service-row" key={row[0]}>
+                {row.map((service) => (
+                  <span className="stack-tools-pill" key={service}>
+                    {service}
+                  </span>
+                ))}
+              </div>
             ))}
           </div>
         </article>

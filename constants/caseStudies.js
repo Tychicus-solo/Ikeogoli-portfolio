@@ -1,17 +1,94 @@
-const ichetaImage = (file) => ({
-  src: `/assets/dark mode images/case-studies/icheta/${file}`,
-  lightSrc: `/assets/dark mode images/case-studies/icheta/${file}`,
-});
+// Individual Figma panels exclude the gallery backgrounds and gutters.
+const ichetaPanels = {
+  "style-guide.png": [
+    { file: "style-guide-1.webp", width: 3840, height: 2400 },
+  ],
+  "solution-overview.png": [
+    { file: "solution-overview-1.webp", width: 3840, height: 2400 },
+  ],
+  "web-app-design.png": [
+    { file: "web-app-design-1.webp", width: 3840, height: 2400 },
+    { file: "web-app-design-2.webp", width: 3840, height: 2400 },
+  ],
+  "business-dashboard.png": [
+    { file: "business-dashboard-1.webp", width: 3840, height: 2400 },
+  ],
+  "product-inventory.png": [
+    { file: "product-inventory-1.webp", width: 3840, height: 2400 },
+    { file: "product-inventory-2.webp", width: 3840, height: 2400 },
+  ],
+  "marketplace.png": [
+    { file: "marketplace-1.webp", width: 3840, height: 2400 },
+    { file: "marketplace-2.webp", width: 620, height: 800, columnSpan: 1 },
+    { file: "marketplace-3.webp", width: 620, height: 800, columnSpan: 1 },
+  ],
+  "explore-services.png": [
+    { file: "explore-services-1.webp", width: 3840, height: 2400 },
+  ],
+  "order-tracking.png": [
+    { file: "order-tracking-1.webp", width: 3840, height: 2400 },
+  ],
+  "explore-vendors.png": [
+    { file: "explore-vendors-1.webp", width: 3840, height: 2400 },
+    { file: "explore-vendors-2.webp", width: 3840, height: 2400 },
+  ],
+  "community.png": [
+    { file: "community-1.webp", width: 3840, height: 2400 },
+    { file: "community-2.webp", width: 620, height: 620, columnSpan: 1 },
+    { file: "community-3.webp", width: 620, height: 620, columnSpan: 1 },
+  ],
+  "wishlists.png": [
+    { file: "wishlists-1.webp", width: 3840, height: 2400 },
+    { file: "wishlists-2.webp", width: 620, height: 720, columnSpan: 1 },
+    { file: "wishlists-3.webp", width: 620, height: 720, columnSpan: 1 },
+  ],
+  "wallet-system.png": [
+    { file: "wallet-system-1.webp", width: 3840, height: 2400 },
+    { file: "wallet-system-2.webp", width: 3840, height: 2400 },
+  ],
+};
+
+const ichetaImage = (file) => {
+  const panels = ichetaPanels[file]?.map(({ file: panelFile, ...dimensions }) => ({
+    src: `/assets/dark mode images/case-studies/icheta/panels/${panelFile}`,
+    ...dimensions,
+  }));
+  return {
+    src: `/assets/dark mode images/case-studies/icheta/${file}`,
+    lightSrc: `/assets/dark mode images/case-studies/icheta/${file}`,
+    lightPanels: panels,
+    darkPanels: panels,
+  };
+};
 
 const pplImage = (file) => ({
   src: `/assets/dark mode images/case-studies/ppl/${file}`,
   lightSrc: `/assets/dark mode images/case-studies/ppl/${file}`,
 });
 
-const fitfamImage = (file) => ({
-  src: `/assets/dark mode images/case-studies/fitfam/${file}`,
-  lightSrc: `/assets/dark mode images/case-studies/fitfam/${file}`,
-});
+const fitfamImage = (file) => {
+  // Export panels separately so gallery backgrounds aren't baked into the gaps.
+  const count = {
+    "style-guide.png": 2,
+    "approach.png": 1,
+    "mobile-app-design.png": 2,
+    "home-screen.png": 3,
+    "workout-studio.png": 1,
+    "community.png": 2,
+    "health-journal.png": 1,
+  }[file];
+  const panels = count ? Array.from({ length: count }, (_, index) => ({
+    src: `/assets/dark mode images/case-studies/fitfam/panels/${file.replace(".png", "")}-${index + 1}.webp`,
+    width: 3840,
+    height: 2400,
+  })) : undefined;
+  return {
+    src: `/assets/dark mode images/case-studies/fitfam/${file}`,
+    lightSrc: `/assets/dark mode images/case-studies/fitfam/${file}`,
+    lightPanels: panels,
+    darkPanels: panels,
+  };
+};
 
 const pettysaveImage = (file) => ({
   src: `/assets/dark mode images/case-studies/pettysave/${file}`,
@@ -23,30 +100,112 @@ const realvestImage = (file) => ({
   lightSrc: `/assets/dark mode images/case-studies/realvest/${file}`,
 });
 
+const lyvadsPanels = (file, theme) => {
+  const count = {
+    "style-guide.png": 2,
+    "creator-module.png": 3,
+    "business-module.png": 3,
+    "website-design.png": 3,
+    "admin-system.png": 3,
+  }[file];
+  if (!count) return undefined;
+
+  // Keep the Figma panels separate: the composite exports contain opaque gutters.
+  const scale = theme === "dark" && file === "style-guide.png" ? 2 : 1;
+  return Array.from({ length: count }, (_, index) => ({
+    src: `/assets/${theme} mode images/case-studies/lyvads/panels/${file.replace(".png", "")}-${index + 1}.webp`,
+    width: 1280 * scale,
+    height: 800 * scale,
+  }));
+};
+
 const lyvadsImage = (file) => ({
   src: `/assets/dark mode images/case-studies/lyvads/${file}`,
   lightSrc: `/assets/light mode images/case-studies/lyvads/${file}`,
-  lightPanels: (() => {
-    const count = {
-      "style-guide.png": 2,
-      "creator-module.png": 3,
-      "business-module.png": 3,
-      "website-design.png": 3,
-      "admin-system.png": 3,
-    }[file];
-    return count
-      ? Array.from({ length: count }, (_, index) =>
-          `/assets/light mode images/case-studies/lyvads/panels/${file.replace(".png", "")}-${index + 1}.webp`)
-      : undefined;
-  })(),
+  lightPanels: lyvadsPanels(file, "light"),
+  darkPanels: lyvadsPanels(file, "dark"),
 });
+
+const oneappPanels = (file, theme) => {
+  const count = {
+    "system-overview.png": 1,
+    "approach.png": 1,
+    "web-mobile-platform.png": 2,
+    "key-features.png": 2,
+    "mobile-app.png": theme === "dark" ? 6 : 4,
+    "website-design.png": 4,
+    "admin-system.png": 4,
+    "app-shots.png": 1,
+  }[file];
+  if (!count) return undefined;
+  // Individual Figma exports have no baked-in gutters or outer shadows.
+  return Array.from({ length: count }, (_, index) => {
+    const darkSpecific = theme === "dark" && (
+      (file === "mobile-app.png" && (index === 2 || index === 3)) ||
+      (file === "admin-system.png" && index === 3) ||
+      file === "app-shots.png"
+    );
+    // Matching Figma panels reuse one URL across themes for cache reuse.
+    const panelNumber = theme === "dark" && file === "mobile-app.png" && index >= 4
+      ? index - 1
+      : index + 1;
+    const assetTheme = darkSpecific ? "dark" : "light";
+    const highResolution = darkSpecific && (
+      file === "app-shots.png" || file === "admin-system.png"
+    );
+    const scale = highResolution ? 3 : darkSpecific ? 1 : 2;
+    return {
+      src: `/assets/${assetTheme} mode images/case-studies/oneapp/clean/${file.replace(".png", "")}${count > 1 ? `-${panelNumber}` : ""}${highResolution ? "-3x" : ""}.webp`,
+      width: 1280 * scale,
+      height: (file === "app-shots.png" ? 960 : 800) * scale,
+    };
+  });
+};
 
 const oneappImage = (file) => ({
   src: `/assets/dark mode images/case-studies/oneapp/${file}`,
-  lightSrc: `/assets/light mode images/case-studies/oneapp/${file}`,
+  // Carousel exports are shared; there is no separate light-mode carousel.
+  lightSrc: `/assets/${file.startsWith("hero-carousel/") ? "dark" : "light"} mode images/case-studies/oneapp/${file}`,
+  lightPanels: oneappPanels(file, "light"),
+  darkPanels: oneappPanels(file, "dark"),
 });
 
 export const CASE_STUDIES = {
+  emmanuel: {
+    title: "Emmanuel’s Portfolio",
+    intro: "Emmanuel's refreshed portfolio balanced personality with technical expertise. The results were clear: more interviews and higher salary offers. Authentic presentation transformed his career prospects. I teamed up with Emmanuel to redesign his portfolio—bringing fresh vision to his developer brand. Happy to report the new site is doing exactly what we planned it would!",
+    liveSite: null,
+    heroImage: "/assets/dark mode images/case-studies/emmanuel/hero.webp",
+    heroImages: [{
+      src: "/assets/dark mode images/case-studies/emmanuel/hero.webp",
+      lightSrc: "/assets/dark mode images/case-studies/emmanuel/hero.webp",
+    }],
+    meta: [
+      { label: "Services", values: ["Web App Design", "Web Design"] },
+      { label: "Duration", values: ["6 months"] },
+      { label: "Industry", values: ["Real estate", "SaaS"] },
+      { label: "Tools", values: ["Figma", "Asana", "Google meet"] },
+    ],
+    challengeTag: "OVERVIEW",
+    challenge: [{
+      title: "Strategic Portfolio Architecture",
+      body: "When Emmanuel reached out about his portfolio, I saw a challenge I had encountered many times before: strong technical talent hidden behind a generic online presence. After discussing what makes developers stand out, we mapped a clear direction. 'Your work deserves center stage,' I told him, sharing a vision for a sleek dark interface that would turn his projects into compelling visual stories. Together we rebuilt his digital identity, placing his most innovative solutions where recruiters could not miss them. We designed a structure that guides visitors through his journey, with each element adding to a unified story. The result was remarkable. What was once just another portfolio is now a magnet for opportunities he once only imagined.",
+    }],
+    visuals: [{
+      type: "image",
+      src: "/assets/dark mode images/case-studies/emmanuel/panel-1.webp",
+      alt: "Emmanuel’s portfolio: introduction, projects, experience and contact",
+      ...(() => {
+        const panels = Array.from({ length: 4 }, (_, index) => ({
+          src: `/assets/dark mode images/case-studies/emmanuel/panel-${index + 1}.webp`,
+          width: 3840,
+          height: 2400,
+        }));
+        return { lightPanels: panels, darkPanels: panels };
+      })(),
+    }],
+    otherProjects: ["realvest", "lyvads"],
+  },
   lyvads: {
     title: "Lyvads",
     intro:

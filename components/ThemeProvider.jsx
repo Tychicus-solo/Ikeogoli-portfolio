@@ -4,7 +4,7 @@ import React, {
   createContext,
   useCallback,
   useContext,
-  useEffect,
+  useLayoutEffect,
   useMemo,
   useState,
 } from "react";
@@ -24,22 +24,21 @@ export const toLightModeAsset = (src) => {
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState("dark");
 
-  useEffect(() => {
-    const savedTheme = window.localStorage.getItem(STORAGE_KEY);
-
-    if (savedTheme === "light" || savedTheme === "dark") {
-      window.requestAnimationFrame(() => setTheme(savedTheme));
-    }
+  useLayoutEffect(() => {
+    // The head script applies the saved theme before paint. Synchronize React
+    // before hydration paints without writing the default theme to storage.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setTheme(document.documentElement.dataset.theme === "light" ? "light" : "dark");
   }, []);
 
   const applyTheme = useCallback((nextTheme) => {
     document.documentElement.dataset.theme = nextTheme;
-    window.localStorage.setItem(STORAGE_KEY, nextTheme);
+    try {
+      window.localStorage.setItem(STORAGE_KEY, nextTheme);
+    } catch {
+      // Theme switching still works when browser storage is unavailable.
+    }
   }, []);
-
-  useEffect(() => {
-    applyTheme(theme);
-  }, [applyTheme, theme]);
 
   const toggleTheme = useCallback(() => {
     const nextTheme = theme === "light" ? "dark" : "light";

@@ -12,8 +12,7 @@ import MainNav from "../components/MainNav";
 
 export default function Home() {
   return (
-    <div className="landing-page" id="top">
-      <LandingMotion />
+    <LandingMotion>
       <div>
         <HeroSection />
         <MainNav />
@@ -26,6 +25,6 @@ export default function Home() {
         <Contact />
         <Footer />
       </div>
-    </div>
+    </LandingMotion>
   );
 }

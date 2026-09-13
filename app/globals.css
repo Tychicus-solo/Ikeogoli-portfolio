@@ -728,6 +728,19 @@ html.theme-transitioning::view-transition-new(root) {
     object-fit: contain;
   }
 
+  .trusted-brands-light-logo {
+    position: relative;
+    display: block;
+    max-width: none;
+    flex: 0 0 auto;
+    object-fit: contain;
+  }
+
+  .trusted-brands-light-logo > img {
+    width: 100%;
+    height: 100%;
+  }
+
   .selected-works-section {
     scroll-margin-top: 112px;
     padding-bottom: 120px;
@@ -957,7 +970,7 @@ html.theme-transitioning::view-transition-new(root) {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 16px;
   }
 
   .stack-tools-title {
@@ -973,6 +986,7 @@ html.theme-transitioning::view-transition-new(root) {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 40px;
+    align-items: start;
     margin-top: 48px;
   }
 
@@ -999,6 +1013,10 @@ html.theme-transitioning::view-transition-new(root) {
     margin-top: 40px;
   }
 
+  .stack-tools-service-row {
+    display: contents;
+  }
+
   .stack-tools-pill {
     border-radius: 32px;
     background-color: #172136;
@@ -1014,7 +1032,7 @@ html.theme-transitioning::view-transition-new(root) {
   .stack-tools-list {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 64px;
+    column-gap: 32px;
     row-gap: 32px;
     margin-top: 40px;
   }
@@ -1024,6 +1042,12 @@ html.theme-transitioning::view-transition-new(root) {
     align-items: center;
     gap: 16px;
     min-width: 0;
+  }
+
+  .stack-tools-item img {
+    flex: 0 0 auto;
+    width: 56px;
+    height: 56px;
   }
 
   .stack-tools-name {
@@ -1046,17 +1070,18 @@ html.theme-transitioning::view-transition-new(root) {
 
   .experience-section {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 482px;
+    grid-template-columns: minmax(0, 684px) 480px;
     justify-content: space-between;
     align-items: start;
-    gap: clamp(80px, calc(100vw - 1486px), 244px);
+    gap: clamp(48px, calc(100vw - 1484px), 244px);
     width: 100%;
+    max-width: 1728px;
     margin-inline: auto;
     padding: 120px 160px;
   }
 
   .experience-copy {
-    justify-self: end;
+    justify-self: start;
     width: 100%;
     max-width: 684px;
   }
@@ -1072,7 +1097,7 @@ html.theme-transitioning::view-transition-new(root) {
   }
 
   .experience-description {
-    margin-top: 32px;
+    margin-top: 24px;
     color: #ffffff;
     font-family: var(--font-suisse);
     font-size: 18px;
@@ -1085,18 +1110,18 @@ html.theme-transitioning::view-transition-new(root) {
     position: relative;
     display: flex;
     width: 480px;
-    height: 482px;
+    height: auto;
     flex-direction: column;
-    justify-content: space-between;
-    padding-left: 40px;
+    gap: 32px;
+    padding-left: 56px;
   }
 
   .experience-line {
     position: absolute;
-    top: 12px;
+    top: 6px;
+    bottom: 32px;
     left: 12px;
     width: 0;
-    height: calc(100% - 60px);
     border-left: 1px solid #4a5264;
   }
 
@@ -1110,8 +1135,8 @@ html.theme-transitioning::view-transition-new(root) {
 
   .experience-marker {
     position: absolute;
-    left: -40px;
-    top: 0;
+    left: -56px;
+    top: 4px;
     display: flex;
     width: 24px;
     height: 24px;
@@ -1131,6 +1156,9 @@ html.theme-transitioning::view-transition-new(root) {
   }
 
   .experience-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
     width: 100%;
     min-width: 0;
   }
@@ -1145,8 +1173,8 @@ html.theme-transitioning::view-transition-new(root) {
     color: #ffffff;
     font-family: var(--font-suisse);
     font-size: 18px;
-    font-weight: 600;
-    line-height: 28px;
+    font-weight: 500;
+    line-height: 32px;
     letter-spacing: 0;
   }
 
@@ -2294,6 +2322,23 @@ html.theme-transitioning::view-transition-new(root) {
     object-fit: cover;
   }
 
+  .case-study-page--emmanuel .case-hero-img {
+    clip-path: inset(2px round 24px);
+  }
+
+  html[data-theme] .case-study-page--emmanuel .case-hero-visual {
+    background: transparent;
+  }
+
+  /* The Fitfam export includes a dark stroke and opaque corner pixels. */
+  html[data-theme="light"] .case-study-page--fitfam .case-hero-visual {
+    background: transparent;
+  }
+
+  html[data-theme="light"] .case-study-page--fitfam .case-hero-img {
+    clip-path: inset(2px round 24px);
+  }
+
   .case-text-section {
     display: grid;
     grid-template-columns: minmax(0, 360px) minmax(0, 672px);
@@ -2350,18 +2395,18 @@ html.theme-transitioning::view-transition-new(root) {
     margin-inline: auto;
   }
 
-  .case-light-panels {
+  .case-image-panels {
     display: grid;
     gap: 40px;
   }
 
-  .case-light-panel {
+  .case-image-panel {
     overflow: hidden;
     border-radius: 24px;
     background: transparent;
   }
 
-  .case-light-panel img {
+  .case-image-panel img {
     display: block;
     width: 100%;
     height: auto;
@@ -3435,6 +3480,7 @@ html[data-theme="light"] .mobile-menu-divider {
   }
 
   .stack-tools-panel {
+    width: 100%;
     max-width: 760px;
     margin-inline: auto;
   }
@@ -3851,7 +3897,7 @@ html[data-theme="light"] .mobile-menu-divider {
   }
 
   .stack-tools-section {
-    min-height: 1148px;
+    min-height: auto;
     padding: 48px 16px;
   }
 
@@ -3933,13 +3979,13 @@ html[data-theme="light"] .mobile-menu-divider {
   .experience-timeline {
     width: 100%;
     max-width: none;
-    height: 432px;
+    height: auto;
     margin-top: 40px;
     padding-left: 40px;
   }
 
   .experience-line {
-    height: calc(100% - 38px);
+    bottom: 28px;
   }
 
   .experience-item {
@@ -4386,5 +4432,157 @@ html[data-theme="light"] .mobile-menu-divider {
   .selected-work-arrow:hover .selected-work-arrow-stack,
   .selected-work-arrow:focus-visible .selected-work-arrow-stack {
     transform: none;
+  }
+}
+
+/* Keep the 1728px Figma composition proportional on desktop/laptop widths.
+   Below 1280px the existing stacked layouts take over. */
+@media (min-width: 1280px) {
+  .stack-tools-section,
+  .experience-section {
+    --design-unit: min(1px, 0.0578703704vw);
+    padding: calc(120 * var(--design-unit)) calc(160 * var(--design-unit));
+  }
+  .stack-tools-section { min-height: auto; }
+  .stack-tools-header { gap: calc(16 * var(--design-unit)); }
+  .stack-tools-title,
+  .experience-title {
+    font-size: calc(48 * var(--design-unit));
+    line-height: calc(64 * var(--design-unit));
+  }
+  .stack-tools-grid {
+    gap: calc(40 * var(--design-unit));
+    margin-top: calc(48 * var(--design-unit));
+    align-items: stretch;
+  }
+  .stack-tools-panel {
+    padding: calc(40 * var(--design-unit));
+    border-radius: calc(12 * var(--design-unit));
+    min-width: 0;
+  }
+  .stack-tools-header > div { gap: calc(8 * var(--design-unit)); }
+  .stack-tools-header > div > span {
+    width: calc(12 * var(--design-unit));
+    height: calc(12 * var(--design-unit));
+  }
+  .stack-tools-header p {
+    font-size: calc(16 * var(--design-unit));
+    line-height: calc(24 * var(--design-unit));
+  }
+  .stack-tools-services { flex-direction: column; }
+  .stack-tools-service-row {
+    display: flex;
+    gap: calc(32 * var(--design-unit));
+  }
+  .stack-tools-panel-title {
+    font-size: calc(32 * var(--design-unit));
+    line-height: calc(48 * var(--design-unit));
+  }
+  .stack-tools-services,
+  .stack-tools-list {
+    gap: calc(32 * var(--design-unit));
+    margin-top: calc(40 * var(--design-unit));
+  }
+  .stack-tools-pill {
+    font-size: calc(18 * var(--design-unit));
+    line-height: calc(32 * var(--design-unit));
+    padding: calc(12 * var(--design-unit)) calc(16 * var(--design-unit));
+  }
+  .stack-tools-item {
+    gap: calc(16 * var(--design-unit));
+    align-items: flex-start;
+  }
+  .stack-tools-pill { white-space: nowrap; }
+  .stack-tools-name,
+  .stack-tools-description { white-space: nowrap; }
+  .stack-tools-item img {
+    width: calc(56 * var(--design-unit));
+    height: calc(56 * var(--design-unit));
+  }
+  .stack-tools-name,
+  .experience-company {
+    font-size: calc(18 * var(--design-unit));
+    line-height: calc(32 * var(--design-unit));
+  }
+  .stack-tools-description,
+  .experience-meta {
+    font-size: calc(16 * var(--design-unit));
+    line-height: calc(24 * var(--design-unit));
+  }
+  .experience-section {
+    grid-template-columns: minmax(0, 684fr) minmax(0, 480fr);
+    gap: calc(244 * var(--design-unit));
+  }
+  .experience-title { margin-top: calc(16 * var(--design-unit)); }
+  .experience-description {
+    margin-top: calc(24 * var(--design-unit));
+    font-size: calc(18 * var(--design-unit));
+    line-height: calc(32 * var(--design-unit));
+  }
+  .experience-timeline {
+    width: 100%;
+    gap: calc(32 * var(--design-unit));
+    padding-left: calc(56 * var(--design-unit));
+  }
+  .experience-item { width: 100%; min-height: calc(60 * var(--design-unit)); }
+  .experience-content { gap: calc(4 * var(--design-unit)); }
+  .experience-marker {
+    left: calc(-56 * var(--design-unit));
+    top: calc(4 * var(--design-unit));
+    width: calc(24 * var(--design-unit));
+    height: calc(24 * var(--design-unit));
+  }
+  .experience-marker span {
+    width: calc(12 * var(--design-unit));
+    height: calc(12 * var(--design-unit));
+  }
+  .experience-line {
+    left: calc(12 * var(--design-unit));
+    top: calc(6 * var(--design-unit));
+    bottom: calc(32 * var(--design-unit));
+  }
+}
+
+/* Match the case-study header's 1728px Figma vertical rhythm on laptops. */
+@media (min-width: 1280px) {
+  .case-study-page {
+    --case-design-unit: min(1px, 0.0578703704vw);
+    --case-divider-top: calc(112 * var(--case-design-unit));
+  }
+
+  .case-nav {
+    --case-nav-height: calc(64 * var(--case-design-unit));
+    top: calc(24 * var(--case-design-unit));
+    padding: calc(8 * var(--case-design-unit));
+  }
+
+  .case-back-link,
+  .case-nav-contact {
+    min-height: calc(48 * var(--case-design-unit));
+    font-size: calc(16 * var(--case-design-unit));
+    line-height: calc(24 * var(--case-design-unit));
+  }
+
+  .case-back-link { padding: calc(8 * var(--case-design-unit)); }
+  .case-nav-contact {
+    padding: calc(12 * var(--case-design-unit)) calc(20 * var(--case-design-unit));
+  }
+  .case-nav-contact > img,
+  .case-back-icon {
+    width: calc(24 * var(--case-design-unit));
+    height: calc(24 * var(--case-design-unit));
+  }
+
+  .case-hero {
+    padding-top: calc(152 * var(--case-design-unit));
+  }
+
+  .case-hero::before,
+  .case-hero::after {
+    top: var(--case-divider-top);
+  }
+
+  .case-hero::after {
+    height: calc(100% - var(--case-divider-top));
   }
 }

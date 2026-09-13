@@ -96,8 +96,22 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${suisse.variable} ${nohemi.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(() => {
+              let theme = "dark";
+              try {
+                if (localStorage.getItem("ikeogoli-theme") === "light") theme = "light";
+              } catch {}
+              document.documentElement.dataset.theme = theme;
+            })();`,
+          }}
+        />
+      </head>
       <body className="min-h-full w-full bg-neutral-900">
         <ThemeProvider>{children}</ThemeProvider>
       </body>

@@ -74,10 +74,17 @@ const Paragraphs = ({ text }) =>
   text.split("\n\n").map((paragraph) => <p key={paragraph}>{paragraph}</p>);
 
 const CaseVisual = ({ visual, title }) => {
-  if (visual.lightPanels) {
+  if (visual.lightPanels || visual.darkPanels) {
     return (
-      <CaseImagePanels panels={visual.lightPanels} alt={visual.alt || title}>
-        <CaseVisual visual={{ ...visual, lightPanels: undefined }} title={title} />
+      <CaseImagePanels
+        panels={visual.lightPanels}
+        darkPanels={visual.darkPanels}
+        alt={visual.alt || title}
+      >
+        <CaseVisual
+          visual={{ ...visual, lightPanels: undefined, darkPanels: undefined }}
+          title={title}
+        />
       </CaseImagePanels>
     );
   }
@@ -173,7 +180,7 @@ const CaseStudyPage = async ({ params }) => {
         <div className="case-hero-copy">
           <h1>{study.title}</h1>
           <Paragraphs text={study.intro} />
-          <a className="case-hero-button items-center gap-x-[8px]" href="#case-content">
+          <a className="case-hero-button items-center gap-x-[8px]" href={study.liveSite === null ? undefined : study.liveSite || "#case-content"} aria-disabled={study.liveSite === null || undefined}>
             Live site
             <svg
               width="15"
@@ -220,7 +227,7 @@ const CaseStudyPage = async ({ params }) => {
       <div id="case-content">
         <section className="case-text-section">
           <Tags
-            label="THE CHALLENGE(S)"
+            label={study.challengeTag || "THE CHALLENGE(S)"}
             color={study.challengeColor || "#8C62FF"}
           />
           <div className="case-points">
@@ -293,7 +300,7 @@ const CaseStudyPage = async ({ params }) => {
           </section>
         )}
 
-        <section className="case-text-section case-conclusion">
+        {(study.conclusion || study.conclusionPoints) && <section className="case-text-section case-conclusion">
           <Tags
             label={study.conclusionTag || "CONCLUSION & KEY TAKEAWAY"}
             color={study.conclusionColor || "#FFB31F"}
@@ -313,7 +320,7 @@ const CaseStudyPage = async ({ params }) => {
               <Paragraphs text={study.conclusion} />
             </article>
           )}
-        </section>
+        </section>}
       </div>
 
       <section className="case-related" aria-labelledby="case-related-title">

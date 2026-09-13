@@ -61,6 +61,7 @@ export const SELECTED_WORKS = [
       "Personality meets expertise. Emmanuel's refresh unlocked better interviews and stronger offers.",
     tags: ["PORTFOLIO", "WEBSITE"],
     img: "/assets/dark mode images/emmanuelsportfolio.png",
+    href: "/projects/emmanuel",
   },
   {
     title: "Eventlify",
