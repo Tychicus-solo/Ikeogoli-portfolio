@@ -438,14 +438,14 @@ html.theme-transitioning::view-transition-new(root) {
       visibility 0ms linear 260ms,
       opacity 220ms cubic-bezier(0.22, 1, 0.36, 1),
       transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform;
+    will-change: transform;
   }
 
   .hero-nav-desktop {
     transition:
       opacity 220ms cubic-bezier(0.22, 1, 0.36, 1),
       transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform;
+    will-change: transform;
   }
 
   .main-nav.is-visible {
@@ -2295,12 +2295,14 @@ html.theme-transitioning::view-transition-new(root) {
     object-fit: cover;
     opacity: 0;
     visibility: hidden;
-    transition: none;
+    object-position: center top;
+    transition: opacity 220ms ease, visibility 220ms;
   }
 
   .case-hero-carousel-img.is-active {
     opacity: 1;
     visibility: visible;
+    animation: case-hero-pan var(--case-hero-delay, 2400ms) ease-in-out alternate infinite;
   }
 
   /* html[data-theme="light"] .case-hero-carousel {
@@ -2529,19 +2531,22 @@ html.theme-transitioning::view-transition-new(root) {
   }
 
   html[data-theme="light"] .nav-list {
-    background-color: rgba(247, 248, 250, 0.86) !important;
+    background-color: rgba(232, 234, 237, 0.5) !important;
     border: 1px solid #d4dced80;
     box-shadow: 0px 4px 24px 0px #0b0f1a1a;
-    backdrop-filter: blur(64px);
+    backdrop-filter: blur(32px);
   }
 
   /* html[data-theme="light"] .nav-box::after{
     background-color: rgba(9, 18, 37, 0.05);
   } */
 
-  html[data-theme="light"] .nav-items,
-  html[data-theme="light"] .hero-name {
+  html[data-theme="light"] .nav-items {
     color: #6f7b92 !important;
+  }
+
+  html[data-theme="light"] .hero-name {
+    color: #091225 !important;
   }
 
   html[data-theme="light"] .nav-label-copy--muted {
@@ -2549,7 +2554,7 @@ html.theme-transitioning::view-transition-new(root) {
   }
 
   html[data-theme="light"] .nav-label-copy--active {
-    color: #091225;
+    color: #4a5264;
   }
 
   html[data-theme="light"] .main-nav {
@@ -4585,4 +4590,154 @@ html[data-theme="light"] .mobile-menu-divider {
   .case-hero::after {
     height: calc(100% - var(--case-divider-top));
   }
+}
+
+
+/* Keep full-height previews moving through all of their vertical content. */
+@keyframes case-hero-pan {
+  0%, 12% { object-position: center top; transform: translateY(3.7%) scale(1.08); }
+  88%, 100% { object-position: center bottom; transform: translateY(-3.7%) scale(1.08); }
+}
+
+.ui-gallery-image {
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) {
+  .ui-gallery-item:hover .ui-gallery-image { transform: scale(1.045); }
+}
+
+.footer-label-window {
+  display: block;
+  height: 1.5em;
+  overflow: hidden;
+  line-height: 1.5;
+}
+
+.footer-label-window .nav-label-stack > span { height: 1.5em; }
+
+.footer-back:hover .nav-label-stack,
+.footer-back:focus-visible .nav-label-stack,
+.footer-socials a:hover .nav-label-stack,
+.footer-socials a:focus-visible .nav-label-stack {
+  transform: translateY(calc(-1.5em - 4px));
+}
+
+/* Clip the stroke baked into the Oneapp thumbnail export. */
+.selected-work-image-wrap--oneapp img {
+  object-fit: cover;
+  object-position: top;
+  clip-path: inset(1px);
+}
+
+@media (max-width: 767px) {
+  .left-col { padding-top: calc(80px + env(safe-area-inset-top)); }
+
+  .hero-nav-mobile {
+    position: fixed;
+    top: 0;
+    left: 16px;
+    width: calc(100% - 32px);
+    min-height: 80px;
+    justify-content: center;
+    padding-block: max(16px, env(safe-area-inset-top)) 16px;
+  }
+
+  .mobile-nav-logo {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 220ms ease, visibility 220ms;
+  }
+
+  .mobile-nav-logo.is-visible { opacity: 1; visibility: visible; }
+
+  .footer-section {
+    padding-bottom: calc(154px + env(safe-area-inset-bottom));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-hero-carousel-img.is-active { animation: none; }
+  .case-hero-carousel-img,
+  .ui-gallery-image,
+  .mobile-nav-logo { transition: none; }
+  .ui-gallery-item:hover .ui-gallery-image { transform: none; }
+  .footer-back .nav-label-stack,
+  .footer-socials a .nav-label-stack { transform: none; }
+}
+
+
+/* All endorsements remain readable before JS and with reduced motion. */
+.testimonials-section {
+  --testimonials-pin-top: 112px;
+  min-height: auto;
+  justify-content: center;
+}
+
+.testimonials-slider {
+  display: block;
+  width: min(100%, 912px);
+  min-width: 0;
+  overflow: hidden;
+}
+
+.testimonials-cards-track {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  width: 100%;
+}
+
+.testimonials-cards-track .testimonial-card {
+  flex: 0 0 100%;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+}
+
+.testimonials-section--pinned {
+  min-height: calc(100svh - var(--testimonials-pin-top));
+  padding: 32px 0;
+  gap: 32px;
+}
+
+.testimonials-section--pinned .testimonials-skills { flex-shrink: 0; }
+
+.testimonials-section--pinned .testimonials-slider { width: 100%; }
+
+.testimonials-section--pinned .testimonial-card {
+  gap: 32px;
+  padding-inline: clamp(16px, 8vw, 160px);
+}
+
+.testimonials-cards-track .testimonial-quote { margin-top: 0; }
+
+.testimonials-section--pinned .testimonial-quote {
+  width: 100%;
+  max-width: 912px;
+  font-size: clamp(22px, 3svh, 32px);
+  line-height: 1.5;
+}
+
+.testimonials-section--pinned .testimonial-profile { gap: 16px; }
+.testimonials-section--pinned .testimonial-avatar { width: 64px; height: 64px; }
+
+.testimonials-section--pinned .testimonials-cards-track {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0;
+  will-change: transform;
+}
+
+@media (max-width: 767px) {
+  .testimonials-section { --testimonials-pin-top: 80px; }
+  .testimonials-section--pinned { padding-block: 20px; gap: 24px; }
+  .testimonials-section--pinned .testimonial-card { gap: 24px; padding-inline: 20px; }
+  .testimonials-section--pinned .testimonial-quote {
+    margin-top: 0;
+    font-size: 20px;
+    line-height: 30px;
+  }
+  .testimonials-section--pinned .testimonial-profile { gap: 12px; }
+  .testimonials-section--pinned .testimonial-avatar { width: 56px; height: 56px; }
 }

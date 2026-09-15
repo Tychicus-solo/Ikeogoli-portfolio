@@ -3,7 +3,7 @@ import { NAV_LINKS } from "../constants/heroconstants";
 
 const NavList = () => {
   return (
-    <div className="nav-list bg-[#4A526499] shadow-[0px_4px_24px_0px_#0B0F1A1A] backdrop-blur-[64px] flex w-[360px] max-w-full justify-between rounded-[16px] p-2">
+    <div className="nav-list bg-[#4A526499] shadow-[0px_4px_24px_0px_#0B0F1A1A] backdrop-blur-[32px] flex w-[360px] max-w-full justify-between rounded-[16px] p-2">
       {NAV_LINKS.map((link, index) => {
         const isExternal = link.href.startsWith("http");
 

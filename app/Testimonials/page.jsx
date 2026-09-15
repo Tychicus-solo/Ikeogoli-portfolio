@@ -2,10 +2,11 @@
 
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ThemedImage } from "../../components";
 
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const SKILLS = [
   {
@@ -74,14 +75,11 @@ const TESTIMONIALS = [
 ];
 
 const Testimonials = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const directionRef = useRef(1);
-  const hasInteractedRef = useRef(false);
-  const isAnimatingRef = useRef(false);
+  const sectionRef = useRef(null);
+  const viewportRef = useRef(null);
+  const cardsTrackRef = useRef(null);
   const skillsTrackRef = useRef(null);
   const skillsGroupRef = useRef(null);
-  const testimonialCardRef = useRef(null);
-  const activeTestimonial = TESTIMONIALS[activeIndex];
 
   useEffect(() => {
     const track = skillsTrackRef.current;
@@ -113,88 +111,112 @@ const Testimonials = () => {
     };
   }, []);
 
-  const { contextSafe } = useGSAP(() => {
-    const card = testimonialCardRef.current;
+  useGSAP((context, contextSafe) => {
+    const section = sectionRef.current;
+    const viewport = viewportRef.current;
+    const track = cardsTrackRef.current;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let animation;
+    let resizeTimer;
+    let disposed = false;
+    let lastWidth = window.innerWidth;
+    let lastHeight = window.innerHeight;
 
-    if (!card) {
-      return;
-    }
+    const reset = () => {
+      animation?.scrollTrigger?.kill();
+      animation?.revert();
+      animation = undefined;
+      section.classList.remove("testimonials-section--pinned");
+    };
 
-    gsap.killTweensOf(card);
+    const setup = contextSafe(() => {
+      if (disposed) return;
+      reset();
+      if (!reducedMotion.matches) {
+        section.classList.add("testimonials-section--pinned");
+        const topOffset = parseFloat(getComputedStyle(section).getPropertyValue("--testimonials-pin-top"));
+        // Never pin content taller than the available reading area.
+        if (section.offsetHeight > window.innerHeight - topOffset + 1) {
+          section.classList.remove("testimonials-section--pinned");
+        } else {
+          const hold = 0.12;
+          const travel = 1;
+          const totalDuration = TESTIMONIALS.length * hold + (TESTIMONIALS.length - 1) * travel;
+          const readingRanges = TESTIMONIALS.map((_, index) => ({
+            start: index * (hold + travel) / totalDuration,
+            end: (index * (hold + travel) + hold) / totalDuration,
+          }));
+          const stops = readingRanges.map((range, index) =>
+            index === 0 ? 0 : index === TESTIMONIALS.length - 1 ? 1 : (range.start + range.end) / 2
+          );
 
-    if (!hasInteractedRef.current) {
-      gsap.set(card, { autoAlpha: 1, x: 0, filter: "blur(0px)" });
-      return;
-    }
+          animation = gsap.timeline({
+            scrollTrigger: {
+              trigger: section,
+              start: () => `top ${getComputedStyle(section).getPropertyValue("--testimonials-pin-top").trim()}`,
+              end: () => `+=${viewport.clientWidth * totalDuration}`,
+              pin: true,
+              scrub: 0.15,
+              snap: {
+                // Leave reading pauses alone; only settle interrupted transitions.
+                snapTo: (progress) => readingRanges.some(({ start, end }) => progress >= start && progress <= end)
+                  ? progress
+                  : gsap.utils.snap(stops, progress),
+                inertia: false,
+                delay: 0.12,
+                duration: { min: 0.16, max: 0.32 },
+                ease: "power2.inOut",
+              },
+              anticipatePin: 1,
+              invalidateOnRefresh: true,
+              refreshPriority: 1,
+            },
+          });
 
-    gsap.fromTo(
-      card,
-      {
-        autoAlpha: 0,
-        x: 28 * directionRef.current,
-        filter: "blur(6px)",
-      },
-      {
-        autoAlpha: 1,
-        x: 0,
-        filter: "blur(0px)",
-        duration: 0.45,
-        ease: "power3.out",
-        clearProps: "filter",
-        onComplete: () => {
-          isAnimatingRef.current = false;
-        },
+          TESTIMONIALS.forEach((_, index) => {
+            if (index > 0) {
+              animation.to(track, {
+                x: () => -index * viewport.clientWidth,
+                duration: travel,
+                ease: "none",
+              });
+            }
+            animation.to({}, { duration: hold });
+          });
+        }
       }
-    );
-  }, { dependencies: [activeIndex], revertOnUpdate: true });
-
-  const showTestimonial = (nextIndex) => contextSafe(() => {
-    if (nextIndex === activeIndex || isAnimatingRef.current) {
-      return;
-    }
-
-    const card = testimonialCardRef.current;
-    const isWrappingForward =
-      activeIndex === TESTIMONIALS.length - 1 && nextIndex === 0;
-    const isWrappingBackward =
-      activeIndex === 0 && nextIndex === TESTIMONIALS.length - 1;
-    const direction =
-      isWrappingForward || (!isWrappingBackward && nextIndex > activeIndex)
-        ? 1
-        : -1;
-
-    directionRef.current = direction;
-    hasInteractedRef.current = true;
-
-    if (!card) {
-      setActiveIndex(nextIndex);
-      return;
-    }
-
-    isAnimatingRef.current = true;
-    gsap.killTweensOf(card);
-    gsap.to(card, {
-      autoAlpha: 0,
-      x: -28 * direction,
-      filter: "blur(6px)",
-      duration: 0.24,
-      ease: "power2.in",
-      onComplete: () => {
-        setActiveIndex(nextIndex);
-      },
+      // The pin adds space before all subsequent landing-page reveals.
+      ScrollTrigger.refresh();
     });
-  })();
 
-  const showPrevious = () => {
-    showTestimonial(activeIndex === 0 ? TESTIMONIALS.length - 1 : activeIndex - 1);
-  };
+    const onResize = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      // Mobile browser chrome changes height during scroll; don't rebuild the pin.
+      if (width === lastWidth && (width < 768 || height === lastHeight)) return;
+      lastWidth = width;
+      lastHeight = height;
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(setup, 180);
+    };
 
-  const showNext = () => {
-    showTestimonial((activeIndex + 1) % TESTIMONIALS.length);
-  };
+    setup();
+    document.fonts.ready.then(() => { if (!disposed) setup(); });
+    window.addEventListener("resize", onResize);
+    reducedMotion.addEventListener("change", setup);
+
+    return () => {
+      disposed = true;
+      window.clearTimeout(resizeTimer);
+      window.removeEventListener("resize", onResize);
+      reducedMotion.removeEventListener("change", setup);
+      reset();
+    };
+  }, { scope: sectionRef });
 
   return (
     <section
+      ref={sectionRef}
       className="testimonials-section"
       aria-labelledby="testimonials-title"
     >
@@ -221,95 +243,33 @@ const Testimonials = () => {
         </div>
       </div>
 
-      <div className="testimonials-slider">
-        <button
-          className="testimonials-arrow"
-          type="button"
-          aria-label="Previous testimonial"
-          onClick={showPrevious}
-        >
-          <span aria-hidden="true">
-            <svg
-              width="8"
-              height="14"
-              viewBox="0 0 8 14"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M7 1L1 7L7 13"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </span>
-        </button>
-
-        <article
-          className="testimonial-card"
-          aria-live="polite"
-          ref={testimonialCardRef}
-        >
-          <div className="testimonial-eyebrow" id="testimonials-title">
-            <span />
-            Endorsements
-          </div>
-          <blockquote className="testimonial-quote">
-            {activeTestimonial.quote}
-          </blockquote>
-          <div className="testimonial-profile">
-            <ThemedImage
-              src={activeTestimonial.avatar}
-              width={80}
-              height={80}
-              alt=""
-              className="testimonial-avatar"
-            />
-            <div>
-              <h2>{activeTestimonial.name}</h2>
-              <p>{activeTestimonial.role}</p>
-            </div>
-          </div>
-          <div className="testimonial-dots" aria-label="Select testimonial">
-            {TESTIMONIALS.map((testimonial, index) => (
-              <button
-                className={index === activeIndex ? "active" : ""}
-                type="button"
-                aria-label={`Show testimonial from ${testimonial.name}`}
-                aria-pressed={index === activeIndex}
-                onClick={() => showTestimonial(index)}
-                key={testimonial.name}
-              />
-            ))}
-          </div>
-        </article>
-
-        <button
-          className="testimonials-arrow"
-          type="button"
-          aria-label="Next testimonial"
-          onClick={showNext}
-        >
-          <span aria-hidden="true">
-            <svg
-              width="8"
-              height="14"
-              viewBox="0 0 8 14"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M1 1L7 7L1 13"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </span>
-        </button>
+      <h2 className="testimonial-eyebrow" id="testimonials-title">
+        <span aria-hidden="true" />
+        Endorsements
+      </h2>
+      <div className="testimonials-slider" ref={viewportRef}>
+        <div className="testimonials-cards-track" ref={cardsTrackRef}>
+          {TESTIMONIALS.map((testimonial) => (
+            <article className="testimonial-card" key={testimonial.name}>
+              <blockquote className="testimonial-quote">
+                {testimonial.quote}
+              </blockquote>
+              <div className="testimonial-profile">
+                <ThemedImage
+                  src={testimonial.avatar}
+                  width={80}
+                  height={80}
+                  alt=""
+                  className="testimonial-avatar"
+                />
+                <div>
+                  <h2>{testimonial.name}</h2>
+                  <p>{testimonial.role}</p>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

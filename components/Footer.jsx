@@ -21,6 +21,16 @@ const SOCIAL_LINKS = [
   },
 ];
 
+const FooterLabel = ({ children }) => (
+  <span className="footer-label-window">
+    <span className="nav-label-stack" aria-hidden="true">
+      <span>{children}</span>
+      <span>{children}</span>
+    </span>
+    <span className="sr-only">{children}</span>
+  </span>
+);
+
 const Footer = () => {
   const scrollAnimationRef = useRef(null);
 
@@ -65,7 +75,7 @@ const Footer = () => {
   return (
     <footer className="footer-section md:pb-[320px]">
       <a className="footer-back" href="#top" onClick={handleBackToTop}>
-        Back to top
+        <FooterLabel>Back to top</FooterLabel>
         <span className="footer-back-icon" aria-hidden="true">
           <Image
             src={BackToTopArrow}
@@ -80,7 +90,7 @@ const Footer = () => {
       <nav className="footer-socials" aria-label="Social links">
         {SOCIAL_LINKS.map((link) => (
           <a href={link.href} key={link.label}>
-            {link.label}
+            <FooterLabel>{link.label}</FooterLabel>
           </a>
         ))}
       </nav>

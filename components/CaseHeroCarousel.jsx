@@ -3,7 +3,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import ThemedImage from "./ThemedImage";
 
-const DEFAULT_DELAY = 3000;
+const DEFAULT_DELAY = 2400;
 
 const getSlideSrc = (slide) => (typeof slide === "string" ? slide : slide.src);
 const getSlideLightSrc = (slide) =>
@@ -22,7 +22,7 @@ const CaseHeroCarousel = ({
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    if (slides.length <= 1) {
+    if (slides.length <= 1 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       return;
     }
 
@@ -37,26 +37,10 @@ const CaseHeroCarousel = ({
     return null;
   }
 
-  if (slides.length === 1) {
-    return (
-      <ThemedImage
-        src={getSlideSrc(slides[0])}
-        lightSrc={getSlideLightSrc(slides[0])}
-        alt={alt}
-        width={width}
-        height={height}
-        priority={priority}
-        quality={100}
-        className="case-hero-img"
-        sizes={sizes}
-      />
-    );
-  }
-
   return (
     <div
       className="case-hero-carousel"
-      style={{ "--case-hero-aspect": `${width} / ${height}` }}
+      style={{ "--case-hero-aspect": `${width} / ${height}`, "--case-hero-delay": `${delay}ms` }}
     >
       {slides.map((slide, index) => {
         const src = getSlideSrc(slide);
