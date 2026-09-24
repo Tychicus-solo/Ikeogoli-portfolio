@@ -228,7 +228,7 @@ const CaseStudyPage = async ({ params }) => {
         <section className="case-text-section">
           <Tags
             label={study.challengeTag || "THE CHALLENGE(S)"}
-            color={study.challengeColor || "#8C62FF"}
+            color={study.challengeColor || "#FD6A6A"}
           />
           <div className="case-points">
             {study.challenge.map((point) => (
@@ -303,7 +303,7 @@ const CaseStudyPage = async ({ params }) => {
         {(study.conclusion || study.conclusionPoints) && <section className="case-text-section case-conclusion">
           <Tags
             label={study.conclusionTag || "CONCLUSION & KEY TAKEAWAY"}
-            color={study.conclusionColor || "#FFB31F"}
+            color={study.conclusionColor || "#1DD78D"}
           />
           {study.conclusionPoints ? (
             <div className="case-points">

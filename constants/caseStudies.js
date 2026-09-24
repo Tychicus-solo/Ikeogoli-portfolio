@@ -707,7 +707,7 @@ export const CASE_STUDIES = {
     heroImages: [ichetaImage("hero.png")],
     heroWidth: 3296,
     heroHeight: 2048,
-    challengeColor: "#8C62FF",
+    challengeColor: "#FD6A6A",
     meta: [
       {
         label: "Services",
@@ -1214,7 +1214,7 @@ export const CASE_STUDIES = {
         values: ["Figma", "Claude", "Google meet"],
       },
     ],
-    challengeColor: "#A1E510",
+    challengeColor: "#FD6A6A",
     challenge: [
       {
         title: "Too much all at once",
@@ -1244,7 +1244,7 @@ export const CASE_STUDIES = {
     sections: [
       {
         tag: "THE APPROACH",
-        color: "#A1E510",
+        color: "#1DD78D",
         points: [
           {
             title: "Creating a smarter fitness journey",
@@ -1378,7 +1378,7 @@ export const CASE_STUDIES = {
         ],
       },
     ],
-    conclusionColor: "#A1E510",
+    conclusionColor: "#1DD78D",
     conclusionPoints: [
       {
         title: "The human side of fitness tech",
@@ -1412,7 +1412,7 @@ export const CASE_STUDIES = {
         values: ["Figma", "Google meet"],
       },
     ],
-    challengeColor: "#2CE77B",
+    challengeColor: "#FD6A6A",
     challenge: [
       {
         title: "Product vision gaps",
@@ -1514,7 +1514,7 @@ export const CASE_STUDIES = {
         ],
       },
     ],
-    conclusionColor: "#2CE77B",
+    conclusionColor: "#1DD78D",
     conclusionPoints: [
       {
         title: "From Concept to Market Validation",
@@ -1563,7 +1563,7 @@ export const CASE_STUDIES = {
         values: ["Figma", "Clickup", "Google meet"],
       },
     ],
-    challengeColor: "#FF8A1F",
+    challengeColor: "#FD6A6A",
     challenge: [
       {
         title: "Navigating the Digital Divide",
@@ -1608,7 +1608,7 @@ export const CASE_STUDIES = {
     sections: [
       {
         tag: "THE APPROACH",
-        color: "#FF8A1F",
+        color: "#1DD78D",
         points: [
           {
             title: "Strategic product evolution",
@@ -1722,7 +1722,7 @@ export const CASE_STUDIES = {
         ],
       },
     ],
-    conclusionColor: "#FF8A1F",
+    conclusionColor: "#1DD78D",
     conclusionPoints: [
       {
         title: "Trust Drives Investment Decisions",
