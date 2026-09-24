@@ -35,11 +35,6 @@ const LandingMotion = ({ children }) => {
     let navFrame = null;
     const syncNavigation = () => {
       navFrame = null;
-      const avatar = root.querySelector(".hero-copy > img");
-      root.querySelector(".mobile-nav-logo")?.classList.toggle(
-        "is-visible",
-        avatar !== null && avatar.getBoundingClientRect().bottom <= 0
-      );
       setMainNavVisible(
         window.scrollY > 0 &&
           works !== null &&

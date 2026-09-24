@@ -9,11 +9,13 @@ import Contact from "./Contact/page";
 import { Footer } from "../components";
 import LandingMotion from "../components/LandingMotion";
 import MainNav from "../components/MainNav";
+import HeroNavigation from "../components/HeroNavigation";
 
 export default function Home() {
   return (
     <LandingMotion>
       <div>
+        <HeroNavigation mobile />
         <HeroSection />
         <MainNav />
         <SelectedWorks />

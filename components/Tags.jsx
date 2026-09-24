@@ -17,7 +17,7 @@ const Tags = ({ label = "Available for work", color = "#34D399" }) => {
           {label}
         </span>
       ) : (
-        <p className="text-[16px] leading-[24px] font-medium text-neutral-300 font-suisse">
+        <p className="tag-label text-[16px] leading-[24px] font-medium text-neutral-300 font-suisse">
           {label}
         </p>
       )}

@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import React, { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ThemedImage } from "../../components";
+import TestimonialGlow from "../../components/TestimonialGlow";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -220,6 +221,7 @@ const Testimonials = () => {
       className="testimonials-section"
       aria-labelledby="testimonials-title"
     >
+      <TestimonialGlow />
       <div className="testimonials-skills" aria-label="Design strengths">
         <div className="testimonials-skills-track" ref={skillsTrackRef}>
           {[0, 1, 2].map((groupIndex) => (

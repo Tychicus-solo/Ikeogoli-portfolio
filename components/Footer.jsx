@@ -95,16 +95,21 @@ const Footer = () => {
         ))}
       </nav>
 
+      <div className="footer-credit-row">
+        <div className="footer-mobile-credits">
+          <span>Designed by Ikeogoli Ishie</span>
+          <span>Built by Toluwanimi Eniolorunda</span>
+        </div>
       <div className="footer-avatars">
         <a
           className="footer-avatar-link footer-avatar-link--credit"
           href="https://x.com/the_Tychicus"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Built by Eniolorunda Toluwanimi on X"
+          aria-label="Built by Toluwanimi Eniolorunda on X"
         >
           <span className="footer-credit" aria-hidden="true">
-            <span>Built by Eniolorunda Toluwanimi</span>
+            <span>Built by Toluwanimi Eniolorunda</span>
             <span>@the_Tychicus</span>
           </span>
           <span className="footer-avatar footer-avatar-photo">
@@ -121,16 +126,17 @@ const Footer = () => {
           href="https://x.com/ikeogoliishie"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Ikeogoli Ishie on X (opens in a new tab)"
+          aria-label="Designed by Ikeogoli Ishie on X (opens in a new tab)"
         >
           <span className="footer-credit" aria-hidden="true">
-            <span>Ikeogoli Ishie</span>
+            <span>Designed by Ikeogoli Ishie</span>
             <span>@ikeogoliishie</span>
           </span>
           <span className="footer-avatar footer-avatar-logo">
             <Image src={PortfolioLogo} width={48} height={48} alt="" />
           </span>
         </a>
+      </div>
       </div>
     </footer>
   );

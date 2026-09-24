@@ -22,7 +22,8 @@ const HeroSection = () => {
           <Image src={PortfolioLogo} width={88} height={88} alt="Ike Ogoli portfolio logo" />
           <div className="mt-[40px]">
             <h1 className="header-text">
-              Phenomenal Product <br /> designer
+              Phenomenal<br />
+              Product designer
             </h1>
             <h3 className="mt-[16px] text-white font-medium text-[20px] leading-[32px] tracking-normal font-suisse">
               Creating impactful web and mobile experiences that drive <br />{" "}

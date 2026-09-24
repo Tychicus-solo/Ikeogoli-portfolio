@@ -35,23 +35,34 @@ const MobileMenuLink = ({ href, isOpen, label, onClick }) => {
   );
 };
 
-const HeroNavigation = () => {
+const HeroNavigation = ({ mobile = false }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleBackToTop = (event) => {
+    event.preventDefault();
+    setIsMenuOpen(false);
+    window.scrollTo({
+      top: 0,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "instant"
+        : "smooth",
+    });
+  };
 
   return (
     <>
-      <div className="hero-nav-desktop flex items-center w-full justify-between">
+      {!mobile && <div className="hero-nav-desktop flex items-center w-full justify-between">
         <h1 className="hero-name font-inter font-medium text-[20px] leading-[32px] tracking-normal text-neutral-250 ">
           Ikeogoli Ishie
         </h1>
         <NavList />
-      </div>
+      </div>}
 
-      <div className="hero-nav-mobile">
+      {mobile && <div className="hero-nav-mobile">
         <div className="mobile-nav-header">
-          <span className="mobile-nav-logo" aria-hidden="true">
+          <a className="mobile-nav-logo" href="#top" aria-label="Ikeogoli Ishie — back to top" onClick={handleBackToTop}>
             <Image src={PortfolioLogo} width={48} height={48} alt="" />
-          </span>
+          </a>
           <button
             className={`mobile-menu-button ${isMenuOpen ? "is-open" : ""}`}
             type="button"
@@ -89,7 +100,7 @@ const HeroNavigation = () => {
           <div className="mobile-menu-divider" />
           <ContactMeBtn tabIndex={isMenuOpen ? 0 : -1} />
         </div>
-      </div>
+      </div>}
     </>
   );
 };
