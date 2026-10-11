@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { ButtonSparkles, FlipLabel } from "../../components/ButtonEffects";
 import React, { useState } from "react";
 import { ThemedImage } from "../../components";
 import CopyIcon from "../../public/assets/dark mode images/copy-icon.svg";
@@ -23,7 +24,7 @@ const Contact = () => {
         <div className="contact-status">
           <span />
           <span className="available-label-window">
-            Available for work
+            <FlipLabel>Available for work</FlipLabel>
           </span>
         </div>
         <h2 className="contact-title" id="contact-title">
@@ -51,15 +52,8 @@ const Contact = () => {
       </div>
 
       <div className="contact-actions">
-        <a className="contact-email" href={`mailto:${EMAIL}`}>
-          <span className="contact-email-sparkles" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-          </span>
+        <a className="contact-email primary-button-effects" href={`mailto:${EMAIL}`}>
+          <ButtonSparkles />
           <span className="contact-email-icon-window" aria-hidden="true">
             <span className="contact-email-icon-stack">
               <Image src={MessageIcon} width={20} height={20} alt="" />

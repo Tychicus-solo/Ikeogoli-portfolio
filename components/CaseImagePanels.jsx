@@ -14,7 +14,7 @@ export default function CaseImagePanels({ panels, darkPanels, alt, children }) {
   return (
     <div className="case-image-panels" style={{ display: "grid", rowGap: 40, ...(hasColumns ? { gridTemplateColumns: "repeat(2, minmax(0, 1fr))", columnGap: "3.125%" } : {}) }}>
       {activePanels.map((panel, index) => {
-        const { src, width = 1280, height = 800 } =
+        const { src, width = 1280, height = 800, quality = 85 } =
           typeof panel === "string" ? { src: panel } : panel;
 
         return (
@@ -30,8 +30,8 @@ export default function CaseImagePanels({ panels, darkPanels, alt, children }) {
               height={height}
               loading="lazy"
               decoding="async"
-              quality={85}
-              sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1279px) calc(100vw - 128px), (max-width: 1360px) calc(100vw - 80px), 1280px"
+              quality={quality}
+              sizes={panel.sizes || "(max-width: 767px) calc(100vw - 32px), (max-width: 1279px) calc(100vw - 128px), (max-width: 1360px) calc(100vw - 80px), 1280px"}
             />
           </div>
         );

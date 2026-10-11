@@ -1,4 +1,5 @@
 import React from "react";
+import { FlipLabel } from "./ButtonEffects";
 
 const Tags = ({ label = "Available for work", color = "#34D399" }) => {
   const isAvailable = label === "Available for work";
@@ -14,7 +15,7 @@ const Tags = ({ label = "Available for work", color = "#34D399" }) => {
 
       {isAvailable ? (
         <span className="available-label-window">
-          {label}
+          <FlipLabel>{label}</FlipLabel>
         </span>
       ) : (
         <p className="tag-label text-[16px] leading-[24px] font-medium text-neutral-300 font-suisse">

@@ -1,3 +1,4 @@
+import { ButtonSparkles, FlipIcon, FlipLabel } from "../../../components/ButtonEffects";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -9,7 +10,7 @@ import Contact from "../../Contact/page";
 import { Footer, Tags, ThemedImage, ThemeToggle } from "../../../components";
 import { CASE_STUDIES, CASE_STUDY_SLUGS } from "../../../constants/caseStudies";
 import { SELECTED_WORKS } from "../../../constants/selectworksconstants";
-import ArrowLight from "../../../public/assets/dark mode images/arrow-light.svg";
+import ProjectCard from "../../../components/ProjectCard";
 import BackArrow from "../../../public/assets/dark mode images/figma/icons/back-arrow.svg";
 import MessageIcon from "../../../public/assets/dark mode images/message-icon.svg";
 
@@ -54,13 +55,6 @@ const getRelatedWork = (slug) => {
     })
     .filter(Boolean);
 };
-
-const getImageClassName = (title) =>
-  title
-    .toLowerCase()
-    .replace(/'/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
 
 const getVisualKey = (visual) => {
   if (typeof visual === "string") {
@@ -164,15 +158,18 @@ const CaseStudyPage = async ({ params }) => {
           </span>
           <span>Back</span>
         </Link>
-        <a className="case-nav-contact" href={`mailto:${EMAIL}`}>
-          <Image
-            src={MessageIcon}
-            width={24}
-            height={24}
-            alt=""
-            aria-hidden="true"
-          />
-          <span>Contact me</span>
+        <a className="case-nav-contact primary-button-effects" href={`mailto:${EMAIL}`}>
+          <FlipIcon>
+            <Image
+              src={MessageIcon}
+              width={24}
+              height={24}
+              alt=""
+              aria-hidden="true"
+            />
+          </FlipIcon>
+          <ButtonSparkles />
+          <FlipLabel>Contact me</FlipLabel>
         </a>
       </nav>
 
@@ -180,20 +177,29 @@ const CaseStudyPage = async ({ params }) => {
         <div className="case-hero-copy">
           <h1>{study.title}</h1>
           <Paragraphs text={study.intro} />
-          <a className="case-hero-button items-center gap-x-[8px]" href={study.liveSite === null ? undefined : study.liveSite || "#case-content"} aria-disabled={study.liveSite === null || undefined}>
-            Live site
-            <svg
-              width="15"
-              height="15"
-              viewBox="0 0 15 15"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M5 0V2H11.59L0 13.59L1.41 15L13 3.41V10H15V0H5Z"
-                fill="white"
-              />
-            </svg>
+          <a
+            className="case-hero-button primary-button-effects items-center gap-x-[8px]"
+            href={study.liveSite === null ? undefined : study.liveSite || "#case-content"}
+            target={slug === "lyvads" ? "_blank" : undefined}
+            rel={slug === "lyvads" ? "noopener noreferrer" : undefined}
+            aria-disabled={study.liveSite === null || undefined}
+          >
+            <ButtonSparkles />
+            <FlipLabel>Live site</FlipLabel>
+            <FlipIcon size={15}>
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 15 15"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5 0V2H11.59L0 13.59L1.41 15L13 3.41V10H15V0H5Z"
+                  fill="white"
+                />
+              </svg>
+            </FlipIcon>
           </a>
         </div>
 
@@ -329,55 +335,14 @@ const CaseStudyPage = async ({ params }) => {
           Other Projects
         </h2>
         <div className="case-related-grid">
-          {relatedWorks.map((work) => {
-            const href = CASE_STUDIES[work.slug]
-              ? `/projects/${work.slug}`
-              : "/#works";
-            const imageClassName = getImageClassName(work.title);
-
-            return (
-              <article className="case-related-card" key={work.title}>
-                <Link
-                  className="selected-work-link"
-                  href={href}
-                  aria-label={`Open ${work.title} project`}
-                />
-                <Link
-                  className="selected-work-arrow"
-                  href={href}
-                  aria-label={`Open ${work.title} project`}
-                >
-                  <span
-                    className="selected-work-arrow-window"
-                    aria-hidden="true"
-                  >
-                    <span className="selected-work-arrow-stack">
-                      <Image src={ArrowLight} width={15} height={15} alt="" />
-                      <Image src={ArrowLight} width={15} height={15} alt="" />
-                    </span>
-                  </span>
-                </Link>
-
-                <div className="case-related-copy">
-                  <h3>{work.title}</h3>
-                  <p>{work.description}</p>
-                </div>
-                <div className="case-related-media">
-                  <div
-                    className={`case-related-image-wrap selected-work-image-wrap--${imageClassName}`}
-                  >
-                    <ThemedImage
-                      src={work.img}
-                      alt={`${work.title} project mockup`}
-                      fill
-                      sizes="(max-width: 767px) 100vw, 604px"
-                      className="case-related-img"
-                    />
-                  </div>
-                </div>
-              </article>
-            );
-          })}
+          {relatedWorks.map((work) => (
+            <ProjectCard
+              key={work.title}
+              work={work}
+              showDescription={false}
+              headingAs="h3"
+            />
+          ))}
         </div>
       </section>
 

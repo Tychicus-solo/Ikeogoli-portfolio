@@ -1,3 +1,4 @@
+import { ButtonSparkles } from "./ButtonEffects";
 import React from "react";
 import NavList from "./NavList";
 import MascotImg from "../public/assets/dark mode images/portfolio-logo.svg";
@@ -20,9 +21,10 @@ const MainNav = () => {
       </div>
       <div className="flex flex-1 justify-end">
         <a
-          className="contact-btn-main"
+          className="contact-btn-main primary-button-effects"
           href="mailto:ikeogoli.ishie@gmail.com"
         >
+          <ButtonSparkles />
           <span className="contact-btn-icon-window" aria-hidden="true">
             <span className="contact-btn-icon-stack">
               <Image src={MessageIcon} width={24} height={24} alt="" />

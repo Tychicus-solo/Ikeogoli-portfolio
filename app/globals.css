@@ -334,8 +334,8 @@ html.theme-transitioning::view-transition-new(root) {
     transform: translate3d(0, 0, 0) scale(1);
   }
   100% {
-    opacity: 0;
-    transform: translate3d(-5px, -5px, 0) scale(0.72);
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
   }
 }
 
@@ -1709,7 +1709,7 @@ html.theme-transitioning::view-transition-new(root) {
 
   .contact-email-sparkles {
     position: absolute;
-    inset: -1px;
+    inset: 0;
     z-index: 0;
     overflow: hidden;
     border-radius: inherit;
@@ -1720,53 +1720,18 @@ html.theme-transitioning::view-transition-new(root) {
 
   .contact-email-sparkles span {
     position: absolute;
-    right: var(--spark-x);
-    top: var(--spark-y);
-    width: var(--spark-size);
-    height: var(--spark-size);
-    border-radius: 999px;
-    background-color: rgba(255, 255, 255, 0.92);
     transform: translate3d(8px, 8px, 0) scale(0.45);
   }
 
-  .contact-email-sparkles span:nth-child(1) {
-    --spark-x: 16px;
-    --spark-y: 12px;
-    --spark-size: 3px;
-  }
-  .contact-email-sparkles span:nth-child(2) {
-    --spark-x: 30px;
-    --spark-y: 8px;
-    --spark-size: 2px;
-  }
-  .contact-email-sparkles span:nth-child(3) {
-    --spark-x: 11px;
-    --spark-y: 28px;
-    --spark-size: 2px;
-  }
-  .contact-email-sparkles span:nth-child(4) {
-    --spark-x: 38px;
-    --spark-y: 33px;
-    --spark-size: 2px;
-  }
-  .contact-email-sparkles span:nth-child(5) {
-    --spark-x: 24px;
-    --spark-y: 43px;
-    --spark-size: 1.5px;
-  }
-  .contact-email-sparkles span:nth-child(6) {
-    --spark-x: 52px;
-    --spark-y: 19px;
-    --spark-size: 1.5px;
-  }
+  .contact-email-sparkles img { display: block; max-width: none; }
 
-  .contact-email:hover .contact-email-sparkles,
-  .contact-email:focus-visible .contact-email-sparkles {
+  .primary-button-effects:not([aria-disabled="true"]):hover .contact-email-sparkles,
+  .primary-button-effects:not([aria-disabled="true"]):focus-visible .contact-email-sparkles {
     opacity: 1;
   }
 
-  .contact-email:hover .contact-email-sparkles span,
-  .contact-email:focus-visible .contact-email-sparkles span {
+  .primary-button-effects:not([aria-disabled="true"]):hover .contact-email-sparkles span,
+  .primary-button-effects:not([aria-disabled="true"]):focus-visible .contact-email-sparkles span {
     animation: contact-sparkle-pop 620ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 
@@ -2485,6 +2450,11 @@ html.theme-transitioning::view-transition-new(root) {
 
   .case-related-copy {
     padding-right: 72px;
+  }
+
+  .case-related-copy .selected-work-tags {
+    margin-top: 8px;
+    gap: 16px;
   }
 
   .case-related-card h3 {
@@ -4565,7 +4535,7 @@ html[data-theme="light"] .mobile-menu-divider {
   .case-nav-contact {
     padding: calc(12 * var(--case-design-unit)) calc(20 * var(--case-design-unit));
   }
-  .case-nav-contact > img,
+  .case-nav-contact > .button-icon-window,
   .case-back-icon {
     width: calc(24 * var(--case-design-unit));
     height: calc(24 * var(--case-design-unit));
@@ -4609,11 +4579,36 @@ html[data-theme="light"] .mobile-menu-divider {
 
 .footer-label-window .nav-label-stack > span { height: 1.5em; }
 
+.footer-back {
+  gap: 4px;
+  padding: 8px 12px;
+  border: 1px solid #4A526480;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.footer-back .footer-label-window {
+  height: 20px;
+  line-height: 20px;
+}
+
+.footer-back .nav-label-stack > span { height: 20px; }
+
+html[data-theme="light"] .footer-back { color: #172136; }
+
 .footer-back:hover .nav-label-stack,
 .footer-back:focus-visible .nav-label-stack,
 .footer-socials a:hover .nav-label-stack,
 .footer-socials a:focus-visible .nav-label-stack {
   transform: translateY(calc(-1.5em - 4px));
+}
+
+.footer-back:hover .nav-label-stack,
+.footer-back:focus-visible .nav-label-stack {
+  transform: translateY(-24px);
 }
 
 /* Clip the stroke baked into the Oneapp thumbnail export. */
@@ -4806,9 +4801,10 @@ html[data-theme="light"] .testimonial-glow-art--light {
   }
   html[data-theme="light"] .mobile-nav-logo { color: #6f7b92; }
   .mobile-nav-logo img { flex-shrink: 0; border-radius: 50%; }
-  .footer-section { column-gap: 8px; }
+  .footer-section { column-gap: 8px; padding-inline: 16px; }
   .footer-socials { gap: 8px; flex-wrap: wrap; }
   .footer-credit-row {
+    position: relative;
     display: flex;
     grid-column: 1 / -1;
     align-items: center;
@@ -4816,9 +4812,17 @@ html[data-theme="light"] .testimonial-glow-art--light {
     gap: 12px;
     margin-top: 24px;
     padding-top: 24px;
-    border-top: 1px solid rgba(74, 82, 100, 0.5);
   }
-  html[data-theme="light"] .footer-credit-row { border-color: #dee5f2; }
+  .footer-credit-row::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -16px;
+    right: -16px;
+    height: 1.5px;
+    background: url("/assets/dark mode images/figma/footer-divider.svg") center / 100% 100% no-repeat;
+  }
+  html[data-theme="light"] .footer-credit-row::before { background: #dee5f2; }
   .footer-mobile-credits {
     display: flex;
     min-width: 0;
@@ -4834,4 +4838,65 @@ html[data-theme="light"] .testimonial-glow-art--light {
   .footer-credit-row .footer-avatars { flex: 0 0 88px; margin-top: 0; }
   .footer-credit-row .footer-credit { display: none; }
   .footer-credit-row .footer-avatar { filter: none !important; opacity: 1 !important; transform: none !important; }
+}
+
+/* Shared primary button hover treatment, including keyboard focus. */
+.primary-button-effects { position: relative; isolation: isolate; }
+.primary-button-effects > :not(.contact-email-sparkles) { position: relative; z-index: 1; }
+.button-flip-window { display: block; height: 1lh; overflow: hidden; }
+.case-back-link:is(:hover, :focus-visible),
+html[data-theme="light"] .case-back-link:is(:hover, :focus-visible) {
+  color: #ffffff;
+}
+.case-back-link:is(:hover, :focus-visible) .case-back-icon img,
+html[data-theme="light"] .case-back-link:is(:hover, :focus-visible) .case-back-icon img {
+  filter: brightness(0) invert(1);
+}
+.button-flip-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.button-flip-stack > span { display: block; flex-shrink: 0; height: 1lh; white-space: nowrap; }
+.primary-button-effects:not([aria-disabled="true"]):is(:hover, :focus-visible) .button-flip-stack,
+.tag--available:hover .button-flip-stack,
+.contact-status:hover .button-flip-stack { transform: translateY(calc(-1lh - 4px)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .button-flip-stack { transition: none; }
+  .primary-button-effects:is(:hover, :focus-visible) .button-flip-stack,
+  .tag--available:hover .button-flip-stack,
+  .contact-status:hover .button-flip-stack,
+  .primary-button-effects:is(:hover, :focus-visible) .contact-btn-label-stack,
+  .primary-button-effects:is(:hover, :focus-visible) .contact-btn-icon-stack { transform: none; }
+  .primary-button-effects:is(:hover, :focus-visible) .contact-email-sparkles span {
+    animation: none;
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.button-icon-window {
+  display: block;
+  flex-shrink: 0;
+  width: var(--button-icon-size);
+  height: var(--button-icon-size);
+  overflow: hidden;
+}
+.button-icon-stack {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  gap: 4px;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.button-icon-stack > span { display: flex; align-items: center; justify-content: center; flex: 0 0 100%; }
+.case-nav-contact .button-icon-stack img { width: 100%; height: 100%; }
+.primary-button-effects:not([aria-disabled="true"]):is(:hover, :focus-visible) .button-icon-stack {
+  transform: translateY(calc(-100% - 4px));
+}
+@media (prefers-reduced-motion: reduce) {
+  .button-icon-stack { transition: none; }
+  .primary-button-effects:is(:hover, :focus-visible) .button-icon-stack { transform: none; }
 }

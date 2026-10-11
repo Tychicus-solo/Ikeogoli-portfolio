@@ -48,6 +48,19 @@ const ichetaPanels = {
   ],
 };
 
+const ichetaLightUpdates = new Set([
+  "web-app-design.png",
+  "business-dashboard.png",
+  "product-inventory.png",
+  "marketplace.png",
+  "explore-services.png",
+  "order-tracking.png",
+  "explore-vendors.png",
+  "community.png",
+  "wishlists.png",
+  "wallet-system.png",
+]);
+
 const ichetaImage = (file) => {
   const panels = ichetaPanels[file]?.map(({ file: panelFile, ...dimensions }) => ({
     src: `/assets/dark mode images/case-studies/icheta/panels/${panelFile}`,
@@ -56,14 +69,50 @@ const ichetaImage = (file) => {
   return {
     src: `/assets/dark mode images/case-studies/icheta/${file}`,
     lightSrc: `/assets/dark mode images/case-studies/icheta/${file}`,
-    lightPanels: panels,
-    darkPanels: panels,
+    lightPanels: ichetaLightUpdates.has(file)
+      ? ichetaPanels[file].map(({ file: panelFile, width, height, ...layout }) => ({
+          src: `/assets/light mode images/case-studies/icheta/panels-v2/${panelFile}`,
+          width: width === 620 ? width * 3 : width,
+          height: width === 620 ? height * 3 : height,
+          quality: 95,
+          ...(layout.columnSpan === 1 ? {
+            sizes: "(max-width: 767px) 47vw, (max-width: 1279px) 44vw, 620px",
+          } : {}),
+          ...layout,
+        }))
+      : panels,
+    darkPanels: ichetaPanels[file]?.map(({ file: panelFile, width, height, ...layout }) => ({
+      src: `/assets/dark mode images/case-studies/icheta/panels-v2/${panelFile}`,
+      width: width === 620 ? width * 3 : width,
+      height: width === 620 ? height * 3 : height,
+      quality: 95,
+      ...(layout.columnSpan === 1 ? {
+        sizes: "(max-width: 767px) 47vw, (max-width: 1279px) 44vw, 620px",
+      } : {}),
+      ...layout,
+    })),
   };
 };
 
 const pplImage = (file) => ({
   src: `/assets/dark mode images/case-studies/ppl/${file}`,
-  lightSrc: `/assets/dark mode images/case-studies/ppl/${file}`,
+  lightSrc: file === "hero.png"
+    ? "/assets/light mode images/case-studies/ppl/hero-v2.webp"
+    : `/assets/dark mode images/case-studies/ppl/${file}`,
+  lightPanels: file === "website-gallery-1.png" ? [{
+    src: "/assets/light mode images/case-studies/ppl/website-gallery-1-v3.webp",
+    width: 3840,
+    height: 2400,
+    quality: 95,
+  }] : undefined,
+  darkPanels: file === "hero.png" ? undefined : [{
+    src: file === "website-gallery-1.png"
+      ? "/assets/dark mode images/case-studies/ppl/website-gallery-1-v3.webp"
+      : `/assets/dark mode images/case-studies/ppl/panels-v2/${file.replace(".png", ".webp")}`,
+    width: 3840,
+    height: 2400,
+    quality: 95,
+  }],
 });
 
 const fitfamImage = (file) => {
@@ -85,24 +134,79 @@ const fitfamImage = (file) => {
   return {
     src: `/assets/dark mode images/case-studies/fitfam/${file}`,
     lightSrc: `/assets/dark mode images/case-studies/fitfam/${file}`,
-    lightPanels: panels,
-    darkPanels: panels,
+    lightPanels: ["mobile-app-design.png", "home-screen.png", "workout-studio.png", "community.png", "health-journal.png"].includes(file)
+      ? panels?.map((panel) => ({
+        ...panel,
+        src: panel.src.replace("/dark mode images/", "/light mode images/").replace("/panels/", "/panels-v2/").replace("home-screen-1.webp", "home-screen-1-borderless.webp"),
+        ...(file === "home-screen.png" && panel.src.endsWith("home-screen-1.webp") ? { width: 3828, height: 2388 } : {}),
+        quality: 95,
+      }))
+      : panels,
+    darkPanels: panels?.map((panel) => ({
+      ...panel,
+      src: panel.src.replace("/panels/", "/panels-v2/"),
+      quality: 95,
+    })),
   };
 };
 
-const pettysaveImage = (file) => ({
-  src: `/assets/dark mode images/case-studies/pettysave/${file}`,
-  lightSrc: `/assets/dark mode images/case-studies/pettysave/${file}`,
-});
+const refreshedCaseImage = (project, file, updatedFiles) => {
+  const fallback = `/assets/dark mode images/case-studies/${project}/${file}`;
+  if (!updatedFiles.includes(file)) return { src: fallback, lightSrc: fallback };
 
-const realvestImage = (file) => ({
-  src: `/assets/dark mode images/case-studies/realvest/${file}`,
-  lightSrc: `/assets/dark mode images/case-studies/realvest/${file}`,
-});
+  const name = file.replace(".png", "");
+  const src = `/assets/dark mode images/case-studies/${project}/panels-v2/${name}.webp`;
+  const lightSrc = src.replace("/dark mode images/", "/light mode images/");
+  if (file === "hero.png") return { src, lightSrc };
+
+  return {
+    src,
+    lightSrc,
+    darkPanels: [{
+      src,
+      width: project === "realvest" && name === "website-design-3" ? 3828 : 3840,
+      height: project === "realvest" && name === "website-design-3" ? 2388 : 2400,
+      quality: 95,
+    }],
+    lightPanels: [{ src: lightSrc, width: 3840, height: 2400, quality: 95 }],
+  };
+};
+
+const pettysaveImage = (file) => refreshedCaseImage("pettysave", file, [
+  "hero.png", "website-gallery-1.png",
+]);
+
+const realvestImage = (file) => refreshedCaseImage("realvest", file, [
+  "web-app-evolution-1.png", "web-app-evolution-2.png",
+  "web-app-evolution-3.png", "web-app-evolution-4.png",
+  "website-design-1.png", "website-design-2.png", "website-design-3.png",
+]);
 
 const lyvadsPanels = (file, theme) => {
+  if (theme === "dark") {
+    const count = {
+      "style-guide.png": 2,
+      "components.png": 1,
+      "mobile-app.png": 1,
+      "creator-module.png": 3,
+      "business-module.png": 3,
+      "website-design.png": 3,
+      "admin-system.png": 3,
+    }[file];
+    if (!count) return undefined;
+
+    return Array.from({ length: count }, (_, index) => ({
+      src: `/assets/dark mode images/case-studies/lyvads/panels-3x/${file.replace(".png", "")}-${index + 1}.webp`,
+      width: 3840,
+      height: 2400,
+      quality: 100,
+    }));
+  }
+
   const count = {
     "style-guide.png": 2,
+    "components.png": 1,
+    "mobile-app.png": 1,
     "creator-module.png": 3,
     "business-module.png": 3,
     "website-design.png": 3,
@@ -111,11 +215,11 @@ const lyvadsPanels = (file, theme) => {
   if (!count) return undefined;
 
   // Keep the Figma panels separate: the composite exports contain opaque gutters.
-  const scale = theme === "dark" && file === "style-guide.png" ? 2 : 1;
   return Array.from({ length: count }, (_, index) => ({
-    src: `/assets/${theme} mode images/case-studies/lyvads/panels/${file.replace(".png", "")}-${index + 1}.webp`,
-    width: 1280 * scale,
-    height: 800 * scale,
+    src: `/assets/${theme} mode images/case-studies/lyvads/panels-3x/${file.replace(".png", "")}-${index + 1}.webp`,
+    width: 3840,
+    height: 2400,
+    quality: 95,
   }));
 };
 
@@ -132,34 +236,20 @@ const oneappPanels = (file, theme) => {
     "approach.png": 1,
     "web-mobile-platform.png": 2,
     "key-features.png": 2,
-    "mobile-app.png": theme === "dark" ? 6 : 4,
+    "mobile-app.png": 6,
     "website-design.png": 4,
     "admin-system.png": 4,
     "app-shots.png": 1,
   }[file];
   if (!count) return undefined;
-  // Individual Figma exports have no baked-in gutters or outer shadows.
-  return Array.from({ length: count }, (_, index) => {
-    const darkSpecific = theme === "dark" && (
-      (file === "mobile-app.png" && (index === 2 || index === 3)) ||
-      (file === "admin-system.png" && index === 3) ||
-      file === "app-shots.png"
-    );
-    // Matching Figma panels reuse one URL across themes for cache reuse.
-    const panelNumber = theme === "dark" && file === "mobile-app.png" && index >= 4
-      ? index - 1
-      : index + 1;
-    const assetTheme = darkSpecific ? "dark" : "light";
-    const highResolution = darkSpecific && (
-      file === "app-shots.png" || file === "admin-system.png"
-    );
-    const scale = highResolution ? 3 : darkSpecific ? 1 : 2;
-    return {
-      src: `/assets/${assetTheme} mode images/case-studies/oneapp/clean/${file.replace(".png", "")}${count > 1 ? `-${panelNumber}` : ""}${highResolution ? "-3x" : ""}.webp`,
-      width: 1280 * scale,
-      height: (file === "app-shots.png" ? 960 : 800) * scale,
-    };
-  });
+
+  // Separate 3x Figma panels preserve each theme's artwork and gallery spacing.
+  return Array.from({ length: count }, (_, index) => ({
+    src: `/assets/${theme} mode images/case-studies/oneapp/${theme === "light" ? "panels-clean" : "panels-3x"}/${file.replace(".png", "")}-${index + 1}.webp`,
+    width: 3840,
+    height: file === "app-shots.png" ? 2880 : 2400,
+    quality: 95,
+  }));
 };
 
 const oneappImage = (file) => ({
@@ -175,10 +265,10 @@ export const CASE_STUDIES = {
     title: "Emmanuel’s Portfolio",
     intro: "Emmanuel's refreshed portfolio balanced personality with technical expertise. The results were clear: more interviews and higher salary offers. Authentic presentation transformed his career prospects. I teamed up with Emmanuel to redesign his portfolio—bringing fresh vision to his developer brand. Happy to report the new site is doing exactly what we planned it would!",
     liveSite: null,
-    heroImage: "/assets/dark mode images/case-studies/emmanuel/hero.webp",
+    heroImage: "/assets/dark mode images/case-studies/emmanuel/panels-v2/hero.webp",
     heroImages: [{
-      src: "/assets/dark mode images/case-studies/emmanuel/hero.webp",
-      lightSrc: "/assets/dark mode images/case-studies/emmanuel/hero.webp",
+      src: "/assets/dark mode images/case-studies/emmanuel/panels-v2/hero.webp",
+      lightSrc: "/assets/light mode images/case-studies/emmanuel/panels-v2/hero.webp",
     }],
     meta: [
       { label: "Services", values: ["Web App Design", "Web Design"] },
@@ -193,21 +283,23 @@ export const CASE_STUDIES = {
     }],
     visuals: [{
       type: "image",
-      src: "/assets/dark mode images/case-studies/emmanuel/panel-1.webp",
+      src: "/assets/dark mode images/case-studies/emmanuel/panels-v2/panel-1.webp",
       alt: "Emmanuel’s portfolio: introduction, projects, experience and contact",
       ...(() => {
-        const panels = Array.from({ length: 4 }, (_, index) => ({
-          src: `/assets/dark mode images/case-studies/emmanuel/panel-${index + 1}.webp`,
-          width: 3840,
-          height: 2400,
+        const panels = (theme) => Array.from({ length: 4 }, (_, index) => ({
+          src: `/assets/${theme} mode images/case-studies/emmanuel/panels-v2/panel-${index + 1}.webp`,
+          width: 3828,
+          height: 2388,
+          quality: 95,
         }));
-        return { lightPanels: panels, darkPanels: panels };
+        return { lightPanels: panels("light"), darkPanels: panels("dark") };
       })(),
     }],
     otherProjects: ["realvest", "lyvads"],
   },
   lyvads: {
     title: "Lyvads",
+    liveSite: "https://lyvads.com/",
     intro:
       "Working closely with product owners and a cross-functional team, I crafted refreshing mobile app designs for Lyvads - a platform that bridges businesses and individuals with creators to generate custom video content, from promotional ads to personalized shoutouts.\n\nThe platform empowers creators to monetize their influence while helping clients get authentic, tailored video content.",
     heroImage: {

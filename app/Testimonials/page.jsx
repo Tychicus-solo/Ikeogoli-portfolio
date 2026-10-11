@@ -62,9 +62,9 @@ const TESTIMONIALS = [
   {
     quote:
       "Ikeogoli is not just a talented designer but also a fantastic team player. He is everything you'd wish for in a designer-engineer collaboration. His ability to listen, understand, and incorporate feedback into his work makes collaboration seamless. He's approachable, communicative, and always goes the extra mile to ensure maximum satisfaction.",
-    name: "Emmanuel Okeibunor",
-    role: "Software Engineer at Pettysave",
-    avatar: "/assets/dark mode images/emmanuel.png",
+    name: "Eniolorunda Toluwanimi",
+    role: "Software Engineer at Enyata",
+    avatar: "/assets/testimonials/eniolorunda-toluwanimi.webp",
   },
   {
     quote:
