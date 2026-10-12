@@ -43,7 +43,7 @@ export default function ProjectCard({
         <div className="flex items-center gap-[16px]">
           <Heading className="selected-work-title">{work.title}</Heading>
           {work.title === "Eventlify" && (
-            <span className="rounded-[8px] bg-[#FFB31F1F] px-[12px] py-[8px] font-suisse text-[14px] font-medium leading-[20px] tracking-normal text-warning">
+            <span className="rounded-[8px] bg-[#FFB31F1F] px-[10px] py-[8px] font-suisse text-[14px] font-medium leading-[20px] tracking-normal text-warning">
               Coming soon
             </span>
           )}

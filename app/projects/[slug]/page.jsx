@@ -146,17 +146,19 @@ const CaseStudyPage = async ({ params }) => {
       <CaseScrollProgress />
 
       <nav className="case-nav" aria-label="Case study navigation">
-        <Link href="/#works" className="case-back-link">
+        <Link href="/#works" className="case-back-link primary-button-effects">
           <span className="case-back-icon" aria-hidden="true">
-            <Image
-              src={BackArrow}
-              width={20}
-              height={14}
-              alt=""
-              aria-hidden="true"
-            />
+            <FlipIcon>
+              <Image
+                src={BackArrow}
+                width={20}
+                height={14}
+                alt=""
+                aria-hidden="true"
+              />
+            </FlipIcon>
           </span>
-          <span>Back</span>
+          <FlipLabel>Back</FlipLabel>
         </Link>
         <a className="case-nav-contact primary-button-effects" href={`mailto:${EMAIL}`}>
           <FlipIcon>
@@ -205,7 +207,7 @@ const CaseStudyPage = async ({ params }) => {
 
         <dl className="case-meta">
           {study.meta.map((item) => (
-            <div className="case-meta-item" key={item.label}>
+            <div className="case-meta-item" data-label={item.label} key={item.label}>
               <dt>{item.label}</dt>
               {item.values.map((value) => (
                 <dd key={value}>{value}</dd>

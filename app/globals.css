@@ -1112,7 +1112,7 @@ html.theme-transitioning::view-transition-new(root) {
   .experience-line {
     position: absolute;
     top: 6px;
-    bottom: 32px;
+    bottom: 44px;
     left: 12px;
     width: 0;
     border-left: 1px solid #4a5264;
@@ -3214,8 +3214,18 @@ html.theme-transitioning::view-transition-new(root) {
     }
 
     .case-meta {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-areas: "services industry" "tools duration";
+      gap: 16px;
     }
+
+    .case-meta-item { min-width: 0; overflow-wrap: anywhere; }
+    .case-meta-item[data-label="Services"] { grid-area: services; }
+    .case-meta-item[data-label="Industry"] { grid-area: industry; }
+    .case-meta-item[data-label="Tools"] { grid-area: tools; }
+    .case-meta-item[data-label="Duration"] { grid-area: duration; }
+    .case-meta dt { font-weight: 400; }
+    .case-meta dd { font-size: 14px; line-height: 20px; }
 
     .case-hero-visual,
     .case-visual-grid {
@@ -3953,7 +3963,7 @@ html[data-theme="light"] .mobile-menu-divider {
   }
 
   .experience-line {
-    bottom: 28px;
+    bottom: 36px;
   }
 
   .experience-item {
@@ -4507,7 +4517,7 @@ html[data-theme="light"] .mobile-menu-divider {
   .experience-line {
     left: calc(12 * var(--design-unit));
     top: calc(6 * var(--design-unit));
-    bottom: calc(32 * var(--design-unit));
+    bottom: calc(44 * var(--design-unit));
   }
 }
 
@@ -4844,6 +4854,7 @@ html[data-theme="light"] .testimonial-glow-art--light {
 .primary-button-effects { position: relative; isolation: isolate; }
 .primary-button-effects > :not(.contact-email-sparkles) { position: relative; z-index: 1; }
 .button-flip-window { display: block; height: 1lh; overflow: hidden; }
+.case-back-icon > .button-icon-window { width: 100%; height: 100%; }
 .case-back-link:is(:hover, :focus-visible),
 html[data-theme="light"] .case-back-link:is(:hover, :focus-visible) {
   color: #ffffff;
