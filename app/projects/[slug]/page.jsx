@@ -223,6 +223,8 @@ const CaseStudyPage = async ({ params }) => {
       >
         <CaseHeroCarousel
           images={study.heroImages || [study.heroImage]}
+          delay={study.heroDelay}
+          scrollPreview={study.heroScrollPreview}
           alt={`${study.title} project hero visual`}
           width={study.heroWidth || 1648}
           height={study.heroHeight || 1024}

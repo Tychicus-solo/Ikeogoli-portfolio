@@ -1794,6 +1794,11 @@ html.theme-transitioning::view-transition-new(root) {
     transform: translateY(-28px);
   }
 
+  html:not([data-theme="light"]) .contact-copy:hover .copy-icon-stack img,
+  html:not([data-theme="light"]) .contact-copy:focus-visible .copy-icon-stack img {
+    filter: brightness(0) invert(1);
+  }
+
   .contact-copy-success {
     display: inline-flex;
     max-width: 0;
@@ -1814,25 +1819,10 @@ html.theme-transitioning::view-transition-new(root) {
   }
 
   .contact-copy-check {
-    position: relative;
     display: block;
     width: 20px;
     height: 20px;
     flex: 0 0 auto;
-    border-radius: 999px;
-    background-color: #1dd78d;
-  }
-
-  .contact-copy-check::after {
-    content: "";
-    position: absolute;
-    left: 6px;
-    top: 4px;
-    width: 7px;
-    height: 11px;
-    border: solid #091225;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
   }
 
   .contact-copy.is-copied {
@@ -2261,6 +2251,42 @@ html.theme-transitioning::view-transition-new(root) {
     opacity: 1;
     visibility: visible;
     animation: case-hero-pan var(--case-hero-delay, 2400ms) ease-in-out alternate infinite;
+  }
+
+  .case-hero-website {
+    position: absolute;
+    inset: 0;
+    background-color: #e7f9ee;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 220ms ease, visibility 220ms;
+  }
+
+  .case-hero-website.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .case-hero-website-viewport {
+    position: absolute;
+    inset: 10.15625% 6.31068% 0;
+    overflow: hidden;
+    border-radius: clamp(4px, 1vw, 16px) clamp(4px, 1vw, 16px) 0 0;
+    background-color: #ffffff;
+  }
+
+  .case-hero-website.is-active.is-playing .case-hero-website-viewport {
+    animation: oneapp-website-reveal var(--website-scroll-duration) linear both;
+  }
+
+  .case-hero-website-page {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .case-hero-website.is-active.is-playing .case-hero-website-page {
+    animation: oneapp-website-scroll var(--website-scroll-duration) linear both;
   }
 
   /* html[data-theme="light"] .case-hero-carousel {
@@ -2720,12 +2746,14 @@ html.theme-transitioning::view-transition-new(root) {
   }
 
   html[data-theme="light"] .contact-copy.is-copied {
-    border-color: rgba(74, 82, 100, 0.75);
-    background-color: #172136;
+    width: 166px;
+    border-color: #dee5f2;
+    background-color: #ffffff;
   }
 
   html[data-theme="light"] .contact-copy.is-copied .contact-copy-success {
-    color: #e8eaed;
+    max-width: 134px;
+    color: #172136;
   }
 
   html[data-theme="light"] .contact-copy img {
@@ -4176,6 +4204,10 @@ html[data-theme="light"] .mobile-menu-divider {
     width: 148px;
   }
 
+  html[data-theme="light"] .contact-copy.is-copied {
+    width: 148px;
+  }
+
   .contact-copy.is-copied .contact-copy-success {
     max-width: 120px;
     font-size: 14px;
@@ -4567,6 +4599,19 @@ html[data-theme="light"] .mobile-menu-divider {
 
 
 /* Keep full-height previews moving through all of their vertical content. */
+@keyframes oneapp-website-scroll {
+  0%, 7.14286% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+  92.85714%, 100% { transform: translateY(-88.717497%); }
+}
+
+@keyframes oneapp-website-reveal {
+  0%, 7.14286% { top: 10.15625%; }
+  9.28571%, 100% { top: 0; border-top-left-radius: 0; border-top-right-radius: 0; }
+}
+
 @keyframes case-hero-pan {
   0%, 12% { object-position: center top; transform: translateY(3.7%) scale(1.08); }
   88%, 100% { object-position: center bottom; transform: translateY(-3.7%) scale(1.08); }
@@ -4650,6 +4695,8 @@ html[data-theme="light"] .footer-back { color: #172136; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .case-hero-website.is-active.is-playing .case-hero-website-viewport { animation: none; }
+  .case-hero-website.is-active.is-playing .case-hero-website-page { animation: none; }
   .case-hero-carousel-img.is-active { animation: none; }
   .case-hero-carousel-img,
   .ui-gallery-image,

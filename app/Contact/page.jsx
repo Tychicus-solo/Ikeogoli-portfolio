@@ -81,7 +81,17 @@ const Contact = () => {
             </span>
           </span>
           <span className="contact-copy-success" aria-hidden={!copied}>
-            <span className="contact-copy-check" aria-hidden="true" />
+            <svg
+              className="contact-copy-check"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              aria-hidden="true"
+            >
+              <circle cx="10" cy="10" r="10" fill="#1dd78d" />
+              <path d="m6 10 3 3 5-7" stroke="#091225" strokeWidth="2" />
+            </svg>
             <span>Email copied!</span>
           </span>
         </button>
