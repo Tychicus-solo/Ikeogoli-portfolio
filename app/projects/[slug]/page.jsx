@@ -1,6 +1,5 @@
 import { ButtonSparkles, FlipIcon, FlipLabel } from "../../../components/ButtonEffects";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 import CaseImagePanels from "../../../components/CaseImagePanels";
@@ -11,10 +10,9 @@ import { Footer, Tags, ThemedImage, ThemeToggle } from "../../../components";
 import { CASE_STUDIES, CASE_STUDY_SLUGS } from "../../../constants/caseStudies";
 import { SELECTED_WORKS } from "../../../constants/selectworksconstants";
 import ProjectCard from "../../../components/ProjectCard";
-import BackArrow from "../../../public/assets/dark mode images/figma/icons/back-arrow.svg";
-import MessageIcon from "../../../public/assets/dark mode images/message-icon.svg";
 
-const EMAIL = "ikeogoli.ishie@gmail.com";
+import MainNav from "../../../components/MainNav";
+import HeroNavigation from "../../../components/HeroNavigation";
 
 export const generateStaticParams = () =>
   CASE_STUDY_SLUGS.map((slug) => ({ slug }));
@@ -145,35 +143,8 @@ const CaseStudyPage = async ({ params }) => {
     <main className={`case-study-page case-study-page--${slug}`}>
       <CaseScrollProgress />
 
-      <nav className="case-nav" aria-label="Case study navigation">
-        <Link href="/#works" className="case-back-link primary-button-effects">
-          <span className="case-back-icon" aria-hidden="true">
-            <FlipIcon>
-              <Image
-                src={BackArrow}
-                width={20}
-                height={14}
-                alt=""
-                aria-hidden="true"
-              />
-            </FlipIcon>
-          </span>
-          <FlipLabel>Back</FlipLabel>
-        </Link>
-        <a className="case-nav-contact primary-button-effects" href={`mailto:${EMAIL}`}>
-          <FlipIcon>
-            <Image
-              src={MessageIcon}
-              width={24}
-              height={24}
-              alt=""
-              aria-hidden="true"
-            />
-          </FlipIcon>
-          <ButtonSparkles />
-          <FlipLabel>Contact me</FlipLabel>
-        </a>
-      </nav>
+      <MainNav homePath="/" alwaysVisible />
+      <HeroNavigation mobile homePath="/" />
 
       <section className="case-hero">
         <div className="case-hero-copy">

@@ -35,10 +35,11 @@ const MobileMenuLink = ({ href, isOpen, label, onClick }) => {
   );
 };
 
-const HeroNavigation = ({ mobile = false }) => {
+const HeroNavigation = ({ mobile = false, homePath = "" }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleBackToTop = (event) => {
+    if (homePath) return;
     event.preventDefault();
     setIsMenuOpen(false);
     window.scrollTo({
@@ -55,12 +56,12 @@ const HeroNavigation = ({ mobile = false }) => {
         <h1 className="hero-name font-inter font-medium text-[20px] leading-[32px] tracking-normal text-neutral-250 ">
           Ikeogoli Ishie
         </h1>
-        <NavList />
+        <NavList homePath={homePath} />
       </div>}
 
       {mobile && <div className="hero-nav-mobile">
         <div className="mobile-nav-header">
-          <a className="mobile-nav-logo" href="#top" aria-label="Ikeogoli Ishie — back to top" onClick={handleBackToTop}>
+          <a className="mobile-nav-logo" href={`${homePath}#top`} aria-label="Ikeogoli Ishie — back to top" onClick={handleBackToTop}>
             <Image src={PortfolioLogo} width={48} height={48} alt="" />
           </a>
           <button
@@ -80,7 +81,7 @@ const HeroNavigation = ({ mobile = false }) => {
           <nav className="mobile-menu-links" aria-label="Mobile navigation">
             {NAV_LINKS.map((link) => (
               <MobileMenuLink
-                href={link.href}
+                href={link.href.startsWith("#") ? `${homePath}${link.href}` : link.href}
                 isOpen={isMenuOpen}
                 key={link.label}
                 label={link.label}

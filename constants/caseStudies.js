@@ -270,6 +270,14 @@ export const CASE_STUDIES = {
       src: "/assets/dark mode images/case-studies/emmanuel/panels-v2/hero.webp",
       lightSrc: "/assets/light mode images/case-studies/emmanuel/panels-v2/hero.webp",
     }],
+    heroScrollPreview: {
+      src: "/assets/dark mode images/case-studies/emmanuel/hero-carousel/emmanuel-website-full-2x.png",
+      width: 2912,
+      height: 14791,
+      cropSides: 40,
+      duration: 20000,
+      backgroundColor: "#E8EAED",
+    },
     meta: [
       { label: "Services", values: ["Web App Design", "Web Design"] },
       { label: "Duration", values: ["6 months"] },
@@ -315,6 +323,14 @@ export const CASE_STUDIES = {
       lyvadsImage("hero-carousel/lyvads-hero-6a.png"),
       lyvadsImage("hero-carousel/lyvads-hero-6b.png"),
     ],
+    heroScrollPreview: {
+      src: "/assets/dark mode images/case-studies/lyvads/hero-carousel/lyvads-website-full.webp",
+      width: 1440,
+      height: 13021,
+      cropTop: 20,
+      duration: 20000,
+      backgroundColor: "#F3EFFF",
+    },
     meta: [
       {
         label: "Services",
@@ -1142,6 +1158,14 @@ export const CASE_STUDIES = {
       "PPL, a leader in Nigeria's real estate landscape, needed to transform their digital presence into a powerful conversion engine.\n\nBy reimagining their website from the ground up, I created an intuitive experience and compelling property storytelling that resonated with investors. The result? A platform that generated over $100k in revenue while boosting user retention by 30%.",
     heroImage: "/assets/dark mode images/case-studies/ppl/hero.png",
     heroImages: [pplImage("hero.png")],
+    heroScrollPreview: {
+      src: "/assets/dark mode images/case-studies/ppl/hero-carousel/ppl-website-full-2x.png",
+      width: 2912,
+      height: 15098,
+      cropSides: 40,
+      duration: 20000,
+      backgroundColor: "#E8EAED",
+    },
     meta: [
       {
         label: "Services",
@@ -1491,6 +1515,14 @@ export const CASE_STUDIES = {
       "Pettysave is revolutionizing digital banking as a premier microfinance platform. Going beyond traditional banking, and offering seamless transfers, bill payments, and intelligent financial management tools.\n\nI partnered with the product owner to design a platform that turns complex fintech solutions into an engaging experience, showcasing their innovation while improving conversion metrics.",
     heroImage: "/assets/dark mode images/case-studies/pettysave/hero.png",
     heroImages: [pettysaveImage("hero.png")],
+    heroScrollPreview: {
+      src: "/assets/dark mode images/case-studies/pettysave/hero-carousel/pettysave-website-full-2x.png",
+      width: 2912,
+      height: 20534,
+      cropSides: 40,
+      duration: 20000,
+      backgroundColor: "#E8EAED",
+    },
     meta: [
       {
         label: "Services",
@@ -1642,6 +1674,14 @@ export const CASE_STUDIES = {
       "Realvest is your go-to real estate investment platform, making property allocation and investment a breeze. With Realvest, you can count on a secure investment for your home and apartments, all backed by cutting-edge technology.\n\nI transformed Realvest's initial v1 platform into a modern, intuitive experience that resonates with today's digital-first property investors.",
     heroImage: "/assets/dark mode images/case-studies/realvest/hero.png",
     heroImages: [realvestImage("hero.png")],
+    heroScrollPreview: {
+      src: "/assets/dark mode images/case-studies/realvest/hero-carousel/realvest-website-full-2x.png",
+      width: 2880,
+      height: 14231,
+      cropSides: 40,
+      duration: 20000,
+      backgroundColor: "#E8EAED",
+    },
     meta: [
       {
         label: "Services",

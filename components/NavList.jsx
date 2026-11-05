@@ -1,7 +1,7 @@
 import React from "react";
 import { NAV_LINKS } from "../constants/heroconstants";
 
-const NavList = () => {
+const NavList = ({ homePath = "" }) => {
   return (
     <div className="nav-list bg-[#4A526499] shadow-[0px_4px_24px_0px_#0B0F1A1A] backdrop-blur-[32px] flex w-[360px] max-w-full justify-between rounded-[16px] p-2">
       {NAV_LINKS.map((link, index) => {
@@ -10,7 +10,7 @@ const NavList = () => {
         return (
           <a
             key={index}
-            href={link.href}
+            href={link.href.startsWith("#") ? `${homePath}${link.href}` : link.href}
             className="nav-box"
             target={isExternal ? "_blank" : undefined}
             rel={isExternal ? "noreferrer" : undefined}

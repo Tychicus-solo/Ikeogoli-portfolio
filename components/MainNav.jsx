@@ -7,8 +7,9 @@ import MascotImg from "../public/assets/dark mode images/portfolio-logo.svg";
 import MessageIcon from "../public/assets/dark mode images/message-icon.svg";
 import Image from "next/image";
 
-const MainNav = () => {
+const MainNav = ({ homePath = "", alwaysVisible = false }) => {
   const handleBackToTop = (event) => {
+    if (homePath) return;
     event.preventDefault();
     window.scrollTo({
       top: 0,
@@ -19,10 +20,10 @@ const MainNav = () => {
   };
 
   return (
-    <div className="main-nav flex items-center justify-between w-full px-[160px] py-[28px]">
+    <nav aria-label="Main navigation" className={`main-nav flex items-center justify-between w-full px-[160px] py-[28px] ${alwaysVisible ? "is-visible" : ""}`}>
       <div className="flex flex-1 justify-start">
         <a
-          href="#top"
+          href={`${homePath}#top`}
           aria-label="Ikeogoli Ishie — back to top"
           onClick={handleBackToTop}
         >
@@ -35,7 +36,7 @@ const MainNav = () => {
         </a>
       </div>
       <div className="flex flex-1 justify-center">
-        <NavList />
+        <NavList homePath={homePath} />
       </div>
       <div className="flex flex-1 justify-end">
         <a
@@ -58,7 +59,7 @@ const MainNav = () => {
           </span>
         </a>
       </div>
-    </div>
+    </nav>
   );
 };
 

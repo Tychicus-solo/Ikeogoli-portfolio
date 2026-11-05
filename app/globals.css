@@ -2071,6 +2071,14 @@ html.theme-transitioning::view-transition-new(root) {
     backdrop-filter: blur(32px);
   }
 
+  .case-study-page > .main-nav {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    /* The hero's top padding already reserves the navigation space. */
+    margin-bottom: -112px;
+  }
+
   .case-back-link {
     display: inline-flex;
     align-items: center;
@@ -2256,7 +2264,7 @@ html.theme-transitioning::view-transition-new(root) {
   .case-hero-website {
     position: absolute;
     inset: 0;
-    background-color: #e7f9ee;
+    background-color: var(--website-preview-background, #e7f9ee);
     opacity: 0;
     visibility: hidden;
     transition: opacity 220ms ease, visibility 220ms;
@@ -2276,17 +2284,26 @@ html.theme-transitioning::view-transition-new(root) {
   }
 
   .case-hero-website.is-active.is-playing .case-hero-website-viewport {
-    animation: oneapp-website-reveal var(--website-scroll-duration) linear both;
+    animation: case-website-reveal var(--website-scroll-duration) linear both;
   }
 
   .case-hero-website-page {
     display: block;
-    width: 100%;
+    width: var(--website-page-width, 100%);
+    max-width: none;
     height: auto;
+    /* Crop the capture's corner artifacts before the scrolling begins.
+       Percentage margins scale with the viewport width, like the image. */
+    margin-top: var(--website-crop-top, 0%);
+    margin-left: var(--website-page-offset, 0%);
+  }
+
+  .case-study-page--lyvads .case-hero-website-viewport {
+    background-color: #fafafa;
   }
 
   .case-hero-website.is-active.is-playing .case-hero-website-page {
-    animation: oneapp-website-scroll var(--website-scroll-duration) linear both;
+    animation: case-website-scroll var(--website-scroll-duration) linear both;
   }
 
   /* html[data-theme="light"] .case-hero-carousel {
@@ -4553,11 +4570,80 @@ html[data-theme="light"] .mobile-menu-divider {
   }
 }
 
-/* Match the case-study header's 1728px Figma vertical rhythm on laptops. */
+/* Scale the case-study hero from its 1728px Figma frame on laptops. */
 @media (min-width: 1280px) {
   .case-study-page {
     --case-design-unit: min(1px, 0.0578703704vw);
     --case-divider-top: calc(112 * var(--case-design-unit));
+    --case-frame-inset: max(0px, calc((100vw - 1728px) / 2));
+    --case-frame-edge: calc(var(--case-frame-inset) + 160 * var(--case-design-unit));
+  }
+
+  .case-study-page > .main-nav {
+    min-height: var(--case-divider-top);
+    margin-bottom: calc(-1 * var(--case-divider-top));
+    padding: calc(28 * var(--case-design-unit)) var(--case-frame-edge);
+  }
+
+  .case-study-page > .main-nav > div:first-child img {
+    width: calc(56 * var(--case-design-unit));
+    height: calc(56 * var(--case-design-unit));
+  }
+
+  .case-study-page .main-nav .nav-list {
+    width: calc(360 * var(--case-design-unit));
+    padding: calc(8 * var(--case-design-unit));
+    border-radius: calc(16 * var(--case-design-unit));
+  }
+
+  .case-study-page .main-nav .nav-box {
+    padding: calc(10 * var(--case-design-unit)) calc(16 * var(--case-design-unit));
+  }
+
+  .case-study-page .main-nav .nav-items {
+    font-size: calc(14 * var(--case-design-unit));
+    line-height: calc(20 * var(--case-design-unit));
+    height: calc(20 * var(--case-design-unit));
+  }
+
+  .case-study-page .main-nav .nav-label-copy {
+    height: calc(20 * var(--case-design-unit));
+  }
+
+  .case-study-page .main-nav .nav-box:hover .nav-label-stack,
+  .case-study-page .main-nav .nav-box:focus-visible .nav-label-stack {
+    transform: translateY(calc(-24 * var(--case-design-unit)));
+  }
+
+  .case-study-page .main-nav .contact-btn-main {
+    gap: calc(8 * var(--case-design-unit));
+    padding: calc(12 * var(--case-design-unit)) calc(20 * var(--case-design-unit));
+    border-radius: calc(12 * var(--case-design-unit));
+    font-size: calc(16 * var(--case-design-unit));
+    line-height: calc(24 * var(--case-design-unit));
+  }
+
+  .case-study-page .main-nav .contact-btn-icon-window,
+  .case-study-page .main-nav .contact-btn-icon-stack img {
+    width: calc(24 * var(--case-design-unit));
+    height: calc(24 * var(--case-design-unit));
+  }
+
+  .case-study-page .main-nav .contact-btn-label-window {
+    height: calc(24 * var(--case-design-unit));
+  }
+
+  .case-study-page .main-nav .nav-label-stack,
+  .case-study-page .main-nav .contact-btn-icon-stack,
+  .case-study-page .main-nav .contact-btn-label-stack {
+    gap: calc(4 * var(--case-design-unit));
+  }
+
+  .case-study-page .main-nav .contact-btn-main:hover .contact-btn-icon-stack,
+  .case-study-page .main-nav .contact-btn-main:focus-visible .contact-btn-icon-stack,
+  .case-study-page .main-nav .contact-btn-main:hover .contact-btn-label-stack,
+  .case-study-page .main-nav .contact-btn-main:focus-visible .contact-btn-label-stack {
+    transform: translateY(calc(-28 * var(--case-design-unit)));
   }
 
   .case-nav {
@@ -4584,7 +4670,17 @@ html[data-theme="light"] .mobile-menu-divider {
   }
 
   .case-hero {
+    grid-template-columns: minmax(0, calc(660 * var(--case-design-unit)))
+      calc(240 * var(--case-design-unit));
+    column-gap: calc(64 * var(--case-design-unit));
     padding-top: calc(152 * var(--case-design-unit));
+    padding-left: calc(var(--case-frame-inset) + 200 * var(--case-design-unit));
+    padding-right: calc(var(--case-frame-inset) + 296 * var(--case-design-unit));
+  }
+
+  .case-study-page--lyvads .case-hero {
+    grid-template-columns: minmax(0, calc(584 * var(--case-design-unit)))
+      calc(240 * var(--case-design-unit));
   }
 
   .case-hero::before,
@@ -4594,20 +4690,24 @@ html[data-theme="light"] .mobile-menu-divider {
 
   .case-hero::after {
     height: calc(100% - var(--case-divider-top));
+    background-position:
+      var(--case-frame-edge) 0,
+      calc(var(--case-frame-inset) + 1152 * var(--case-design-unit)) 0,
+      calc(100% - var(--case-frame-edge)) 0;
   }
 }
 
 
 /* Keep full-height previews moving through all of their vertical content. */
-@keyframes oneapp-website-scroll {
+@keyframes case-website-scroll {
   0%, 7.14286% {
     transform: translateY(0);
     animation-timing-function: ease-out;
   }
-  92.85714%, 100% { transform: translateY(-88.717497%); }
+  92.85714%, 100% { transform: translateY(var(--website-scroll-end, -88.717497%)); }
 }
 
-@keyframes oneapp-website-reveal {
+@keyframes case-website-reveal {
   0%, 7.14286% { top: 10.15625%; }
   9.28571%, 100% { top: 0; border-top-left-radius: 0; border-top-right-radius: 0; }
 }
@@ -4687,6 +4787,13 @@ html[data-theme="light"] .footer-back { color: #172136; }
     min-height: 80px;
     justify-content: center;
     padding-block: max(16px, env(safe-area-inset-top)) 16px;
+  }
+
+  .case-study-page > .hero-nav-mobile {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    margin-bottom: -80px;
   }
 
   .footer-section {

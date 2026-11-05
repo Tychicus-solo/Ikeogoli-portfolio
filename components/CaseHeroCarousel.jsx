@@ -5,6 +5,8 @@ import Image from "next/image";
 import ThemedImage from "./ThemedImage";
 
 const DEFAULT_DELAY = 2400;
+// The website viewport occupies 1440px of the 1648px hero canvas.
+const WEBSITE_VIEWPORT_WIDTH_RATIO = 1440 / 1648;
 
 const getSlideSrc = (slide) => (typeof slide === "string" ? slide : slide.src);
 const getSlideLightSrc = (slide) =>
@@ -25,6 +27,9 @@ const CaseHeroCarousel = ({
   const [previewLoaded, setPreviewLoaded] = useState(false);
   const [inView, setInView] = useState(!scrollPreview);
   const carouselRef = useRef(null);
+  const previewContentWidth = scrollPreview
+    ? scrollPreview.width - 2 * (scrollPreview.cropSides || 0)
+    : 0;
 
   useEffect(() => {
     if (!scrollPreview) return;
@@ -36,7 +41,7 @@ const CaseHeroCarousel = ({
   }, [scrollPreview]);
 
   useEffect(() => {
-    if (slides.length <= 1 || !inView || (scrollPreview && !previewLoaded) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (slides.length + (scrollPreview ? 1 : 0) <= 1 || !inView || (scrollPreview && !previewLoaded) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       return;
     }
 
@@ -61,7 +66,14 @@ const CaseHeroCarousel = ({
         <div
           className={`case-hero-website ${activeIndex === -1 ? "is-active" : ""} ${inView && previewLoaded ? "is-playing" : ""}`}
           aria-hidden={activeIndex !== -1}
-          style={{ "--website-scroll-duration": `${scrollPreview.duration}ms` }}
+          style={{
+            "--website-scroll-duration": `${scrollPreview.duration}ms`,
+            "--website-preview-background": scrollPreview.backgroundColor,
+            "--website-scroll-end": `${(height / (width * WEBSITE_VIEWPORT_WIDTH_RATIO) * previewContentWidth / scrollPreview.height - 1 + (scrollPreview.cropTop || 0) / scrollPreview.height) * 100}%`,
+            "--website-crop-top": `${-(scrollPreview.cropTop || 0) / previewContentWidth * 100}%`,
+            "--website-page-width": `${scrollPreview.width / previewContentWidth * 100}%`,
+            "--website-page-offset": `${-(scrollPreview.cropSides || 0) / previewContentWidth * 100}%`,
+          }}
         >
           <div className="case-hero-website-viewport">
             <Image
