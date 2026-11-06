@@ -1,3 +1,5 @@
+import { JETSEED_CASE_STUDY } from "./jetseedCaseStudy";
+
 // Individual Figma panels exclude the gallery backgrounds and gutters.
 const ichetaPanels = {
   "style-guide.png": [
@@ -261,6 +263,7 @@ const oneappImage = (file) => ({
 });
 
 export const CASE_STUDIES = {
+  jetseed: JETSEED_CASE_STUDY,
   emmanuel: {
     title: "Emmanuel’s Portfolio",
     intro: "Emmanuel's refreshed portfolio balanced personality with technical expertise. The results were clear: more interviews and higher salary offers. Authentic presentation transformed his career prospects. I teamed up with Emmanuel to redesign his portfolio—bringing fresh vision to his developer brand. Happy to report the new site is doing exactly what we planned it would!",

@@ -15,15 +15,18 @@ const getSlideLightSrc = (slide) =>
 const CaseHeroCarousel = ({
   alt,
   delay = DEFAULT_DELAY,
+  deferImages = false,
   height = 1024,
   images,
   priority = false,
+  quality = 100,
   sizes,
   scrollPreview,
   width = 1648,
 }) => {
   const slides = useMemo(() => images?.filter(Boolean) || [], [images]);
-  const [activeIndex, setActiveIndex] = useState(scrollPreview ? -1 : 0);
+  // Show the image slides first; -1 is the scroll preview at the end of each loop.
+  const [activeIndex, setActiveIndex] = useState(0);
   const [previewLoaded, setPreviewLoaded] = useState(false);
   const [inView, setInView] = useState(!scrollPreview);
   const carouselRef = useRef(null);
@@ -41,7 +44,7 @@ const CaseHeroCarousel = ({
   }, [scrollPreview]);
 
   useEffect(() => {
-    if (slides.length + (scrollPreview ? 1 : 0) <= 1 || !inView || (scrollPreview && !previewLoaded) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (slides.length + (scrollPreview ? 1 : 0) <= 1 || !inView || (activeIndex === -1 && !previewLoaded) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       return;
     }
 
@@ -62,7 +65,7 @@ const CaseHeroCarousel = ({
       ref={carouselRef}
       style={{ "--case-hero-aspect": `${width} / ${height}`, "--case-hero-delay": `${delay}ms` }}
     >
-      {scrollPreview && (
+      {scrollPreview && (!deferImages || inView) && (
         <div
           className={`case-hero-website ${activeIndex === -1 ? "is-active" : ""} ${inView && previewLoaded ? "is-playing" : ""}`}
           aria-hidden={activeIndex !== -1}
@@ -83,18 +86,21 @@ const CaseHeroCarousel = ({
               alt={`${alt} — website preview`}
               className="case-hero-website-page"
               sizes={sizes}
-              priority={priority}
-              quality={100}
-              unoptimized
+              priority={priority && !deferImages}
+              loading={deferImages ? "eager" : undefined}
+              quality={scrollPreview.quality || 100}
+              unoptimized={!scrollPreview.optimized}
               onLoad={() => setPreviewLoaded(true)}
             />
           </div>
         </div>
       )}
       {slides.map((slide, index) => {
+        // Keep only the current and next slides downloading ahead of playback.
+        if (deferImages && activeIndex >= 0 && index > activeIndex + 1) return null;
         const src = getSlideSrc(slide);
         const isActive = index === activeIndex;
-        const shouldLoadEarly = priority && index < 2;
+        const shouldLoadEarly = priority && index < (deferImages ? 1 : 2);
 
         return (
           <ThemedImage
@@ -104,7 +110,7 @@ const CaseHeroCarousel = ({
             fill
             priority={shouldLoadEarly}
             loading={shouldLoadEarly ? undefined : "eager"}
-            quality={100}
+            quality={quality}
             aria-hidden={!isActive}
             className={`case-hero-img case-hero-carousel-img ${
               isActive ? "is-active" : ""

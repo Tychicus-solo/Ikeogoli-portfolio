@@ -1,5 +1,17 @@
 export const SELECTED_WORKS = [
   {
+    title: "Jetseed",
+    description:
+      "Investing made approachable. Smart guidance, goal-based savings, one wallet, zero guesswork.",
+    tags: ["FINTECH", "MOBILE APP", "WEB APP", "WEBSITE"],
+    img: "/assets/selected-works/jetseed.png",
+    href: "/projects/jetseed",
+    mockup: {
+      desktop: "/assets/selected-works/jetseed-dashboard.png",
+      mobile: "/assets/selected-works/jetseed-invest.png",
+    },
+  },
+  {
     title: "Lyvads",
     description:
       "Commission videos from the creators you love. They create, you connect, everyone profits.",

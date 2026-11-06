@@ -1,5 +1,6 @@
 import { ButtonSparkles, FlipIcon, FlipLabel } from "../../../components/ButtonEffects";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 import CaseImagePanels from "../../../components/CaseImagePanels";
@@ -34,6 +35,7 @@ export const generateMetadata = async ({ params }) => {
 const getRelatedWork = (slug) => {
   const study = CASE_STUDIES[slug];
   const slugToTitle = {
+    jetseed: "Jetseed",
     emmanuel: "Emmanuel's portfolio",
     fitfam: "Fitfam",
     icheta: "Icheta",
@@ -148,13 +150,19 @@ const CaseStudyPage = async ({ params }) => {
 
       <section className="case-hero">
         <div className="case-hero-copy">
+          {study.showBackLink && (
+            <Link href="/#works" className="case-projects-back">
+              <ThemedImage src="/assets/dark mode images/figma/icons/back-arrow.svg" width={20} height={14} alt="" />
+              Back to Projects
+            </Link>
+          )}
           <h1>{study.title}</h1>
           <Paragraphs text={study.intro} />
           <a
             className="case-hero-button primary-button-effects items-center gap-x-[8px]"
             href={study.liveSite === null ? undefined : study.liveSite || "#case-content"}
-            target={slug === "lyvads" ? "_blank" : undefined}
-            rel={slug === "lyvads" ? "noopener noreferrer" : undefined}
+            target={slug === "lyvads" || slug === "jetseed" ? "_blank" : undefined}
+            rel={slug === "lyvads" || slug === "jetseed" ? "noopener noreferrer" : undefined}
             aria-disabled={study.liveSite === null || undefined}
           >
             <ButtonSparkles />
@@ -200,6 +208,8 @@ const CaseStudyPage = async ({ params }) => {
           width={study.heroWidth || 1648}
           height={study.heroHeight || 1024}
           priority
+          quality={study.heroQuality}
+          deferImages={slug === "jetseed"}
           sizes="(max-width: 767px) 100vw, (max-width: 1279px) calc(100vw - 128px), 1648px"
         />
       </section>
@@ -253,6 +263,7 @@ const CaseStudyPage = async ({ params }) => {
             {section.visuals && (
               <section
                 className="case-visual-grid"
+                style={section.visualWidth ? { maxWidth: section.visualWidth } : undefined}
                 aria-label={`${study.title} ${section.tag.toLowerCase()} screens`}
               >
                 {section.visuals.map((visual) => (

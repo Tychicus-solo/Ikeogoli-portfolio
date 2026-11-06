@@ -20,7 +20,7 @@ export default function ProjectCard({
 }) {
   const imageClassName = getImageClassName(work.title);
   return (
-    <article className="selected-work-card">
+    <article className={`selected-work-card selected-work-card--${imageClassName}`}>
       <Link
         className="selected-work-link"
         href={work.href || "#works"}
@@ -64,7 +64,33 @@ export default function ProjectCard({
         <div
           className={`selected-work-image-wrap selected-work-image-wrap--${imageClassName}`}
         >
-          <ThemedImage
+          {work.mockup ? (
+            <>
+              <Image
+                src={work.mockup.desktop}
+                alt={`${work.title} investment dashboard`}
+                width={4096}
+                height={3413}
+                priority={priority}
+                loading={loading}
+                fetchPriority={fetchPriority}
+                quality={95}
+                sizes="(max-width: 767px) 80vw, (max-width: 1279px) 75vw, 540px"
+                className="selected-work-mockup-desktop"
+              />
+              <Image
+                src={work.mockup.mobile}
+                alt={`${work.title} mobile investment screen`}
+                width={1179}
+                height={2556}
+                priority={priority}
+                loading={loading}
+                quality={95}
+                sizes="(max-width: 767px) 25vw, (max-width: 1279px) 23vw, 162px"
+                className="selected-work-mockup-mobile"
+              />
+            </>
+          ) : <ThemedImage
             src={work.img}
             alt={`${work.title} project mockup`}
             fill
@@ -73,7 +99,7 @@ export default function ProjectCard({
             fetchPriority={fetchPriority}
             sizes="(max-width: 767px) calc(100vw - 80px), (max-width: 1279px) calc(100vw - 208px), 604px"
             className="selected-work-img"
-          />
+          />}
         </div>
       </div>
     </article>
