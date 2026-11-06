@@ -910,6 +910,23 @@ html.theme-transitioning::view-transition-new(root) {
     object-fit: contain;
   }
 
+  .selected-work-img--website {
+    object-fit: cover;
+  }
+
+  .selected-work-card--website-preview {
+    border-color: #172136;
+    background-color: rgba(9, 18, 37, 0.4);
+  }
+
+  .selected-work-card--website-preview .selected-work-tags {
+    gap: 16px;
+  }
+
+  .selected-work-card--website-preview .selected-work-tag {
+    color: #ffffff;
+  }
+
   .selected-work-card--jetseed {
     border-color: #172136;
     background-color: rgba(9, 18, 37, 0.4);
@@ -993,10 +1010,16 @@ html.theme-transitioning::view-transition-new(root) {
     inset: 24px 32px 0;
   }
 
-  .selected-work-image-wrap--pertinence-properties,
-  .selected-work-image-wrap--pettysave,
+  .selected-work-image-wrap--pertinence-properties {
+    inset: -2.68% 0 -13.59% 5.3%;
+  }
+
+  .selected-work-image-wrap--pettysave {
+    inset: -2.69% 0 -13.6% 5.3%;
+  }
+
   .selected-work-image-wrap--emmanuels-portfolio {
-    inset: 20px 28px 0;
+    inset: -2.68% -0.02% -13.62% 5.3%;
   }
 
   .stack-tools-section {
@@ -4041,12 +4064,6 @@ html[data-theme="light"] .mobile-menu-divider {
   .selected-work-image-wrap--icheta,
   .selected-work-image-wrap--realvest,
   .selected-work-image-wrap--eventlify {
-    inset: 16px 18px 0;
-  }
-
-  .selected-work-image-wrap--pertinence-properties,
-  .selected-work-image-wrap--pettysave,
-  .selected-work-image-wrap--emmanuels-portfolio {
     inset: 16px 18px 0;
   }
 

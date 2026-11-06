@@ -40,7 +40,9 @@ export const SELECTED_WORKS = [
     description:
       "Real estate engineered for wealth building. Homes, land, opportunities that multiply your money.",
     tags: ["REAL ESTATE", "WEBSITE"],
-    img: "/assets/dark mode images/pertinenceproperties.png",
+    img: "/assets/selected-works/ppl.webp",
+    previewLayout: "website",
+    imageQuality: 95,
     href: "/projects/ppl",
   },
   {
@@ -56,7 +58,9 @@ export const SELECTED_WORKS = [
     description:
       "Microfinance that actually moves. Smart tools, seamless payments, zero traditional banking limits.",
     tags: ["FINANCE", "WEBSITE"],
-    img: "/assets/dark mode images/pettysave.png",
+    img: "/assets/selected-works/pettysave.webp",
+    previewLayout: "website",
+    imageQuality: 95,
     href: "/projects/pettysave",
   },
   {
@@ -72,7 +76,9 @@ export const SELECTED_WORKS = [
     description:
       "Personality meets expertise. Emmanuel's refresh unlocked better interviews and stronger offers.",
     tags: ["PORTFOLIO", "WEBSITE"],
-    img: "/assets/dark mode images/emmanuelsportfolio.png",
+    img: "/assets/selected-works/emmanuel.webp",
+    previewLayout: "website",
+    imageQuality: 95,
     href: "/projects/emmanuel",
   },
   {

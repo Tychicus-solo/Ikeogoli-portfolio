@@ -20,7 +20,7 @@ export default function ProjectCard({
 }) {
   const imageClassName = getImageClassName(work.title);
   return (
-    <article className={`selected-work-card selected-work-card--${imageClassName}`}>
+    <article className={`selected-work-card selected-work-card--${imageClassName}${work.previewLayout === "website" ? " selected-work-card--website-preview" : ""}`}>
       <Link
         className="selected-work-link"
         href={work.href || "#works"}
@@ -98,8 +98,9 @@ export default function ProjectCard({
             priority={priority}
             loading={loading}
             fetchPriority={fetchPriority}
+            quality={work.imageQuality || 75}
             sizes="(max-width: 767px) calc(100vw - 80px), (max-width: 1279px) calc(100vw - 208px), 604px"
-            className="selected-work-img"
+            className={`selected-work-img${work.previewLayout === "website" ? " selected-work-img--website" : ""}`}
           />}
         </div>
       </div>

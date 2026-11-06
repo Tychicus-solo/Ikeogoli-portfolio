@@ -154,7 +154,7 @@ const LandingMotion = ({ children }) => {
       );
     });
 
-    gsap.utils.toArray(".selected-work-img, .ui-gallery-img, .about-photo-img").forEach((image) => {
+    gsap.utils.toArray(".selected-work-img:not(.selected-work-img--website), .ui-gallery-img, .about-photo-img").forEach((image) => {
       gsap.fromTo(
         image,
         { yPercent: -4, scale: 1.04 },
