@@ -306,7 +306,7 @@ export const CASE_STUDIES = {
         return { lightPanels: panels("light"), darkPanels: panels("dark") };
       })(),
     }],
-    otherProjects: ["realvest", "lyvads"],
+    otherProjects: ["jetseed", "lyvads"],
   },
   lyvads: {
     title: "Lyvads",
@@ -543,7 +543,7 @@ export const CASE_STUDIES = {
     conclusionTitle: "Lyvads: Bridging Creators and Audiences Through Design",
     conclusion:
       "Building Lyvads was a masterclass in marketplace design that yielded key insights about connecting creators with their audience. The project demonstrated how thoughtful design can transform social influence into business opportunities while maintaining seamless experiences across mobile, web, and admin platforms. By focusing on distinct yet complementary user journeys for both creators and clients, we created a scalable ecosystem that proves successful marketplaces must deliver clear value to all participants.\n\nThe platform's ability to balance user needs - making content requests effortless for clients while empowering creators with robust business tools - showcases how strategic design thinking can bridge market gaps and drive meaningful engagement.",
-    otherProjects: ["oneapp", "realvest"],
+    otherProjects: ["oneapp", "jetseed"],
   },
   oneapp: {
     title: "OneApp",
@@ -813,7 +813,7 @@ export const CASE_STUDIES = {
           "Our validation: 10,000+ users and $120,000 revenue shortly after launch. These metrics confirmed our design created real value for both property buyers and realtors.",
       },
     ],
-    otherProjects: ["lyvads", "realvest"],
+    otherProjects: ["lyvads", "icheta"],
   },
   icheta: {
     title: "Icheta",
@@ -1669,7 +1669,7 @@ export const CASE_STUDIES = {
           "Pettysave's successful launch is just the beginning. Our team is already developing the next wave of innovative tools that will continue transforming how users experience financial services.",
       },
     ],
-    otherProjects: ["fitfam", "realvest"],
+    otherProjects: ["fitfam", "jetseed"],
   },
   realvest: {
     title: "Realvest",
@@ -1885,7 +1885,7 @@ export const CASE_STUDIES = {
           "We confirmed the direct link between experience quality and business growth. Each friction point eliminated in the investment journey translated to measurable conversion improvements.",
       },
     ],
-    otherProjects: ["pettysave", "emmanuel"],
+    otherProjects: ["pettysave", "oneapp"],
   },
 };
 
