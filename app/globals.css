@@ -927,27 +927,35 @@ html.theme-transitioning::view-transition-new(root) {
     color: #ffffff;
   }
 
-  .selected-work-card--jetseed .selected-work-media {
-    height: auto;
-    aspect-ratio: 604 / 448;
+  .selected-work-image-wrap--jetseed {
+    container-type: inline-size;
   }
 
   .selected-work-mockup-desktop {
     position: absolute;
-    top: 7.142857%;
-    left: 5.29801%;
-    width: 89.40397%;
-    height: auto;
+    top: 32px;
+    left: 32px;
+    width: calc(100% - 64px);
+    max-width: none;
+    height: 450px;
+    object-fit: cover;
+    object-position: left top;
     border-radius: 8px;
   }
 
   .selected-work-mockup-mobile {
     position: absolute;
-    top: 23.8828%;
-    right: 2.71689%;
-    width: 26.70199%;
-    height: auto;
+    bottom: -8.64px;
+    right: 16.41px;
+    width: 161.28px;
+    height: 349.645px;
+    border-radius: 18px;
+    overflow: hidden;
     box-shadow: -37.596px 37.596px 187.98px rgba(0, 0, 0, 0.2);
+  }
+
+  .selected-work-mockup-screen {
+    object-fit: cover;
   }
 
   .selected-work-card:hover,
@@ -2212,10 +2220,11 @@ html.theme-transitioning::view-transition-new(root) {
   }
 
   .case-projects-back {
-    display: inline-flex;
+    display: flex;
+    width: fit-content;
     align-items: center;
     gap: 8px;
-    margin-bottom: 8px;
+    margin-bottom: 24px;
     padding: 10px 16px;
     border: 1px solid rgba(74, 82, 100, 0.5);
     border-radius: 12px;
@@ -2226,17 +2235,22 @@ html.theme-transitioning::view-transition-new(root) {
     line-height: 20px;
   }
 
-  .case-projects-back:hover,
   .case-projects-back:focus-visible {
-    border-color: #8c62ff;
+    outline: 2px solid #8c62ff;
+    outline-offset: 4px;
   }
 
   html[data-theme="light"] .case-projects-back {
+    border: 1px solid #DEE5F2;
     color: #172136;
   }
 
-  html[data-theme="light"] .case-projects-back:not(:hover):not(:focus-visible) {
-    border: 1px solid #DEE5F2;
+  .case-projects-back .button-icon-stack > span:last-child img {
+    filter: brightness(0) invert(1);
+  }
+
+  html[data-theme="light"] .case-projects-back .button-icon-stack > span:last-child img {
+    filter: none;
   }
 
   .case-study-page--jetseed .case-hero-copy p + p {
@@ -2376,6 +2390,10 @@ html.theme-transitioning::view-transition-new(root) {
 
   .case-study-page--lyvads .case-hero-website-viewport {
     background-color: #fafafa;
+  }
+
+  .case-study-page--jetseed .case-hero-website-viewport {
+    box-shadow: 28px 28px 71.77px 24px #0B0F1A1A;
   }
 
   .case-hero-website.is-active.is-playing .case-hero-website-page {
@@ -3966,6 +3984,15 @@ html[data-theme="light"] .mobile-menu-divider {
     line-height: 20px;
   }
 
+  .selected-work-card--jetseed .selected-work-description {
+    max-width: 100%;
+    padding-right: 0;
+  }
+
+  .selected-work-card--jetseed .selected-work-tags {
+    gap: 8px;
+  }
+
   .selected-work-tags {
     gap: 8px;
     margin-top: 16px;
@@ -3982,6 +4009,27 @@ html[data-theme="light"] .mobile-menu-divider {
     aspect-ratio: 329 / 244;
     margin-top: 24px;
     border-radius: 12px;
+  }
+
+  .selected-work-card--jetseed .selected-work-media {
+    aspect-ratio: 604 / 448;
+  }
+
+  .selected-work-mockup-desktop {
+    top: 5.29801cqw;
+    left: 5.29801cqw;
+    width: 89.40397cqw;
+    height: 74.50331cqw;
+    border-radius: 1.3245cqw;
+  }
+
+  .selected-work-mockup-mobile {
+    bottom: -1.43046cqw;
+    right: 2.71689cqw;
+    width: 26.70199cqw;
+    height: 57.88825cqw;
+    border-radius: 2.98cqw;
+    box-shadow: -6.2245cqw 6.2245cqw 31.1225cqw rgba(0, 0, 0, 0.2);
   }
 
   .selected-work-image-wrap--lyvads,
@@ -4768,7 +4816,7 @@ html[data-theme="light"] .mobile-menu-divider {
   }
 
   .case-study-page--jetseed .case-hero {
-    min-height: calc(696 * var(--case-design-unit));
+    min-height: calc(712 * var(--case-design-unit));
     padding-bottom: calc(72 * var(--case-design-unit));
   }
 
@@ -4789,7 +4837,7 @@ html[data-theme="light"] .mobile-menu-divider {
 
   .case-study-page--jetseed .case-projects-back {
     gap: calc(8 * var(--case-design-unit));
-    margin-bottom: calc(8 * var(--case-design-unit));
+    margin-bottom: calc(24 * var(--case-design-unit));
     padding: calc(10 * var(--case-design-unit)) calc(16 * var(--case-design-unit));
     font-size: calc(14 * var(--case-design-unit));
     line-height: calc(20 * var(--case-design-unit));
@@ -4798,6 +4846,11 @@ html[data-theme="light"] .mobile-menu-divider {
   .case-study-page--jetseed .case-projects-back img {
     width: calc(20 * var(--case-design-unit));
     height: calc(14 * var(--case-design-unit));
+  }
+
+  .case-study-page--jetseed .case-projects-back .button-icon-window {
+    width: calc(20 * var(--case-design-unit));
+    height: calc(20 * var(--case-design-unit));
   }
 
   .case-study-page--jetseed .case-hero-button {

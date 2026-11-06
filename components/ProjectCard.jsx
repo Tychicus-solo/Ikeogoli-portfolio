@@ -78,17 +78,18 @@ export default function ProjectCard({
                 sizes="(max-width: 767px) 80vw, (max-width: 1279px) 75vw, 540px"
                 className="selected-work-mockup-desktop"
               />
-              <Image
-                src={work.mockup.mobile}
-                alt={`${work.title} mobile investment screen`}
-                width={1179}
-                height={2556}
-                priority={priority}
-                loading={loading}
-                quality={95}
-                sizes="(max-width: 767px) 25vw, (max-width: 1279px) 23vw, 162px"
-                className="selected-work-mockup-mobile"
-              />
+              <div className="selected-work-mockup-mobile">
+                <Image
+                  src={work.mockup.mobile}
+                  alt={`${work.title} mobile investment screen`}
+                  fill
+                  priority={priority}
+                  loading={loading}
+                  quality={95}
+                  sizes="(max-width: 767px) 25vw, (max-width: 1279px) 23vw, 162px"
+                  className="selected-work-mockup-screen"
+                />
+              </div>
             </>
           ) : <ThemedImage
             src={work.img}

@@ -24,7 +24,7 @@ export const JETSEED_CASE_STUDY = {
     width: 2800,
     height: 15995,
     duration: 20000,
-    backgroundColor: "#E7F9EE",
+    backgroundColor: "#F7F8FA",
     optimized: true,
     quality: 95,
   },
