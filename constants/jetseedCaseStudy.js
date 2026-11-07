@@ -1,6 +1,44 @@
 // Jetseed copy and image panels follow the supplied Figma case study.
 const asset = (name) => `/assets/case-studies/jetseed/${name}.webp`;
 
+// Clip only the surrounding presentation backdrop; keep the interface pixels intact.
+const lightPanel = (name, image) => {
+  let clips;
+  const canvas = name === "brand" ? { width: 1088, height: 826 } : { width: 1280, height: 800 };
+  if (name.startsWith("features-")) {
+    clips = [172, 500, 828].map((x) => ({ x, y: 96.49, width: 280, height: 607.02, radius: 22.8 }));
+  } else if (name.startsWith("web-app-") || name.startsWith("admin-")) {
+    clips = [{ x: 80, y: 80, width: 1120, height: 800, radius: 16 }];
+  } else if (name.startsWith("website-")) {
+    clips = [{ x: 80, y: name === "website-1" ? 80 : 0, width: 1120, height: 800, radius: 0 }];
+  } else if (name === "brand") {
+    clips = [
+      { x: 0, y: 0, width: 254, height: 362, radius: 24 },
+      { x: 278, y: 0, width: 254, height: 362, radius: 24 },
+      { x: 556, y: 0, width: 532, height: 362, radius: 24 },
+      { x: 0, y: 386, width: 1088, height: 440, radius: 24 },
+    ];
+  }
+  // The exports blend their outermost pixels into the original dark backdrop.
+  // Move the light-mode clip inside that fringe without scaling the artwork.
+  const edgeInset = 1.25;
+  return clips ? {
+    ...image,
+    clips: clips.map((clip) => ({
+      ...clip,
+      x: clip.x + edgeInset,
+      y: clip.y > 0 || name === "brand" ? clip.y + edgeInset : clip.y,
+      width: clip.width - edgeInset * 2,
+      height: clip.height
+        - (clip.y > 0 || name === "brand" ? edgeInset : 0)
+        - (clip.y + clip.height < canvas.height || name === "brand" ? edgeInset : 0),
+      radius: Math.max(0, clip.radius - edgeInset),
+    })),
+    canvas,
+    ...(name === "brand" ? { background: "transparent", borderRadius: 0 } : {}),
+  } : image;
+};
+
 const panels = (names, alt) => {
   const images = names.map((name) => ({
     src: asset(name),
@@ -8,13 +46,12 @@ const panels = (names, alt) => {
     height: name === "brand" ? 2478 : 2400,
     quality: 95,
   }));
-  return [{ type: "image", src: images[0].src, alt, darkPanels: images, lightPanels: images }];
+  return [{ type: "image", src: images[0].src, alt, darkPanels: images, lightPanels: names.map((name, index) => lightPanel(name, images[index])) }];
 };
 
 export const JETSEED_CASE_STUDY = {
   title: "Jetseed",
   liveSite: "https://www.jetseed.com/",
-  showBackLink: true,
   intro: "Jetseed is a fintech platform that makes investing and saving simple for everyday Nigerians. It brings investments, goal-based savings and a wallet into one app, with an AI-guided path for people who don’t know where to start.\n\nI led the end-to-end redesign across the mobile app, web app and admin back office, cutting drop-off and keeping users coming back.",
   heroImage: { src: asset("hero-1") },
   heroImages: [1, 2, 3, 4, 5].map((number) => ({ src: asset(`hero-${number}`) })),

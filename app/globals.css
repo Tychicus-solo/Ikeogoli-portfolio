@@ -2532,6 +2532,12 @@ html.theme-transitioning::view-transition-new(root) {
     background: transparent;
   }
 
+  .case-image-panel--artwork {
+    position: relative;
+    overflow: hidden;
+    background-color: #e8eaed;
+  }
+
   .case-image-panel img {
     display: block;
     width: 100%;

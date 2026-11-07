@@ -150,14 +150,12 @@ const CaseStudyPage = async ({ params }) => {
 
       <section className="case-hero">
         <div className="case-hero-copy">
-          {study.showBackLink && (
-            <Link href="/#works" className="case-projects-back primary-button-effects">
-              <FlipIcon size={20}>
-                <ThemedImage src="/assets/dark mode images/figma/icons/back-arrow.svg" width={20} height={14} alt="" />
-              </FlipIcon>
-              <FlipLabel>Back to Projects</FlipLabel>
-            </Link>
-          )}
+          <Link href="/#works" className="case-projects-back primary-button-effects">
+            <FlipIcon size={20}>
+              <ThemedImage src="/assets/dark mode images/figma/icons/back-arrow.svg" width={20} height={14} alt="" />
+            </FlipIcon>
+            <FlipLabel>Back to Projects</FlipLabel>
+          </Link>
           <h1>{study.title}</h1>
           <Paragraphs text={study.intro} />
           <a
