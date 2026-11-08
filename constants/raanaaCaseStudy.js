@@ -6,6 +6,11 @@ export const RAANAA_CASE_STUDY = {
   "heroImage": {
     "src": "/assets/case-studies/raanaa/hero.webp"
   },
+  "heroImages": [
+    { "src": "/assets/case-studies/raanaa/hero.webp", "alt": "Raanaa design system overview" },
+    { "src": "/assets/case-studies/raanaa/hero-dashboard.png", "alt": "Raanaa dashboard designs for MTN products" },
+    { "src": "/assets/case-studies/raanaa/hero-phone.png", "alt": "Raanaa mobile account design on a yellow phone mockup" }
+  ],
   "heroQuality": 95,
   "meta": [
     {

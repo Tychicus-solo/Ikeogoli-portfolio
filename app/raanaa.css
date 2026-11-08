@@ -19,30 +19,41 @@ html[data-theme="light"] .case-study-page--raanaa .case-point p { color: #4a5264
 .raanaa-segments button { border-radius: 999px; padding: 7px 13px; background: transparent; color: inherit; font-size: 13px; line-height: 15px; white-space: nowrap; }
 .raanaa-segments button[aria-pressed="true"] { background: #f2f1ed; color: #121211; font-weight: 600; }
 .raanaa-audit { display: grid; gap: 40px; }
-.raanaa-before { container-type: inline-size; position: relative; aspect-ratio: 1280 / 625; overflow: hidden; border-radius: 24px; background: #e8eaed; }
+.raanaa-before { container-type: inline-size; position: relative; aspect-ratio: 1280 / 625; overflow: hidden; border-radius: 24px; background: #1a1a19; }
 html[data-theme="light"] .raanaa-before { background: #e8eaed; }
 .raanaa-before-stack { position: absolute; display: flex; width: max-content; left: -0.98cqw; top: 1.295cqw; transform: rotate(-2.5deg); transform-origin: center; }
 .raanaa-before-stack img { width: 70.0325cqw; height: 44.83984cqw; max-width: none; object-fit: cover; border-radius: .452cqw; box-shadow: 6.486cqw 3.243cqw 8.107cqw 2.711cqw #0b0f1a33; }
 .raanaa-before-stack img:first-child { margin-right: -4.5182cqw; z-index: 1; }
-.raanaa-audit-buttons { padding: 18px; min-height: 204px; }
-.raanaa-audit-buttons > p { color: #92918b; max-width: 483px; line-height: 20px; margin-bottom: 18px; }
-.raanaa-audit-buttons > div { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
-.raanaa-audit-product { background: #232321; border-radius: 8px; padding: 16px; min-height: 108px; }
-.raanaa-audit-product small { display: block; color: #92918b; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
-.raanaa-old-button { display: inline-flex; align-items: center; justify-content: center; padding: 10px 18px; background: #ffcb05; color: #090909; font-weight: 600; white-space: nowrap; }
-.raanaa-old-button--0 { border-radius: 24px; font-size: 16px; }
-.raanaa-old-button--1 { border-radius: 4px; font-size: 14px; padding-block: 9px; }
-.raanaa-old-button--2 { border-radius: 10px; font-size: 15px; padding-block: 7px; }
-.raanaa-old-button--3 { border-radius: 2px; font-size: 16px; background: #ffd43b; padding-block: 12px; }
-.raanaa-tokens { background: #121211; min-height: 496px; }
-.raanaa-tokens .raanaa-widget-heading { min-height: 35px; }
-.raanaa-token-flow { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; min-height: 111px; }
-.raanaa-token-flow > div:not(.raanaa-token-lines) { z-index: 1; }
-.raanaa-token-lines { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
-.raanaa-token-lines img { max-width: none; width: auto; height: auto; }
-.raanaa-token-value { display: flex; align-items: center; gap: 9px; margin-top: 8px; padding: 8px 11px; height: 34px; border-radius: 4px; font-size: 13px; background: #232321; }
-.raanaa-token-value + .raanaa-token-value { background: #1a1a18; }
+.raanaa-audit-buttons, .raanaa-tokens, .raanaa-foundations { padding: 18px; background: #1a1a19; color: #efeae0; }
+.raanaa-audit-buttons > p, .raanaa-tokens > p, .raanaa-foundations > p { color: #878787; font-size: 14px; line-height: 20px; font-weight: 400; }
+.raanaa-audit-buttons > p { max-width: 483px; margin-bottom: 18px; }
+.raanaa-audit-comparison { display: grid; grid-template-columns: minmax(0, 1fr) 56px minmax(0, 1fr); align-items: center; gap: 40px; }
+.raanaa-audit-variants, .raanaa-audit-result { padding: 16px; border: 1px solid #383838; border-radius: 8px; background: #070707; }
+.raanaa-audit-variant, .raanaa-audit-result { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.raanaa-audit-variant { position: relative; }
+.raanaa-audit-variant + .raanaa-audit-variant { margin-top: 28px; }
+.raanaa-audit-divider { position: absolute; top: -15px; left: 0; width: 100%; height: 1px; overflow: hidden; }
+.raanaa-audit-divider img { max-width: none; }
+.raanaa-audit-comparison small { color: #93928c; font-family: "Raanaa Geist Mono", monospace; font-size: 11px; line-height: 16.5px; text-transform: uppercase; letter-spacing: .66px; }
+.raanaa-old-button { display: inline-flex; flex-shrink: 0; align-items: center; justify-content: center; padding: 10px 18px; background: #ffcb05; color: #000; font-weight: 500; white-space: nowrap; }
+.raanaa-old-button--0 { border-radius: 999px; font-size: 16px; line-height: 24px; }
+.raanaa-old-button--1 { border-radius: 0; font-size: 14px; line-height: 20px; background: #fc0; }
+.raanaa-old-button--2 { border-radius: 8px; font-size: 14px; line-height: 20px; padding: 9px 19px; border: 1px solid #ffffff4d; box-shadow: 0 0 0 1px #cca100; background: linear-gradient(#ffffff4d, #ffffff00), #ffcb06; color: #27272b; }
+.raanaa-audit-arrow { display: grid; place-items: center; width: 56px; height: 56px; border: 1px solid #383838; border-radius: 50%; background: #232321; }
+.raanaa-tokens > p { margin-bottom: 24px; }
+.raanaa-token-flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.raanaa-token-card { min-width: 0; min-height: 217px; padding: 24px; border: 1px solid #383838; border-radius: 12px; background: #070707; }
+.raanaa-token-card h3 { margin-bottom: 24px; letter-spacing: .66px; line-height: 16.5px; color: #93928c; }
+.raanaa-token-value { display: flex; align-items: center; gap: 9px; padding: 8px 11px; height: 34px; border-radius: 4px; font-size: 13px; line-height: 15.6px; background: #232321; }
+.raanaa-token-value + .raanaa-token-value { margin-top: 12px; }
+.raanaa-token-card > div > .raanaa-token-value:first-child { background: #1b1b1a; }
 .raanaa-token-value i { width: 16px; height: 16px; border-radius: 4px; flex-shrink: 0; }
+.raanaa-primitive-swatches { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; }
+.raanaa-primitive-swatches i { width: 32px; height: 32px; border-radius: 4px; }
+.raanaa-token-card .raanaa-segments { width: min(197px, 100%); padding: 8px; gap: 4px; background: #1f1f1d; }
+.raanaa-token-card .raanaa-segments button { flex: 1; padding: 8px 12px; font-size: 14px; line-height: 20px; }
+.raanaa-token-flow[data-token-mode="light"] .raanaa-token-card { background: #fcfcfc; color: #141413; border-color: #dee5f2; }
+.raanaa-token-flow[data-token-mode="light"] .raanaa-token-value { background: #f0f0ee; }
 .raanaa-token-preview, .raanaa-demo-preview { --demo-bg: #fff; --demo-card: #fcfcfc; --demo-fg: #141413; --demo-muted: #5f5e5a; --demo-border: #e1e1e1; --demo-secondary: #eee; background: var(--demo-bg); color: var(--demo-fg); border-radius: 4px; }
 [data-demo-theme="dark"] { --demo-bg: #090909; --demo-card: #141413; --demo-fg: #f2f1ed; --demo-muted: #a3a29c; --demo-border: #30302e; --demo-secondary: #262624; }
 .raanaa-token-preview { padding: 16px; margin-top: 16px; }
@@ -65,14 +76,17 @@ html[data-theme="light"] .raanaa-before { background: #e8eaed; }
 .raanaa-periods { display: flex; gap: 8px; margin-top: 12px; }
 .raanaa-periods button { flex: 1; padding: 7px 12px; font-size: 13px; line-height: 18px; }
 .raanaa-token-caption { color: var(--demo-muted); margin-top: 16px; font-size: 13px; }
-.raanaa-foundations { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.raanaa-foundations > div { min-width: 0; min-height: 509px; }
-.raanaa-foundations h3 { padding-bottom: 12px; }
-.raanaa-spacing-rows > div { display: grid; grid-template-columns: 52px 72px minmax(0, 1fr); gap: 10px; align-items: center; min-height: 33px; padding-block: 9px; border-top: 1px solid #f2f1ed12; color: #d3d2cc; font-size: 13px; line-height: 14px; }
+.raanaa-foundations { display: block; }
+.raanaa-foundations > p { margin-bottom: 18px; }
+.raanaa-foundations h3 { margin-bottom: 8px; color: #93928c; line-height: 16.5px; letter-spacing: .66px; }
+.raanaa-foundation-colors { margin-bottom: 24px; }
+.raanaa-foundation-colors > div { display: flex; width: min(576px, 100%); }
+.raanaa-foundation-colors i { flex: 1; aspect-ratio: 1; }
+.raanaa-foundation-scales { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px; }
+.raanaa-type-samples { display: grid; gap: 9px; color: #fff; }
+.raanaa-type-samples p { white-space: nowrap; }
+.raanaa-spacing-rows > div { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 10px; align-items: center; height: 33.227px; padding-block: 9px; border-top: 1px solid #f2f1ed12; color: #cfcdc6; font-family: "Raanaa Geist Mono", monospace; font-size: 13px; line-height: 14px; }
 .raanaa-spacing-rows i { display: block; height: 10px; border-radius: 3px; background: #ffcb05; }
-.raanaa-type-row { border-top: 1px solid #f2f1ed12; padding-block: 9px; }
-.raanaa-type-row small { color: #92918b; font-size: 11px; }
-.raanaa-type-row p { color: #f2f1ed; line-height: 1.5; }
 .raanaa-component-library { background: transparent; box-shadow: 0 0 0 1px #f2f1ed24; }
 .raanaa-component-library > p:first-child { max-width: 597px; color: #a3a29c; font-size: 15px; line-height: 22.5px; }
 .raanaa-component-library strong { color: #f2f1ed; font-weight: 600; }
@@ -173,7 +187,10 @@ html[data-theme="light"] .raanaa-products .raanaa-widget-heading > p, html[data-
   .raanaa-foundations > div { min-height: auto; }
   .raanaa-playground-body { grid-template-columns: 160px minmax(0, 1fr); }
   .raanaa-demo-canvas { padding-inline: 12px; }
-  .raanaa-audit-buttons > div { grid-template-columns: 1fr 1fr; }
+  .raanaa-audit-comparison { gap: 16px; }
+  .raanaa-audit-result { flex-wrap: wrap; }
+  .raanaa-token-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .raanaa-foundation-scales { grid-template-columns: 1fr; gap: 24px; }
   .raanaa-product-stage { min-height: 0; }
 }
 @media (max-width: 600px) {
@@ -202,7 +219,12 @@ html[data-theme="light"] .raanaa-products .raanaa-widget-heading > p, html[data-
   .raanaa-table th, .raanaa-table td { padding: 8px 4px; font-size: 11px; }
   .raanaa-product-stage { padding: 0; }
   .raanaa-products .raanaa-segments { max-width: 100%; flex-wrap: wrap; border-radius: 16px; }
-  .raanaa-spacing-rows > div { grid-template-columns: 30px 48px minmax(0, 1fr); }
+  .raanaa-audit-comparison { grid-template-columns: 1fr; }
+  .raanaa-audit-arrow { justify-self: center; transform: rotate(90deg); }
+  .raanaa-token-flow { grid-template-columns: 1fr; }
+  .raanaa-token-card { min-height: 0; }
+  .raanaa-foundations .raanaa-type-samples p:last-child { font-size: clamp(20px, 6vw, 36px) !important; white-space: normal; }
+  .raanaa-spacing-rows > div { grid-template-columns: 48px minmax(0, 1fr); }
 }
 @font-face { font-family: "Raanaa Geist"; src: url("/fonts/raanaa/geist-400.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
 @font-face { font-family: "Raanaa Geist"; src: url("/fonts/raanaa/geist-500.ttf") format("truetype"); font-weight: 500; font-style: normal; font-display: swap; }
@@ -220,3 +242,233 @@ html[data-theme="light"] .raanaa-products .raanaa-widget-heading > p, html[data-
   .raanaa-products .raanaa-segments button, .raanaa-product-stage img { transition: none; }
   .raanaa-product-caption { animation: none; }
 }
+
+/* Component playground shell and sidebar. */
+.raanaa-playground { padding: 24px 32px; font-family: "Raanaa Geist", var(--font-suisse), sans-serif; background: #121211; }
+.raanaa-playground::before { content: ""; position: absolute; left: -90px; bottom: -110px; width: 260px; height: 260px; border-radius: 50%; background: radial-gradient(circle, #f5c10024, #f5c10000 65%); pointer-events: none; }
+.raanaa-playground .raanaa-widget-heading { margin-bottom: 16px; min-height: 42px; }
+.raanaa-playground .raanaa-widget-heading > p { max-width: 557px; color: #a3a29c; font-size: 14px; line-height: 21px; }
+.raanaa-playground .raanaa-widget-heading .raanaa-segments { background: #1f1f1d; }
+.raanaa-playground .raanaa-widget-heading .raanaa-segments button { padding: 8px 13px; font-size: 13px; line-height: 13px; }
+.raanaa-playground-body { position: relative; grid-template-columns: 208px minmax(0, 1fr); gap: 16px; }
+.raanaa-demo-nav { gap: 12px; }
+.raanaa-demo-nav > small:first-child { padding: 0 12px 12px 6px; border-bottom: 1px solid #f2f1ed14; font-size: 11px; line-height: 11px; color: #93928c; }
+.raanaa-demo-nav [role="tab"] { padding: 6px 12px 6px 6px; gap: 12px; font-size: 14px; line-height: 20px; font-weight: 500; }
+.raanaa-demo-nav [role="tab"] > div { padding-block: 4px; }
+.raanaa-demo-nav [role="tab"] small { padding-top: 12px; max-width: 150px; font-size: 12.5px; line-height: 17.5px; font-weight: 400; color: #a3a29c; }
+.raanaa-demo-nav [role="tab"][aria-selected="true"] { background: linear-gradient(90deg, #e8c30c1f 0%, #a37e112b 3.4375%, #7d6d1338 6.875%, #55441652 13.75%, #4036186b 20.625%, #332e1885 27.5%, #242219b8 41.25%, #1b1b1aeb 55%); color: #fff; }
+.raanaa-demo-nav [role="tab"][aria-selected="true"] > span { background: #f5c10029; }
+.raanaa-nav-hint { display: flex; align-items: center; gap: 4px; padding-left: 6px; color: #bdbcb6; font-size: 12px; line-height: 18px; }
+.raanaa-nav-hint kbd { display: grid; place-items: center; min-width: 18px; height: 18px; border-radius: 4px; background: #262624; box-shadow: inset 0 -1px #f2f1ed14; color: #efeae0; font-size: 10.5px; }
+.raanaa-playground .raanaa-demo-preview { --demo-bg: #fff; --demo-card: #fff; --demo-fg: #070707; --demo-border: #242424; min-height: 481px; }
+.raanaa-playground .raanaa-demo-preview[data-demo-theme="dark"] { --demo-bg: #070707; --demo-card: #070707; --demo-fg: #f5f5f5; }
+.raanaa-playground .raanaa-demo-canvas { min-height: 437px; padding: 32px; position: relative; }
+.raanaa-playground .raanaa-demo-preview[data-demo-theme="dark"] .raanaa-demo-canvas::before { content: ""; position: absolute; inset: 14px 14px 28px; background: #000; opacity: .5; pointer-events: none; }
+.raanaa-playground .raanaa-demo-hints { min-height: 44px; padding: 12px 16px; border-top: 1px solid #242424; background: var(--demo-card); color: #93928c; }
+.raanaa-playground .raanaa-demo-hints > div { display: flex; gap: 6px; }
+.raanaa-playground .raanaa-demo-hints kbd { margin: 0; border-radius: 999px; padding: 4px 8px; background: #1d1d1d; color: #f5f5f5; font-family: "Raanaa Geist Mono", monospace; font-size: 11px; font-weight: 400; line-height: 11px; white-space: nowrap; }
+.raanaa-playground .raanaa-demo-preview[data-demo-theme="light"] .raanaa-demo-hints kbd { background: #eee; color: #1b1b1b; }
+.raanaa-playground .raanaa-demo-hints small { font-size: 10px; text-transform: uppercase; }
+.raanaa-accordion-preview { position: relative; width: min(447px, 100%); display: grid; gap: 24px; }
+.raanaa-accordion-group { padding: 8px; border-radius: 8px; background: var(--demo-card); }
+.raanaa-accordion-item { display: flex; gap: 12px; border-bottom: 1px solid color-mix(in srgb, var(--demo-fg) 13%, transparent); }
+.raanaa-accordion-item:last-child { border-bottom: 0; }
+.raanaa-accordion-item > img { margin-top: 16px; flex-shrink: 0; }
+.raanaa-accordion-item > div { flex: 1; min-width: 0; }
+.raanaa-demo-preview .raanaa-accordion-item button { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; padding: 16px 0; background: transparent; color: var(--demo-fg); border-radius: 0; text-align: left; font-weight: 500; font-size: 16px; line-height: 24px; }
+.raanaa-accordion-item p { padding-bottom: 16px; font-size: 14px; line-height: 20px; color: var(--demo-fg); }
+.raanaa-icon-toggle { display: flex; gap: 8px; align-items: center; justify-content: center; font-size: 14px; }
+.raanaa-demo-preview .raanaa-icon-toggle button { width: 36px; height: 20px; padding: 2px; background: #242424; border-radius: 50px; }
+.raanaa-demo-preview .raanaa-icon-toggle button[aria-checked="true"] { background: #f5c100; }
+.raanaa-icon-toggle button span { display: block; width: 16px; height: 16px; border-radius: 50%; background: #070707; transition: transform 150ms; }
+.raanaa-icon-toggle button[aria-checked="true"] span { transform: translateX(16px); }
+.raanaa-component-stage-label { position: relative; display: flex; align-items: center; gap: 12px; color: var(--demo-fg); }
+@media (max-width: 900px) {
+  .raanaa-playground { padding: 20px; }
+  .raanaa-playground-body { grid-template-columns: 208px minmax(0, 1fr); }
+  .raanaa-playground .raanaa-demo-canvas { padding: 20px; }
+}
+@media (max-width: 600px) {
+  .raanaa-playground { padding: 16px; }
+  .raanaa-playground-body { grid-template-columns: 1fr; }
+  .raanaa-demo-nav [role="tab"] { padding: 8px 10px; }
+  .raanaa-demo-nav [role="tab"] > div { padding: 0; }
+  .raanaa-playground .raanaa-demo-canvas { min-height: 360px; padding: 16px; }
+  .raanaa-playground .raanaa-demo-preview { min-height: 404px; }
+  .raanaa-nav-hint { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .raanaa-icon-toggle button span { transition: none; } }
+
+/* Animate the state changes while keeping the content mounted. */
+.raanaa-demo-nav [role="tab"] { position: relative; isolation: isolate; transition: color 220ms ease; }
+.raanaa-demo-nav [role="tab"][aria-selected="true"] { background: transparent; }
+.raanaa-demo-nav [role="tab"]::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; background: linear-gradient(90deg, #e8c30c1f 0%, #a37e112b 3.4375%, #7d6d1338 6.875%, #55441652 13.75%, #4036186b 20.625%, #332e1885 27.5%, #242219b8 41.25%, #1b1b1aeb 55%); opacity: 0; transition: opacity 240ms ease; }
+.raanaa-demo-nav [role="tab"][aria-selected="true"]::before { opacity: 1; }
+.raanaa-demo-nav [role="tab"] > span { position: relative; transition: background-color 220ms ease; }
+.raanaa-demo-nav [role="tab"] > span img { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); transition: opacity 180ms ease; }
+.raanaa-tab-icon-on { opacity: 0; }
+[role="tab"][aria-selected="true"] .raanaa-tab-icon-on { opacity: 1; }
+[role="tab"][aria-selected="true"] .raanaa-tab-icon-off { opacity: 0; }
+.raanaa-demo-nav [role="tab"] .raanaa-tab-description { display: grid; grid-template-rows: 0fr; padding-top: 0; opacity: 0; transition: grid-template-rows 260ms cubic-bezier(.22,1,.36,1), opacity 180ms ease; }
+.raanaa-tab-description > span { min-height: 0; overflow: hidden; }
+.raanaa-tab-description > span::before { content: ""; display: block; height: 12px; }
+.raanaa-demo-nav [role="tab"][aria-selected="true"] .raanaa-tab-description { grid-template-rows: 1fr; opacity: 1; }
+.raanaa-demo-canvas > .raanaa-accordion-preview, .raanaa-demo-canvas > .raanaa-component-stage-label { animation: raanaa-preview-enter 220ms ease both; }
+@keyframes raanaa-preview-enter { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+.raanaa-accordion-item { gap: 0; }
+.raanaa-accordion-icon { display: block; width: 0; flex-shrink: 0; overflow: hidden; margin-top: 16px; margin-right: 0; opacity: 0; transition: width 240ms cubic-bezier(.22,1,.36,1), margin-right 240ms cubic-bezier(.22,1,.36,1), opacity 180ms ease; }
+.raanaa-accordion-icon img { max-width: none; }
+.raanaa-accordion-item[data-icons="true"] .raanaa-accordion-icon { width: 24px; margin-right: 12px; opacity: 1; }
+.raanaa-accordion-answer { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 280ms cubic-bezier(.22,1,.36,1), opacity 220ms ease; }
+.raanaa-accordion-answer > div { min-height: 0; overflow: hidden; }
+.raanaa-accordion-item[data-open="true"] .raanaa-accordion-answer { grid-template-rows: 1fr; opacity: 1; }
+.raanaa-accordion-chevron { flex-shrink: 0; transition: transform 240ms ease; }
+.raanaa-accordion-item[data-open="true"] .raanaa-accordion-chevron { transform: rotate(180deg); }
+.raanaa-icon-toggle button span { transition: transform 200ms ease, background-color 200ms ease; box-shadow: 0 1px 2px #0000001a; }
+.raanaa-demo-preview[data-demo-theme="light"] .raanaa-icon-toggle button { background: #e7e7e7; }
+.raanaa-demo-preview[data-demo-theme="light"] .raanaa-icon-toggle button span { background: #fff; }
+.raanaa-demo-preview[data-demo-theme="light"] .raanaa-icon-toggle button[aria-checked="true"] { background: #ffc600; }
+.raanaa-demo-preview[data-demo-theme="light"] .raanaa-demo-hints { border-color: #e1e1e1; }
+@media (max-width: 600px) { .raanaa-demo-nav [role="tab"] .raanaa-tab-description { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .raanaa-demo-nav [role="tab"], .raanaa-demo-nav [role="tab"]::before, .raanaa-demo-nav [role="tab"] > span, .raanaa-demo-nav [role="tab"] > span img, .raanaa-demo-nav [role="tab"] .raanaa-tab-description, .raanaa-accordion-icon, .raanaa-accordion-answer, .raanaa-accordion-chevron, .raanaa-icon-toggle button span { transition: none; }
+  .raanaa-demo-canvas > .raanaa-accordion-preview, .raanaa-demo-canvas > .raanaa-component-stage-label { animation: none; }
+}
+
+.raanaa-combobox { --combo-input: #e8e8e8; --combo-menu: #fff; --combo-border: #e1e1e1; --combo-search-border: #e8e8e8; --combo-text: #202020; --combo-muted: #696969; --combo-accent: #f8eed1; position: relative; width: min(240px, 100%); min-height: 306px; z-index: 1; }
+[data-demo-theme="dark"] .raanaa-combobox { --combo-input: #e1e1e121; --combo-menu: #1f1f1f; --combo-border: #242424; --combo-search-border: #e1e1e121; --combo-text: #f5f5f5; --combo-muted: #808080; --combo-accent: #2e2917; }
+.raanaa-combobox-label { display: block; color: var(--combo-muted); font-size: 14px; line-height: 20px; margin-bottom: 14px; }
+.raanaa-demo-preview .raanaa-combobox-trigger { display: flex; align-items: center; width: 100%; gap: 8px; padding: 12px; height: 50px; border: 1px solid var(--combo-border); border-radius: 6px; background: var(--combo-input); color: var(--combo-text); font-size: 16px; line-height: 24px; text-align: left; }
+.raanaa-combobox img { flex-shrink: 0; }
+.raanaa-combobox-menu { position: absolute; left: 0; right: 0; top: 96px; border: 1px solid var(--combo-border); border-radius: 8px; overflow: hidden; background: var(--combo-menu); color: var(--combo-text); box-shadow: 0 1px 2px #0000000d; opacity: 0; visibility: hidden; transform: translateY(-4px); transition: opacity 160ms ease, transform 160ms ease, visibility 160ms; }
+.raanaa-combobox-menu[data-open="true"] { opacity: 1; visibility: visible; transform: translateY(0); }
+.raanaa-combobox-search { display: flex; align-items: center; gap: 8px; padding: 10px 12px; height: 40px; border-bottom: 1px solid var(--combo-search-border); }
+.raanaa-showcase .raanaa-combobox-search input:not([type="checkbox"]) { height: 20px; min-width: 0; padding: 0; border: 0; border-radius: 0; background: transparent; color: var(--combo-text); font-size: 14px; line-height: 20px; outline: none; }
+.raanaa-combobox-options { max-height: 300px; overflow-y: auto; padding: 6px 4px; }
+.raanaa-combobox-options:empty { display: none; }
+.raanaa-combobox-options [role="option"] { display: flex; gap: 8px; align-items: center; padding: 6px 8px; border-radius: 6px; min-height: 32px; font-size: 14px; line-height: 20px; cursor: pointer; transition: background-color 100ms ease; }
+.raanaa-combobox-options [role="option"][data-active="true"], .raanaa-combobox-options [role="option"][aria-selected="true"] { background: var(--combo-accent); }
+.raanaa-combobox .raanaa-combobox-empty { text-align: center; padding: 24px 12px; color: var(--combo-muted); font-size: 14px; line-height: 20px; }
+@media (prefers-reduced-motion: reduce) { .raanaa-combobox-menu, .raanaa-combobox-options [role="option"] { transition: none; } }
+
+.raanaa-file-upload { --upload-border: #e1e1e1; --upload-input: #e8e8e8; --upload-muted: #696969; --upload-progress: #eee; --upload-primary: #f9c600; --upload-error-bg: #ffebec; --upload-error-border: #ffc0c5; position: relative; width: min(512px, 100%); color: var(--demo-fg); }
+[data-demo-theme="dark"] .raanaa-file-upload { --upload-border: #242424; --upload-input: #e1e1e121; --upload-muted: #808080; --upload-progress: #1d1d1d; --upload-primary: #f5c100; --upload-error-bg: #fb374829; --upload-error-border: #fb37483d; }
+.raanaa-playground .raanaa-demo-preview--upload .raanaa-demo-canvas { height: 437px; min-height: 437px; align-items: center; overflow: hidden; }
+.raanaa-upload-dropzone { padding: 32px; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; border: 1px dashed var(--upload-input); border-radius: 12px; transition: border-color 180ms ease, background-color 180ms ease; }
+.raanaa-upload-dropzone[data-dragging="true"] { border-color: var(--upload-primary); background: color-mix(in srgb, var(--upload-primary) 10%, transparent); }
+.raanaa-upload-featured { display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid var(--upload-input); border-radius: 999px; box-shadow: 0 1px 1px #0000000d; }
+.raanaa-upload-dropzone p, .raanaa-upload-file-info > p { font-size: 14px; line-height: 20px; }
+.raanaa-upload-dropzone small, .raanaa-upload-file-info small { display: block; font-family: inherit; font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: .5px; text-transform: uppercase; color: var(--upload-muted); margin-top: 4px; }
+.raanaa-demo-preview .raanaa-upload-dropzone button { height: 36px; border: 1px solid var(--upload-input); border-radius: 999px; padding: 8px 12px; background: transparent; color: var(--demo-fg); font-size: 14px; font-weight: 500; line-height: 20px; }
+.raanaa-demo-preview .raanaa-upload-dropzone button:hover { background: color-mix(in srgb, var(--upload-primary) 12%, transparent); }
+.raanaa-upload-list { display: grid; gap: 12px; margin: 16px 0 0; padding: 0; list-style: none; }
+.raanaa-upload-list > li { display: flex; align-items: center; gap: 4px; padding: 24px 8px 24px 24px; min-height: 104px; border: 1px solid var(--upload-border); border-radius: 12px; animation: raanaa-preview-enter 200ms ease both; }
+.raanaa-upload-thumbnail { width: 56px; height: 56px; flex-shrink: 0; margin-right: 20px; border: 1px solid var(--upload-border); border-radius: 8px; overflow: hidden; display: grid; place-items: center; font-size: 12px; }
+.raanaa-upload-thumbnail img { object-fit: cover; }
+.raanaa-upload-file-info { min-width: 0; flex: 1; }
+.raanaa-upload-file-info > p:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.raanaa-upload-progress { height: 4px; margin-top: 12px; overflow: hidden; border-radius: 999px; background: var(--upload-progress); }
+.raanaa-upload-progress span { display: block; height: 100%; background: var(--upload-primary); transition: width 450ms linear; }
+.raanaa-demo-preview .raanaa-upload-remove { display: grid; place-items: center; width: 36px; height: 36px; flex-shrink: 0; padding: 0; border-radius: 999px; background: transparent; }
+.raanaa-demo-preview .raanaa-upload-remove:hover { background: color-mix(in srgb, var(--demo-fg) 8%, transparent); }
+.raanaa-upload-list > li[data-status="error"] { background: var(--upload-error-bg); border-color: var(--upload-error-border); }
+.raanaa-upload-file-info .raanaa-upload-error { color: #e12d33; margin-top: 4px; }
+.raanaa-demo-preview .raanaa-upload-retry { padding: 0; background: transparent; color: #e12d33; text-decoration: underline; text-underline-offset: 2px; text-transform: uppercase; font-size: 12px; line-height: 16px; letter-spacing: .5px; white-space: nowrap; }
+@media (max-width: 600px) {
+  .raanaa-upload-dropzone { padding: 24px 16px; }
+  .raanaa-upload-list > li { padding: 16px 8px; flex-wrap: wrap; }
+  .raanaa-upload-thumbnail { margin-right: 8px; width: 40px; height: 40px; }
+  .raanaa-upload-retry { order: 1; margin-left: 52px; }
+}
+@media (prefers-reduced-motion: reduce) { .raanaa-upload-dropzone, .raanaa-upload-progress span { transition: none; } .raanaa-upload-list > li { animation: none; } }
+
+/* Contain up to two uploads in the standard playground canvas. */
+.raanaa-file-upload { max-height: 100%; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.raanaa-upload-list:empty { display: none; }
+.raanaa-file-upload[data-has-files="true"] .raanaa-upload-dropzone { padding: 16px; gap: 12px; }
+.raanaa-file-upload[data-has-files="true"] .raanaa-upload-list > li { min-height: 76px; padding-block: 10px; }
+.raanaa-upload-dropzone button:disabled { cursor: default; opacity: .5; }
+.raanaa-upload-limit { margin-top: 8px; font-size: 12px; line-height: 18px; color: var(--upload-muted); }
+@media (max-width: 600px) {
+  .raanaa-playground .raanaa-demo-preview--upload .raanaa-demo-canvas { height: 360px; min-height: 360px; }
+}
+
+.raanaa-otp { --otp-input: #e8e8e84d; --otp-border: #e8e8e8; --otp-primary: #f9c600; position: relative; width: min(280px, 100%); display: grid; gap: 24px; color: var(--demo-fg); }
+[data-demo-theme="dark"] .raanaa-otp { --otp-input: #3939394d; --otp-border: #e1e1e121; --otp-primary: #f5c100; }
+.raanaa-otp-content { display: grid; gap: 12px; }
+.raanaa-otp-label { font-size: 14px; line-height: 20px; font-weight: 500; }
+.raanaa-otp-slots { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+.raanaa-showcase .raanaa-otp-slots input:not([type="checkbox"]) { width: 100%; min-width: 0; height: 40px; padding: 0; border: 1px solid var(--otp-border); border-radius: 6px; background: var(--otp-input); color: var(--demo-fg); font-size: 16px; line-height: 24px; text-align: center; caret-color: var(--otp-primary); transition: border-color 150ms ease, background-color 150ms ease; }
+.raanaa-showcase .raanaa-otp-slots input:focus { outline: none; border-color: transparent; border-bottom-color: var(--otp-primary); border-radius: 6px 6px 0 0; }
+.raanaa-otp-message { min-height: 20px; font-size: 14px; line-height: 20px; }
+.raanaa-otp[data-status="error"] .raanaa-otp-label, .raanaa-otp[data-status="error"] .raanaa-otp-message { color: #fb3748; }
+.raanaa-showcase .raanaa-otp[data-status="error"] .raanaa-otp-slots input { border-color: #fb3748; border-radius: 6px; }
+.raanaa-otp[data-status="success"] .raanaa-otp-message { color: #008d4a; }
+[data-demo-theme="dark"] .raanaa-otp[data-status="success"] .raanaa-otp-message { color: #3dd68c; }
+.raanaa-demo-preview .raanaa-otp-verify { justify-self: start; display: flex; align-items: center; gap: 6px; min-width: 80px; height: 40px; padding: 8px 16px; border-radius: 999px; background: var(--otp-primary); color: #000; font-size: 14px; line-height: 20px; font-weight: 500; }
+.raanaa-demo-preview .raanaa-otp-verify:hover { filter: brightness(.96); }
+@media (prefers-reduced-motion: reduce) { .raanaa-showcase .raanaa-otp-slots input { transition: none; } }
+
+/* Keep selected OTP digits clear while retaining replacement-on-type behavior. */
+.raanaa-otp-slots input::selection {
+  background: transparent;
+  color: inherit;
+}
+
+.raanaa-tabs-demo { --tabs-secondary: #eee; --tabs-muted: #696969; --tabs-background: #fff; --tabs-foreground: #000; --tabs-border: #e1e1e1; --tabs-primary: #f9c600; position: relative; width: min(364px, 100%); align-self: stretch; display: flex; flex-direction: column; gap: 48px; }
+[data-demo-theme="dark"] .raanaa-tabs-demo { --tabs-secondary: #1d1d1d; --tabs-muted: #808080; --tabs-background: #070707; --tabs-foreground: #f5f5f5; --tabs-border: #242424; --tabs-primary: #f5c100; }
+.raanaa-tabs-style, .raanaa-tabs-list { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); isolation: isolate; }
+.raanaa-tabs-style { width: min(318px, 100%); align-self: center; padding: 4px; border-radius: 999px; background: var(--tabs-secondary); }
+.raanaa-demo-preview .raanaa-tabs-style button, .raanaa-demo-preview .raanaa-tabs-list button { position: relative; min-width: 0; padding: 6px 12px; border-radius: 999px; background: transparent; color: var(--tabs-muted); font-size: 14px; line-height: 20px; font-weight: 500; transition: color 200ms ease, background-color 200ms ease; }
+.raanaa-demo-preview .raanaa-tabs-style button[aria-checked="true"], .raanaa-demo-preview .raanaa-tabs-list button[aria-selected="true"] { color: var(--tabs-foreground); font-weight: 400; }
+.raanaa-tabs-indicator { position: absolute; z-index: -1; pointer-events: none; left: 4px; top: 4px; bottom: 4px; width: calc((100% - 8px) / 3); border-radius: 999px; background: var(--tabs-background); box-shadow: 0 1px 1px #0000000d; transform: translateX(calc(var(--active-tab) * 100%)); transition: transform 240ms cubic-bezier(.22,1,.36,1); }
+.raanaa-tabs-example { display: grid; gap: 16px; }
+.raanaa-tabs-list { width: 100%; min-height: 40px; }
+.raanaa-tabs-list--segmented { padding: 4px; border-radius: 999px; background: var(--tabs-secondary); }
+.raanaa-tabs-list--line { border-bottom: 1px solid var(--tabs-border); }
+.raanaa-demo-preview .raanaa-tabs-list--line button { border-radius: 0; padding: 8px 0 14px; }
+.raanaa-tabs-list--line .raanaa-tabs-indicator { top: auto; bottom: -1px; left: calc(var(--active-tab) * 100% / 3 + 8px); width: calc(100% / 3 - 16px); height: 2px; border-radius: 0; box-shadow: none; background: var(--tabs-primary); transform: none; transition: left 240ms cubic-bezier(.22,1,.36,1); }
+.raanaa-tabs-list--pills { gap: 8px; padding: 0; }
+.raanaa-tabs-list--pills .raanaa-tabs-indicator { display: none; }
+.raanaa-demo-preview .raanaa-tabs-list--pills button { padding: 6px 16px; background: var(--tabs-secondary); font-weight: 500; }
+.raanaa-demo-preview .raanaa-tabs-list--pills button[aria-selected="true"] { background: var(--tabs-foreground); color: var(--tabs-background); }
+.raanaa-tabs-panels { min-height: 40px; color: var(--tabs-foreground); font-size: 14px; line-height: 20px; }
+.raanaa-tabs-panels [role="tabpanel"]:not([hidden]) { animation: raanaa-preview-enter 200ms ease both; }
+@media (max-width: 600px) { .raanaa-demo-preview .raanaa-tabs-style button, .raanaa-demo-preview .raanaa-tabs-list button { padding-inline: 6px; font-size: 13px; } }
+@media (prefers-reduced-motion: reduce) { .raanaa-tabs-indicator, .raanaa-tabs-list--line .raanaa-tabs-indicator, .raanaa-demo-preview .raanaa-tabs-style button, .raanaa-demo-preview .raanaa-tabs-list button { transition: none; } .raanaa-tabs-panels [role="tabpanel"]:not([hidden]) { animation: none; } }
+
+.raanaa-stepper { --stepper-muted: #696969; --stepper-border: #e1e1e1; --stepper-accent: #f8eed1; --stepper-primary: #f9c600; position: relative; width: min(414px, 100%); align-self: stretch; display: flex; flex-direction: column; gap: 64px; color: var(--demo-fg); }
+[data-demo-theme="dark"] .raanaa-stepper { --stepper-muted: #808080; --stepper-border: #242424; --stepper-accent: #2e2917; --stepper-primary: #f5c100; }
+.raanaa-stepper-list { width: min(240px, 100%); display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
+.raanaa-demo-preview .raanaa-stepper-list button { display: flex; gap: 12px; align-items: center; width: 100%; padding: 10px 12px 10px 8px; border-radius: 24px; background: transparent; color: var(--stepper-muted); text-align: left; font-size: 14px; line-height: 20px; font-weight: 500; transition: background-color 240ms ease, color 200ms ease; }
+.raanaa-demo-preview .raanaa-stepper-list [data-state="current"] button { background: var(--stepper-accent); color: var(--demo-fg); }
+.raanaa-demo-preview .raanaa-stepper-list [data-state="error"] button { color: #fb3748; }
+.raanaa-stepper-marker { display: grid; place-items: center; width: 20px; height: 20px; flex-shrink: 0; }
+.raanaa-stepper-marker > span { display: grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--stepper-border); color: var(--demo-fg); font-size: 12px; line-height: 16px; }
+[data-state="current"] .raanaa-stepper-marker > span { background: var(--demo-fg); color: var(--demo-bg); border-color: transparent; }
+.raanaa-stepper-actions { display: flex; align-items: center; gap: 16px; }
+.raanaa-demo-preview .raanaa-stepper-actions button { min-height: 40px; padding: 8px 16px; border: 1px solid var(--stepper-border); border-radius: 999px; background: transparent; color: var(--demo-fg); font-size: 14px; line-height: 20px; font-weight: 500; white-space: nowrap; }
+.raanaa-stepper-actions button:first-child { min-width: 80px; }
+.raanaa-demo-preview .raanaa-stepper-actions .raanaa-stepper-continue { margin-left: auto; background: var(--stepper-primary); border-color: transparent; color: #000; }
+.raanaa-stepper-actions button:disabled { opacity: .4; cursor: default; }
+.raanaa-demo-preview .raanaa-stepper-actions button:not(:disabled):hover { filter: brightness(.94); }
+
+/* Crossfade mounted demos instead of restarting an entrance animation. */
+.raanaa-playground .raanaa-demo-canvas { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr); height: 437px; min-height: 437px; }
+.raanaa-demo-panel { grid-area: 1 / 1; display: flex; align-items: center; justify-content: center; position: relative; min-width: 0; min-height: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(3px); transition: opacity 300ms ease, transform 360ms cubic-bezier(.22,1,.36,1), visibility 300ms; }
+.raanaa-demo-panel[data-active="true"] { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); }
+.raanaa-demo-panel > .raanaa-accordion-preview, .raanaa-demo-panel > .raanaa-component-stage-label { animation: none; }
+@media (max-width: 600px) {
+  .raanaa-playground .raanaa-demo-canvas { height: 360px; min-height: 360px; }
+  .raanaa-stepper { gap: 40px; }
+  .raanaa-stepper-actions { gap: 8px; }
+  .raanaa-demo-preview .raanaa-stepper-actions button { padding-inline: 10px; font-size: 12px; }
+  .raanaa-stepper-actions button:first-child { min-width: 56px; }
+}
+@media (prefers-reduced-motion: reduce) { .raanaa-demo-panel, .raanaa-demo-preview .raanaa-stepper-list button { transition: none; } }
+
+.raanaa-tabs-panels { display: grid; }
+.raanaa-tabs-panels [role="tabpanel"] { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity 280ms ease, visibility 280ms; }
+.raanaa-tabs-panels [role="tabpanel"]:not([hidden]) { animation: none; }
+.raanaa-tabs-panels [role="tabpanel"][data-active="true"] { opacity: 1; visibility: visible; }
+@media (prefers-reduced-motion: reduce) { .raanaa-tabs-panels [role="tabpanel"] { transition: none; } }
