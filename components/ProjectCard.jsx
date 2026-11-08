@@ -99,7 +99,7 @@ export default function ProjectCard({
             loading={loading}
             fetchPriority={fetchPriority}
             quality={work.imageQuality || 75}
-            sizes="(max-width: 767px) calc(100vw - 80px), (max-width: 1279px) calc(100vw - 208px), 604px"
+            sizes={work.imageSizes || "(max-width: 767px) calc(100vw - 80px), (max-width: 1279px) calc(100vw - 208px), 604px"}
             className={`selected-work-img${work.previewLayout === "website" ? " selected-work-img--website" : ""}`}
           />}
         </div>

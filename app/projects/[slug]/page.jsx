@@ -11,6 +11,7 @@ import { Footer, Tags, ThemedImage, ThemeToggle } from "../../../components";
 import { CASE_STUDIES, CASE_STUDY_SLUGS } from "../../../constants/caseStudies";
 import { SELECTED_WORKS } from "../../../constants/selectworksconstants";
 import ProjectCard from "../../../components/ProjectCard";
+import RaanaaShowcase from "../../../components/RaanaaShowcase";
 
 import MainNav from "../../../components/MainNav";
 import HeroNavigation from "../../../components/HeroNavigation";
@@ -35,6 +36,7 @@ export const generateMetadata = async ({ params }) => {
 const getRelatedWork = (slug) => {
   const study = CASE_STUDIES[slug];
   const slugToTitle = {
+    raanaa: "Raanaa",
     jetseed: "Jetseed",
     emmanuel: "Emmanuel's portfolio",
     fitfam: "Fitfam",
@@ -68,6 +70,9 @@ const Paragraphs = ({ text }) =>
   text.split("\n\n").map((paragraph) => <p key={paragraph}>{paragraph}</p>);
 
 const CaseVisual = ({ visual, title }) => {
+  if (visual.type === "raanaa") {
+    return <RaanaaShowcase kind={visual.kind} />;
+  }
   if (visual.lightPanels || visual.darkPanels) {
     return (
       <CaseImagePanels
@@ -158,7 +163,7 @@ const CaseStudyPage = async ({ params }) => {
           </Link>
           <h1>{study.title}</h1>
           <Paragraphs text={study.intro} />
-          <a
+          {!study.hideLiveSite && <a
             className="case-hero-button primary-button-effects items-center gap-x-[8px]"
             href={study.liveSite === null ? undefined : study.liveSite || "#case-content"}
             target={slug === "lyvads" || slug === "jetseed" ? "_blank" : undefined}
@@ -181,7 +186,7 @@ const CaseStudyPage = async ({ params }) => {
                 />
               </svg>
             </FlipIcon>
-          </a>
+          </a>}
         </div>
 
         <dl className="case-meta">

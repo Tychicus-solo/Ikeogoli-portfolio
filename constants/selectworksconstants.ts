@@ -12,6 +12,16 @@ export const SELECTED_WORKS = [
     },
   },
   {
+    title: "Raanaa",
+    description:
+      "One system, every MTN product. Shared tokens and components that keep design and code in step.",
+    tags: ["DESIGN SYSTEM", "DOCS"],
+    img: "/assets/selected-works/raanaa.png",
+    href: "/projects/raanaa",
+    imageQuality: 95,
+    imageSizes: "(max-width: 767px) 120vw, (max-width: 1279px) 100vw, 721px",
+  },
+  {
     title: "Lyvads",
     description:
       "Commission videos from the creators you love. They create, you connect, everyone profits.",

@@ -1,0 +1,222 @@
+.case-study-page--raanaa .case-hero-copy { max-width: 584px; }
+.case-study-page--raanaa .case-hero-copy p + p { margin-top: 32px; }
+.case-study-page--raanaa .case-point h2 { font-size: 24px; line-height: 32px; font-weight: 500; }
+.case-study-page--raanaa .case-point p { color: #a0aec0; }
+html[data-theme="light"] .case-study-page--raanaa .case-point p { color: #4a5264; }
+.case-study-page--raanaa .case-hero-carousel-img.is-active { animation: none; object-position: center; }
+.raanaa-showcase { min-width: 0; font-family: var(--font-suisse), sans-serif; font-size: 14px; line-height: 1.5; }
+.raanaa-showcase button, .raanaa-showcase input, .raanaa-showcase textarea { font: inherit; }
+.raanaa-showcase button { cursor: pointer; }
+.raanaa-showcase button:focus-visible, .raanaa-showcase input:focus-visible, .raanaa-showcase textarea:focus-visible { outline: 2px solid #ffcb05; outline-offset: 3px; }
+.raanaa-showcase button { transition: background-color 150ms ease, color 150ms ease; }
+.raanaa-widget { border-radius: 12px; background: #1a1a18; color: #f2f1ed; padding: 24px 32px; }
+.raanaa-widget h3, .raanaa-widget small, .raanaa-audit-product small { font-family: "Raanaa Geist Mono", ui-monospace, monospace; }
+.raanaa-widget h3 { color: #92918b; font-size: 11px; font-weight: 400; line-height: 16px; letter-spacing: 1px; text-transform: uppercase; }
+.raanaa-widget-heading { display: flex; align-items: start; justify-content: space-between; gap: 20px; margin-bottom: 16px; }
+.raanaa-widget-heading > p { color: #a3a29c; max-width: 550px; }
+.raanaa-controls { display: flex; gap: 8px; flex-shrink: 0; }
+.raanaa-segments { display: inline-flex; gap: 2px; align-items: center; padding: 3px; border-radius: 999px; background: #262624; color: #a3a29c; }
+.raanaa-segments button { border-radius: 999px; padding: 7px 13px; background: transparent; color: inherit; font-size: 13px; line-height: 15px; white-space: nowrap; }
+.raanaa-segments button[aria-pressed="true"] { background: #f2f1ed; color: #121211; font-weight: 600; }
+.raanaa-audit { display: grid; gap: 40px; }
+.raanaa-before { container-type: inline-size; position: relative; aspect-ratio: 1280 / 625; overflow: hidden; border-radius: 24px; background: #e8eaed; }
+html[data-theme="light"] .raanaa-before { background: #e8eaed; }
+.raanaa-before-stack { position: absolute; display: flex; width: max-content; left: -0.98cqw; top: 1.295cqw; transform: rotate(-2.5deg); transform-origin: center; }
+.raanaa-before-stack img { width: 70.0325cqw; height: 44.83984cqw; max-width: none; object-fit: cover; border-radius: .452cqw; box-shadow: 6.486cqw 3.243cqw 8.107cqw 2.711cqw #0b0f1a33; }
+.raanaa-before-stack img:first-child { margin-right: -4.5182cqw; z-index: 1; }
+.raanaa-audit-buttons { padding: 18px; min-height: 204px; }
+.raanaa-audit-buttons > p { color: #92918b; max-width: 483px; line-height: 20px; margin-bottom: 18px; }
+.raanaa-audit-buttons > div { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.raanaa-audit-product { background: #232321; border-radius: 8px; padding: 16px; min-height: 108px; }
+.raanaa-audit-product small { display: block; color: #92918b; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+.raanaa-old-button { display: inline-flex; align-items: center; justify-content: center; padding: 10px 18px; background: #ffcb05; color: #090909; font-weight: 600; white-space: nowrap; }
+.raanaa-old-button--0 { border-radius: 24px; font-size: 16px; }
+.raanaa-old-button--1 { border-radius: 4px; font-size: 14px; padding-block: 9px; }
+.raanaa-old-button--2 { border-radius: 10px; font-size: 15px; padding-block: 7px; }
+.raanaa-old-button--3 { border-radius: 2px; font-size: 16px; background: #ffd43b; padding-block: 12px; }
+.raanaa-tokens { background: #121211; min-height: 496px; }
+.raanaa-tokens .raanaa-widget-heading { min-height: 35px; }
+.raanaa-token-flow { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; min-height: 111px; }
+.raanaa-token-flow > div:not(.raanaa-token-lines) { z-index: 1; }
+.raanaa-token-lines { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.raanaa-token-lines img { max-width: none; width: auto; height: auto; }
+.raanaa-token-value { display: flex; align-items: center; gap: 9px; margin-top: 8px; padding: 8px 11px; height: 34px; border-radius: 4px; font-size: 13px; background: #232321; }
+.raanaa-token-value + .raanaa-token-value { background: #1a1a18; }
+.raanaa-token-value i { width: 16px; height: 16px; border-radius: 4px; flex-shrink: 0; }
+.raanaa-token-preview, .raanaa-demo-preview { --demo-bg: #fff; --demo-card: #fcfcfc; --demo-fg: #141413; --demo-muted: #5f5e5a; --demo-border: #e1e1e1; --demo-secondary: #eee; background: var(--demo-bg); color: var(--demo-fg); border-radius: 4px; }
+[data-demo-theme="dark"] { --demo-bg: #090909; --demo-card: #141413; --demo-fg: #f2f1ed; --demo-muted: #a3a29c; --demo-border: #30302e; --demo-secondary: #262624; }
+.raanaa-token-preview { padding: 16px; margin-top: 16px; }
+.raanaa-preview-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.raanaa-preview-card { padding: 16px; border: 1px solid var(--demo-border); border-radius: 12px; background: var(--demo-card); min-height: 204px; display: flex; flex-direction: column; }
+.raanaa-preview-card-title { display: flex; justify-content: space-between; align-items: start; gap: 16px; min-height: 63px; }
+.raanaa-preview-card-title p { color: var(--demo-muted); margin-top: 4px; font-size: 13px; }
+.raanaa-preview-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.raanaa-token-preview button, .raanaa-demo-preview button, .raanaa-modal button { border-radius: 12px; padding: 10px 16px; background: var(--demo-secondary, #eee); color: var(--demo-fg, #141413); border: 0; }
+.raanaa-showcase .raanaa-primary { background: var(--raanaa-primary, #f9c600); color: #090909; font-weight: 500; }
+.raanaa-auto-renew { margin-top: auto; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--demo-border); padding-top: 16px; color: var(--demo-muted); font-size: 13px; }
+.raanaa-token-preview .raanaa-switch { position: relative; width: 36px; height: 20px; padding: 2px; background: var(--demo-secondary); border-radius: 999px; }
+.raanaa-switch[aria-checked="true"] { background: var(--raanaa-primary) !important; }
+.raanaa-switch span { display: block; background: #090909; width: 16px; height: 16px; border-radius: 50%; transform: translateX(0); transition: transform 150ms; }
+.raanaa-switch[aria-checked="true"] span { transform: translateX(16px); }
+.raanaa-status { border-radius: 999px; padding: 4px 10px; background: color-mix(in srgb, var(--raanaa-primary) 22%, transparent); font-size: 13px; }
+.raanaa-preview-card label { color: var(--demo-muted); font-size: 13px; }
+.raanaa-showcase input:not([type="checkbox"]), .raanaa-showcase textarea { display: block; width: 100%; border: 1px solid var(--demo-border); border-radius: 12px; padding: 10px 12px; background: var(--demo-bg); color: var(--demo-fg); }
+.raanaa-preview-card input { margin-top: 6px; height: 40px; }
+.raanaa-periods { display: flex; gap: 8px; margin-top: 12px; }
+.raanaa-periods button { flex: 1; padding: 7px 12px; font-size: 13px; line-height: 18px; }
+.raanaa-token-caption { color: var(--demo-muted); margin-top: 16px; font-size: 13px; }
+.raanaa-foundations { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.raanaa-foundations > div { min-width: 0; min-height: 509px; }
+.raanaa-foundations h3 { padding-bottom: 12px; }
+.raanaa-spacing-rows > div { display: grid; grid-template-columns: 52px 72px minmax(0, 1fr); gap: 10px; align-items: center; min-height: 33px; padding-block: 9px; border-top: 1px solid #f2f1ed12; color: #d3d2cc; font-size: 13px; line-height: 14px; }
+.raanaa-spacing-rows i { display: block; height: 10px; border-radius: 3px; background: #ffcb05; }
+.raanaa-type-row { border-top: 1px solid #f2f1ed12; padding-block: 9px; }
+.raanaa-type-row small { color: #92918b; font-size: 11px; }
+.raanaa-type-row p { color: #f2f1ed; line-height: 1.5; }
+.raanaa-component-library { background: transparent; box-shadow: 0 0 0 1px #f2f1ed24; }
+.raanaa-component-library > p:first-child { max-width: 597px; color: #a3a29c; font-size: 15px; line-height: 22.5px; }
+.raanaa-component-library strong { color: #f2f1ed; font-weight: 600; }
+.raanaa-component-library ul { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); list-style: none; padding: 16px 0 0; margin: 0; }
+.raanaa-component-library li { display: flex; align-items: center; justify-content: space-between; padding-right: 16px; height: 40px; border-top: 1px solid #f2f1ed24; }
+.raanaa-component-library li small { color: #e8590c; font-size: 10px; letter-spacing: .6px; }
+.raanaa-component-library .raanaa-library-note { font-size: 13px; color: #a3a29c; margin-top: 16px; }
+html[data-theme="light"] .raanaa-component-library { color: #141413; box-shadow: 0 0 0 1px #14141324; }
+html[data-theme="light"] .raanaa-component-library strong { color: #141413; }
+html[data-theme="light"] .raanaa-component-library li { border-color: #14141324; }
+html[data-theme="light"] .raanaa-component-library > p { color: #5f5e5a; }
+.raanaa-playground { position: relative; background: #121211; overflow: hidden; }
+.raanaa-playground-decoration { position: absolute; top: 0; left: 0; opacity: .16; pointer-events: none; }
+.raanaa-playground .raanaa-widget-heading { align-items: center; }
+.raanaa-playground-body { display: grid; grid-template-columns: 208px minmax(0, 1fr); gap: 16px; }
+.raanaa-demo-nav { display: flex; flex-direction: column; gap: 8px; }
+.raanaa-demo-nav > small { color: #92918b; text-transform: uppercase; letter-spacing: .6px; font-size: 11px; }
+.raanaa-demo-nav [role="tablist"] { display: grid; gap: 2px; }
+.raanaa-demo-nav [role="tab"] { display: flex; align-items: start; gap: 12px; min-height: 40px; padding: 6px; text-align: left; color: #a3a29c; border-radius: 8px; background: transparent; font-size: 14px; }
+.raanaa-demo-nav [role="tab"] > span { display: grid; flex-shrink: 0; place-items: center; background: #232321; border-radius: 6px; width: 28px; height: 28px; }
+.raanaa-demo-nav [role="tab"] > div { padding-top: 3px; }
+.raanaa-demo-nav [role="tab"] small { display: block; font-family: inherit; font-size: 12px; line-height: 18px; padding-top: 6px; color: #92918b; max-width: 140px; }
+.raanaa-demo-nav [role="tab"][aria-selected="true"] { background: linear-gradient(100deg, #e8590c21, #232321); color: #f2f1ed; }
+.raanaa-demo-nav [role="tab"][aria-selected="true"] > span { background: #e8590c30; }
+.raanaa-nav-hint { margin-top: auto; padding-top: 16px; color: #92918b; text-transform: none !important; }
+.raanaa-demo-preview { display: flex; flex-direction: column; min-height: 481px; }
+.raanaa-demo-canvas { position: relative; min-width: 0; min-height: 437px; display: flex; align-items: center; justify-content: center; padding: 40px 24px; }
+.raanaa-demo-canvas--command { margin: 14px 14px 0; min-height: 409px; padding: 25px 16px; background: #b6b6b6; }
+[data-demo-theme="dark"] .raanaa-demo-canvas--command { background: #191919; }
+.raanaa-demo-hints { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: auto; padding: 13px 16px; border-top: 1px solid var(--demo-border); }
+.raanaa-showcase kbd { font-family: "Raanaa Geist Mono", ui-monospace, monospace; background: var(--demo-secondary, #262624); color: var(--demo-muted, #a3a29c); border-radius: 4px; padding: 3px 5px; font-size: 10px; font-weight: 400; }
+.raanaa-demo-hints kbd { border-radius: 999px; margin-right: 6px; }
+.raanaa-demo-hints small { font-size: 11px; text-transform: uppercase; color: var(--demo-muted); }
+.raanaa-command { width: min(100%, 380px); border-radius: 12px; background: var(--demo-card); box-shadow: 0 24px 48px #0003; overflow: hidden; }
+.raanaa-command-search { display: flex; align-items: center; gap: 10px; padding-inline: 16px; height: 47px; border-bottom: 1px solid var(--demo-border); }
+.raanaa-command-search input { border: 0 !important; outline: 0 !important; padding: 0 !important; border-radius: 0 !important; background: transparent !important; font-size: 14px; }
+.raanaa-command-search img { flex-shrink: 0; }
+.raanaa-command-search kbd { margin-left: auto; }
+.raanaa-command-list { padding: 6px; max-height: 240px; overflow-y: auto; }
+.raanaa-command-list small { display: block; color: var(--demo-muted); font-family: "Raanaa Geist Mono", ui-monospace, monospace; font-size: 10px; text-transform: uppercase; padding: 8px 10px 4px; }
+.raanaa-command-list button { display: flex; width: 100%; gap: 10px; align-items: center; border-radius: 8px; padding: 9px 10px; background: transparent; text-align: left; }
+.raanaa-command-list button.is-selected { background: var(--demo-secondary); }
+.raanaa-command-list button kbd { margin-left: auto; }
+.raanaa-command-footer { display: flex; gap: 12px; align-items: center; padding: 9px 12px; border-top: 1px solid var(--demo-border); font-size: 12px; color: var(--demo-muted); }
+.raanaa-command-footer span:last-child { margin-left: auto; }
+.raanaa-selection-message { position: absolute; bottom: 8px; font-size: 12px; background: var(--demo-card); color: var(--demo-fg); border-radius: 8px; padding: 4px 12px; }
+.raanaa-badge-demo { display: flex; flex-direction: column; gap: 24px; align-items: center; }
+.raanaa-badge { display: inline-flex; border-radius: 999px; padding: 4px 12px; font-size: 12px; }
+.raanaa-badge--active { color: #067a35; background: #d9fae6; }
+.raanaa-badge--pending { color: #805b00; background: #fff1bc; }
+.raanaa-badge--failed { color: #a30f28; background: #ffe0e6; }
+.raanaa-toast { position: absolute; right: 20px; bottom: 24px; width: min(360px, calc(100% - 40px)); padding: 18px; border: 1px solid var(--demo-border); background: var(--demo-card); border-radius: 12px; box-shadow: 0 10px 35px #0002; }
+.raanaa-toast > button { position: absolute; right: 8px; top: 6px; padding: 0 6px; background: transparent; }
+.raanaa-toast p { color: var(--demo-muted); font-size: 13px; margin-top: 6px; }
+.raanaa-modal { position: fixed; inset: 0; margin: auto; width: min(440px, calc(100% - 32px)); border: 1px solid #e1e1e1; border-radius: 16px; padding: 28px; background: #fff; color: #141413; }
+.raanaa-modal::backdrop { background: #09090980; }
+.raanaa-modal h3 { font-family: var(--font-suisse); font-size: 20px; font-weight: 600; }
+.raanaa-modal p { margin-block: 12px 24px; }
+.raanaa-modal-close { position: absolute; top: 4px; right: 4px; background: transparent !important; font-size: 20px !important; }
+.raanaa-input-demo { display: grid; gap: 8px; width: min(380px, 100%); }
+.raanaa-input-demo small { color: var(--demo-muted); font-family: inherit; }
+.raanaa-input-demo textarea { min-height: 120px; resize: vertical; }
+.raanaa-table { width: 100%; border-collapse: collapse; text-align: left; }
+.raanaa-table th, .raanaa-table td { padding: 12px; border-bottom: 1px solid var(--demo-border); }
+.raanaa-table th button { padding: 0; background: transparent; }
+.raanaa-tooltip-wrap { position: relative; }
+.raanaa-tooltip-wrap [role="tooltip"] { display: none; position: absolute; left: 50%; bottom: calc(100% + 12px); transform: translateX(-50%); background: var(--demo-fg); color: var(--demo-bg); padding: 10px; width: 230px; border-radius: 8px; font-size: 12px; text-align: center; }
+.raanaa-tooltip-wrap:is(:hover, :focus-within) [role="tooltip"] { display: block; }
+.raanaa-sidebar-demo { display: grid; gap: 6px; border: 1px solid var(--demo-border); border-radius: 12px; padding: 20px; width: 260px; }
+.raanaa-sidebar-demo strong { color: #f9c600; margin-bottom: 12px; }
+.raanaa-sidebar-demo button { background: transparent; text-align: left; }
+.raanaa-sidebar-demo button[aria-current] { background: #f9c60033; }
+.raanaa-sidebar-demo p { margin-top: 8px; color: var(--demo-muted); }
+.raanaa-products { border: 1px solid #f2f1ed24; background: #121211; }
+.raanaa-products .raanaa-widget-heading > p { max-width: 427px; }
+.raanaa-product-stage { position: relative; aspect-ratio: 1216 / 719; overflow: hidden; padding: 0; background: #fff; border-radius: 4px; }
+.raanaa-product-stage img { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: block; max-width: none; height: auto; }
+.raanaa-product-caption { padding-top: 16px; }
+.raanaa-product-caption small { display: block; padding-top: 4px; color: #a3a29c; font-size: 11px; letter-spacing: .44px; }
+html[data-theme="light"] .raanaa-products { border-color: #dee5f2; background: #f7f8fa; color: #091225; }
+html[data-theme="light"] .raanaa-products .raanaa-widget-heading > p, html[data-theme="light"] .raanaa-product-caption small { color: #6f7b92; }
+@media (min-width: 1280px) {
+  .case-study-page--raanaa .case-hero { grid-template-columns: minmax(0, calc(584 * var(--case-design-unit))) calc(240 * var(--case-design-unit)); min-height: calc(624 * var(--case-design-unit)); }
+  .case-study-page--raanaa .case-hero-copy h1 { font-size: calc(48 * var(--case-design-unit)); line-height: calc(64 * var(--case-design-unit)); }
+  .case-study-page--raanaa .case-hero-copy p { margin-top: calc(16 * var(--case-design-unit)); font-size: calc(20 * var(--case-design-unit)); line-height: calc(32 * var(--case-design-unit)); }
+  .case-study-page--raanaa .case-hero-copy p + p { margin-top: calc(32 * var(--case-design-unit)); }
+  .case-study-page--raanaa .case-projects-back { gap: calc(8 * var(--case-design-unit)); margin-bottom: calc(24 * var(--case-design-unit)); padding: calc(10 * var(--case-design-unit)) calc(16 * var(--case-design-unit)); font-size: calc(14 * var(--case-design-unit)); line-height: calc(20 * var(--case-design-unit)); }
+  .case-study-page--raanaa .case-meta { gap: calc(24 * var(--case-design-unit)); }
+  .case-study-page--raanaa .case-meta dt { font-size: calc(14 * var(--case-design-unit)); line-height: calc(20 * var(--case-design-unit)); }
+  .case-study-page--raanaa .case-meta dd { margin-top: calc(4 * var(--case-design-unit)); font-size: calc(16 * var(--case-design-unit)); line-height: calc(24 * var(--case-design-unit)); }
+}
+@media (max-width: 900px) {
+  .raanaa-widget { padding: 20px; }
+  .raanaa-widget-heading { flex-wrap: wrap; }
+  .raanaa-token-flow { gap: 8px; }
+  .raanaa-token-value { padding-inline: 6px; font-size: 11px; }
+  .raanaa-foundations { grid-template-columns: 1fr; }
+  .raanaa-foundations > div { min-height: auto; }
+  .raanaa-playground-body { grid-template-columns: 160px minmax(0, 1fr); }
+  .raanaa-demo-canvas { padding-inline: 12px; }
+  .raanaa-audit-buttons > div { grid-template-columns: 1fr 1fr; }
+  .raanaa-product-stage { min-height: 0; }
+}
+@media (max-width: 600px) {
+  .raanaa-showcase { font-size: 13px; }
+  .raanaa-widget { padding: 16px; }
+  .raanaa-audit { gap: 24px; }
+  .raanaa-before { border-radius: 16px; }
+  .raanaa-controls { flex-wrap: wrap; }
+  .raanaa-token-flow { grid-template-columns: 1fr 1fr; row-gap: 16px; }
+  .raanaa-token-lines { display: none; }
+  .raanaa-token-value { font-size: 12px; }
+  .raanaa-preview-cards { grid-template-columns: 1fr; gap: 12px; }
+  .raanaa-preview-card { padding: 12px; }
+  .raanaa-component-library ul { grid-template-columns: 1fr 1fr; }
+  .raanaa-component-library li { font-size: 12px; padding-right: 8px; }
+  .raanaa-playground-body { grid-template-columns: 1fr; }
+  .raanaa-demo-nav [role="tablist"] { display: flex; overflow-x: auto; padding-bottom: 8px; }
+  .raanaa-demo-nav [role="tab"] { flex-shrink: 0; min-height: 36px; padding: 6px 10px; align-items: center; }
+  .raanaa-demo-nav [role="tab"] > div { padding: 0; }
+  .raanaa-demo-nav [role="tab"] > span, .raanaa-demo-nav [role="tab"] small, .raanaa-nav-hint { display: none; }
+  .raanaa-demo-preview { min-height: 400px; }
+  .raanaa-demo-canvas { min-height: 340px; }
+  .raanaa-demo-canvas--command { margin: 8px 8px 0; padding: 20px 8px; }
+  .raanaa-command { width: 100%; }
+  .raanaa-command-footer { gap: 8px; padding-inline: 8px; font-size: 10px; }
+  .raanaa-table th, .raanaa-table td { padding: 8px 4px; font-size: 11px; }
+  .raanaa-product-stage { padding: 0; }
+  .raanaa-products .raanaa-segments { max-width: 100%; flex-wrap: wrap; border-radius: 16px; }
+  .raanaa-spacing-rows > div { grid-template-columns: 30px 48px minmax(0, 1fr); }
+}
+@font-face { font-family: "Raanaa Geist"; src: url("/fonts/raanaa/geist-400.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Raanaa Geist"; src: url("/fonts/raanaa/geist-500.ttf") format("truetype"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Raanaa Geist"; src: url("/fonts/raanaa/geist-600.ttf") format("truetype"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Raanaa Geist Mono"; src: url("/fonts/raanaa/geist-mono-400.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
+.raanaa-component-library, .raanaa-products { font-family: "Raanaa Geist", var(--font-suisse), sans-serif; }
+.raanaa-widget h3, .raanaa-widget small, .raanaa-audit-product small { font-family: "Raanaa Geist Mono", ui-monospace, monospace; }
+
+.raanaa-products .raanaa-segments button { transition: background-color 180ms ease, color 180ms ease; }
+.raanaa-product-stage img { opacity: 0; transition: opacity 240ms ease; pointer-events: none; }
+.raanaa-product-stage img.is-visible { opacity: 1; }
+.raanaa-product-caption { animation: raanaa-caption-in 240ms ease both; }
+@keyframes raanaa-caption-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .raanaa-products .raanaa-segments button, .raanaa-product-stage img { transition: none; }
+  .raanaa-product-caption { animation: none; }
+}

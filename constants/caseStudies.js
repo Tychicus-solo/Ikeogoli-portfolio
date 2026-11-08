@@ -1,4 +1,5 @@
 import { JETSEED_CASE_STUDY } from "./jetseedCaseStudy";
+import { RAANAA_CASE_STUDY } from "./raanaaCaseStudy";
 
 // Individual Figma panels exclude the gallery backgrounds and gutters.
 const ichetaPanels = {
@@ -263,6 +264,7 @@ const oneappImage = (file) => ({
 });
 
 export const CASE_STUDIES = {
+  raanaa: RAANAA_CASE_STUDY,
   jetseed: JETSEED_CASE_STUDY,
   emmanuel: {
     title: "Emmanuel’s Portfolio",
