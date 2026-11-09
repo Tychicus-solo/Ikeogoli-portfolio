@@ -488,3 +488,21 @@ html[data-theme="light"] .raanaa-products .raanaa-widget-heading > p, html[data-
 .raanaa-playground .raanaa-widget-heading .raanaa-segments,
 .raanaa-token-card .raanaa-segments { font-family: "MTN Brighter Sans", var(--font-suisse), sans-serif; }
 .raanaa-accordion-item p { font-weight: 300; }
+
+/* Figma file-type artwork: 40px icon centered in the existing thumbnail slot. */
+.raanaa-upload-thumbnail[data-file-icon="true"] { background: rgb(239 239 239 / 50%); }
+[data-demo-theme="dark"] .raanaa-upload-thumbnail[data-file-icon="true"] { background: rgb(239 239 239 / 4%); }
+.raanaa-file-type-icon { position: relative; display: block; width: 40px; height: 40px; flex-shrink: 0; }
+.raanaa-file-type-icon .raanaa-file-type-page { position: absolute; left: 7px; top: 0; width: 32px; height: 40px; object-fit: contain; }
+.raanaa-file-type-badge { position: absolute; left: 1px; top: 18px; display: block; padding: 2px 3px; border-radius: 2px; background: #475467; color: #fff; font-family: Inter, Arial, sans-serif; font-size: 10px; font-weight: 700; line-height: 12px; letter-spacing: 0; white-space: nowrap; }
+.raanaa-file-type-icon[data-file-category="pdf"] .raanaa-file-type-badge { background: #e12d33; }
+.raanaa-file-type-icon[data-file-category="image"] .raanaa-file-type-badge { background: #288133; }
+.raanaa-file-type-icon[data-file-category="video"] .raanaa-file-type-badge { background: #155eef; }
+.raanaa-file-type-icon[data-file-category="audio"] .raanaa-file-type-badge { background: #dd2590; }
+.raanaa-file-type-icon[data-file-category="spreadsheet"] .raanaa-file-type-badge { background: #30a46c; }
+.raanaa-file-type-icon[data-file-category="presentation"] .raanaa-file-type-badge { background: #ffc53d; color: #000; }
+.raanaa-file-type-icon[data-file-category="graphic"] .raanaa-file-type-badge { background: #7f56d9; }
+.raanaa-file-type-icon[data-file-category="document"] .raanaa-file-type-badge { background: #eb9a04; }
+.raanaa-file-type-icon[data-file-category="code"] .raanaa-file-type-badge { background: #444ce7; }
+/* Keep the SVG at its native dimensions while fitting the smaller mobile slot. */
+@media (max-width: 600px) { .raanaa-upload-thumbnail[data-file-icon="true"] .raanaa-file-type-icon { transform: scale(.8); } }

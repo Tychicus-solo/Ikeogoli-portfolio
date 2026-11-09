@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import RaanaaFileTypeIcon from "./RaanaaFileTypeIcon";
 import { useEffect, useId, useRef, useState } from "react";
 
 const MAX_FILES = 3;
@@ -11,6 +12,7 @@ const formatSize = size => size >= 1024 * 1024 ? `${(size / (1024 * 1024)).toFix
 export default function RaanaaFileUpload({ mode }) {
   const [files, setFiles] = useState([]);
   const [dragging, setDragging] = useState(false);
+  const [failedPreviews, setFailedPreviews] = useState(() => new Set());
   const [announcement, setAnnouncement] = useState("");
   const [limitMessage, setLimitMessage] = useState("");
   const input = useRef(null);
@@ -59,6 +61,12 @@ export default function RaanaaFileUpload({ mode }) {
   const remove = file => {
     if (file.preview) { URL.revokeObjectURL(file.preview); urls.current.delete(file.preview); }
     setFiles(current => current.filter(entry => entry.id !== file.id));
+    setFailedPreviews(current => {
+      if (!current.has(file.id)) return current;
+      const next = new Set(current);
+      next.delete(file.id);
+      return next;
+    });
     setLimitMessage("");
     setAnnouncement(`${file.name} removed.`);
   };
@@ -82,7 +90,10 @@ export default function RaanaaFileUpload({ mode }) {
     {limitMessage && <p className="raanaa-upload-limit" role="status">{limitMessage}</p>}
     <ul className="raanaa-upload-list" aria-label="Files">
       {files.map(file => <li key={file.id} data-status={file.status}>
-        <div className="raanaa-upload-thumbnail">{file.preview ? <Image src={file.preview} width={56} height={56} unoptimized alt="" /> : <span>{file.name.split(".").pop()?.toUpperCase().slice(0, 4)}</span>}</div>
+        <div className="raanaa-upload-thumbnail" data-file-icon={!file.preview || failedPreviews.has(file.id)}>
+          {file.preview && !failedPreviews.has(file.id) ? <Image src={file.preview} width={56} height={56} unoptimized alt=""
+            onError={() => setFailedPreviews(current => new Set([...current, file.id]))} /> : <RaanaaFileTypeIcon name={file.name} mode={mode} />}
+        </div>
         <div className="raanaa-upload-file-info"><p title={file.name}>{file.name}</p>
           {file.status === "error" ? <p className="raanaa-upload-error">{file.error}</p> : <small>{file.status === "complete" ? `${formatSize(file.size)} · Completed` : `${formatSize(file.size * file.progress / 100)} of ${formatSize(file.size)} · Uploading...`}</small>}
           {file.status === "uploading" && <div className="raanaa-upload-progress" role="progressbar" aria-label={`${file.name} progress`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={file.progress}><span style={{ width: `${file.progress}%` }} /></div>}
