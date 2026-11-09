@@ -21,7 +21,12 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    }
   },
   "include": [
     "next-env.d.ts",
@@ -29,8 +34,9 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts",
     "**/*.ts",
-    "**/*.tsx"
-, "components/NavList.jsx"  ],
+    "**/*.tsx",
+    "components/NavList.jsx"
+  ],
   "exclude": [
     "node_modules"
   ]
