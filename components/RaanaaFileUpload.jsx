@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useId, useRef, useState } from "react";
 
-const MAX_FILES = 2;
+const MAX_FILES = 3;
 const MAX_SIZE = 50 * 1024 * 1024;
 const asset = name => `/assets/case-studies/raanaa/playground/${name}`;
 const formatSize = size => size >= 1024 * 1024 ? `${(size / (1024 * 1024)).toFixed(1)} MB` : `${Math.ceil(size / 1024)} KB`;
@@ -40,17 +40,18 @@ export default function RaanaaFileUpload({ mode }) {
     const incomingFiles = Array.from(incoming);
     if (!incomingFiles.length) return;
     const overflow = incomingFiles.length > available;
-    setLimitMessage(overflow ? "You can add up to 2 files. Remove a file to add another." : "");
+    setLimitMessage(overflow ? "You can add up to 3 files. Remove a file to add another." : "");
     if (!available) {
-      setAnnouncement("Maximum of 2 files reached. Remove a file to add another.");
+      setAnnouncement("Maximum of 3 files reached. Remove a file to add another.");
       return;
     }
-    const additions = incomingFiles.slice(0, available).map(file => {
+    const additions = incomingFiles.slice(0, available).map((file, index) => {
       const validType = /\.(jpe?g|png|pdf|mp4)$/i.test(file.name);
       const error = !validType ? "Use a JPEG, PNG, PDF or MP4 file." : file.size > MAX_SIZE ? "File exceeds the 50 MB limit." : !file.size ? "This file is empty." : null;
+      const simulatedError = !error && files.length + index === 2;
       const preview = !error && /^image\/(jpeg|png)$/.test(file.type) ? URL.createObjectURL(file) : null;
       if (preview) urls.current.add(preview);
-      return { id: `${id}-${++counter.current}`, name: file.name, size: file.size, progress: 0, status: error ? "error" : "uploading", error, preview, retryable: false };
+      return { id: `${id}-${++counter.current}`, name: file.name, size: file.size, progress: 0, status: error || simulatedError ? "error" : "uploading", error: error || (simulatedError ? "There was an error here" : null), preview, retryable: simulatedError };
     });
     setFiles(current => [...current, ...additions].slice(0, MAX_FILES));
     setAnnouncement(`${additions.length} file${additions.length === 1 ? "" : "s"} added. ${additions.filter(file => file.error).length} rejected.`);
@@ -66,7 +67,7 @@ export default function RaanaaFileUpload({ mode }) {
     setAnnouncement(`Retrying ${file.name}.`);
   };
 
-  return <div className="raanaa-file-upload" data-has-files={files.length > 0}>
+  return <div className="raanaa-file-upload" data-has-files={files.length > 0} role="region" aria-label="File upload area" tabIndex={0}>
     <input className="sr-only" ref={input} type="file" multiple accept=".jpg,.jpeg,.png,.pdf,.mp4" tabIndex={-1} aria-label="Choose files for upload demo"
       onChange={event => { addFiles(event.target.files); event.target.value = ""; }} />
     <div className="raanaa-upload-dropzone" data-dragging={dragging}
@@ -75,7 +76,7 @@ export default function RaanaaFileUpload({ mode }) {
       onDragLeave={event => { event.preventDefault(); dragDepth.current = Math.max(0, dragDepth.current - 1); if (!dragDepth.current) setDragging(false); }}
       onDrop={event => { event.preventDefault(); dragDepth.current = 0; setDragging(false); addFiles(event.dataTransfer.files); }}>
       <span className="raanaa-upload-featured"><Image src={asset(`upload-${mode.toLowerCase()}-cloud.svg`)} width={mode === "Light" ? 24 : 20} height={mode === "Light" ? 24 : 20} alt="" /></span>
-      <div><p>Choose a file or drag &amp; drop it here.</p><small id={`${id}-formats`}>JPEG, PNG, PDF, AND MP4 FORMATS, UP TO 50 MB. MAXIMUM 2 FILES.</small></div>
+      <div><p>Choose a file or drag &amp; drop it here.</p><small id={`${id}-formats`}>JPEG, PNG, PDF, AND MP4 FORMATS, UP TO 50 MB. MAXIMUM 3 FILES.</small></div>
       <button type="button" aria-describedby={`${id}-formats`} disabled={files.length >= MAX_FILES} onClick={() => input.current?.click()}>Browse file</button>
     </div>
     {limitMessage && <p className="raanaa-upload-limit" role="status">{limitMessage}</p>}
