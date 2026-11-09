@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ThemedImage from "./ThemedImage";
+import OneappThumbnail from "./OneappThumbnail";
 import ArrowLight from "../public/assets/dark mode images/arrow-light.svg";
 
 const getImageClassName = (title) =>
@@ -60,11 +61,11 @@ export default function ProjectCard({
         </div>
       </div>
 
-      <div className="selected-work-media">
+      <div className="selected-work-media" style={["Oneapp", "Lyvads"].includes(work.title) ? { height: "auto", aspectRatio: "604 / 448" } : undefined}>
         <div
-          className={`selected-work-image-wrap selected-work-image-wrap--${imageClassName}`}
+          className={`selected-work-image-wrap${work.title === "Oneapp" ? "" : ` selected-work-image-wrap--${imageClassName}`}`}
         >
-          {work.mockup ? (
+          {work.title === "Oneapp" ? <OneappThumbnail priority={priority} loading={loading} fetchPriority={fetchPriority} /> : work.mockup ? (
             <>
               <Image
                 src={work.mockup.desktop}

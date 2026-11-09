@@ -1,0 +1,14 @@
+.thumbnail { position: absolute; inset: 0; overflow: hidden; }
+.thumbnail .dashboard { position: absolute; top: 7.142857%; left: 5.298013%; width: 89.403974%; height: auto; max-width: none; border: .5px solid #172136; border-radius: 8px; object-fit: contain; clip-path: none; }
+.phone { position: absolute; top: 23.883482%; right: 2.716887%; width: 26.701821%; height: 78.045089%; overflow: hidden; border-radius: 13.132px; box-shadow: -37.596px 37.596px 187.98px #0003; }
+/* Show only the phone screen within the source export's canvas bounds. */
+.phone .screen { position: absolute; width: 250.497585%; height: 128.13106%; left: -140.322671%; top: -30.602159%; max-width: none; object-fit: fill; clip-path: none; }
+
+:global(html[data-theme="light"]) .thumbnail .dashboard {
+  border-color: transparent;
+}
+
+:global(html[data-theme="light"]) .phone {
+  box-shadow: none;
+  clip-path: inset(.75px round 13.132px);
+}

@@ -5006,12 +5006,6 @@ html[data-theme="light"] .footer-back { color: #172136; }
   transform: translateY(-24px);
 }
 
-/* Clip the stroke baked into the Oneapp thumbnail export. */
-.selected-work-image-wrap--oneapp img {
-  object-fit: cover;
-  object-position: top;
-  clip-path: inset(1px);
-}
 
 @media (max-width: 767px) {
   body { overflow-x: clip; }
