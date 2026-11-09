@@ -276,7 +276,7 @@ export const CASE_STUDIES = {
       lightSrc: "/assets/light mode images/case-studies/emmanuel/panels-v2/hero.webp",
     }],
     heroScrollPreview: {
-      src: "/assets/dark mode images/case-studies/emmanuel/hero-carousel/emmanuel-website-full-2x.png",
+      src: "/assets/dark mode images/case-studies/emmanuel/hero-carousel/emmanuel-website-full-2x.lossless.webp",
       width: 2912,
       height: 14791,
       cropSides: 40,
@@ -1164,7 +1164,7 @@ export const CASE_STUDIES = {
     heroImage: "/assets/dark mode images/case-studies/ppl/hero.png",
     heroImages: [pplImage("hero.png")],
     heroScrollPreview: {
-      src: "/assets/dark mode images/case-studies/ppl/hero-carousel/ppl-website-full-2x.png",
+      src: "/assets/dark mode images/case-studies/ppl/hero-carousel/ppl-website-full-2x.lossless.webp",
       width: 2912,
       height: 15098,
       cropSides: 40,
@@ -1521,7 +1521,7 @@ export const CASE_STUDIES = {
     heroImage: "/assets/dark mode images/case-studies/pettysave/hero.png",
     heroImages: [pettysaveImage("hero.png")],
     heroScrollPreview: {
-      src: "/assets/dark mode images/case-studies/pettysave/hero-carousel/pettysave-website-full-2x.png",
+      src: "/assets/dark mode images/case-studies/pettysave/hero-carousel/pettysave-website-full-2x.lossless.png",
       width: 2912,
       height: 20534,
       cropSides: 40,
@@ -1680,7 +1680,7 @@ export const CASE_STUDIES = {
     heroImage: "/assets/dark mode images/case-studies/realvest/hero.png",
     heroImages: [realvestImage("hero.png")],
     heroScrollPreview: {
-      src: "/assets/dark mode images/case-studies/realvest/hero-carousel/realvest-website-full-2x.png",
+      src: "/assets/dark mode images/case-studies/realvest/hero-carousel/realvest-website-full-2x.lossless.webp",
       width: 2880,
       height: 14231,
       cropSides: 40,

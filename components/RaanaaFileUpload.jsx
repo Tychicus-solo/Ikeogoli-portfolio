@@ -82,7 +82,7 @@ export default function RaanaaFileUpload({ mode }) {
     {limitMessage && <p className="raanaa-upload-limit" role="status">{limitMessage}</p>}
     <ul className="raanaa-upload-list" aria-label="Files">
       {files.map(file => <li key={file.id} data-status={file.status}>
-        <div className="raanaa-upload-thumbnail">{file.sample ? <Image src={asset("upload-dark-sample.png")} width={56} height={56} alt="" /> : file.preview ? <Image src={file.preview} width={56} height={56} unoptimized alt="" /> : <span>{file.name.split(".").pop()?.toUpperCase().slice(0, 4)}</span>}</div>
+        <div className="raanaa-upload-thumbnail">{file.preview ? <Image src={file.preview} width={56} height={56} unoptimized alt="" /> : <span>{file.name.split(".").pop()?.toUpperCase().slice(0, 4)}</span>}</div>
         <div className="raanaa-upload-file-info"><p title={file.name}>{file.name}</p>
           {file.status === "error" ? <p className="raanaa-upload-error">{file.error}</p> : <small>{file.status === "complete" ? `${formatSize(file.size)} · Completed` : `${formatSize(file.size * file.progress / 100)} of ${formatSize(file.size)} · Uploading...`}</small>}
           {file.status === "uploading" && <div className="raanaa-upload-progress" role="progressbar" aria-label={`${file.name} progress`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={file.progress}><span style={{ width: `${file.progress}%` }} /></div>}

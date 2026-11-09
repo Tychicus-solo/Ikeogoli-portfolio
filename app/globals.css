@@ -100,7 +100,7 @@ html[data-theme="light"] body {
   inset: 0;
   z-index: 0;
   /* Tile at Figma's native scale, independent of viewport and page height. */
-  background-image: url("/assets/background-noise.png");
+  background-image: url("/assets/background-noise.lossless.webp");
   background-position: top left;
   background-repeat: repeat;
   background-size: 1024px 1024px;
@@ -127,7 +127,7 @@ html[data-theme="light"] .tag-label {
 html[data-theme="light"] .landing-page::before,
 html[data-theme="light"] .case-study-page::before {
   /* Figma's light texture uses normal blending over the white page. */
-  background-image: url("/assets/background-noise-light.png");
+  background-image: url("/assets/background-noise-light.lossless.webp");
   mix-blend-mode: normal;
 }
 
@@ -5342,3 +5342,23 @@ html[data-theme="light"] .case-back-link:is(:hover, :focus-visible) .case-back-i
     }
   }
 }
+
+/* Keyboard-only utilities preserve the resting design. */
+.accessibility-controls {
+  position: fixed; top: 8px; left: 8px; z-index: 10000;
+  display: flex; gap: 12px; padding: 12px;
+  background: #0b0f1a; color: #fff; border: 2px solid #b3a4ff;
+  transform: translateY(calc(-100% - 16px));
+}
+.accessibility-controls:focus-within { transform: translateY(0); }
+.accessibility-controls a, .accessibility-controls button { padding: 8px; }
+.accessibility-controls :focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+#main-content:focus { outline: none; }
+.selected-work-link:focus-visible { outline: 2px solid #8c62ff; outline-offset: -4px; border-radius: 16px; }
+html[data-auto-motion-paused="true"] :is(.work-scroll-track, .trusted-brands-track, .testimonials-skills-track, .case-hero-carousel-img, .case-hero-website-viewport, .case-hero-website-page, .tag--available span, .contact-status > span:first-child) {
+  animation-play-state: paused !important;
+}
+
+.case-hero-carousel[data-auto-paused="true"] :is(.case-hero-carousel-img, .case-hero-website-viewport, .case-hero-website-page) { animation-play-state: paused !important; }
+
+.case-study-page > #top { position: absolute; top: 0; width: 0; height: 0; }

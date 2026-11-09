@@ -1,61 +1,43 @@
-import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { ThemeProvider } from "../components";
 import "./globals.css";
+import { pageMetadata, preventIndexing, siteUrl } from "../lib/seo";
+import AccessibilityControls from "../components/AccessibilityControls";
 
 const suisse = localFont({
   src: [
     {
-      path: "../public/fonts/suisse/SuisseIntl-Light.ttf",
+      path: "../public/fonts/suisse/SuisseIntl-Light.woff2",
       weight: "300",
       style: "normal",
     },
     {
-      path: "../public/fonts/suisse/SuisseIntl-Regular.ttf",
+      path: "../public/fonts/suisse/SuisseIntl-Regular.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../public/fonts/suisse/SuisseIntl-Medium.ttf",
+      path: "../public/fonts/suisse/SuisseIntl-Medium.woff2",
       weight: "500",
       style: "normal",
     },
     {
-      path: "../public/fonts/suisse/SuisseIntl-SemiBold.ttf",
+      path: "../public/fonts/suisse/SuisseIntl-SemiBold.woff2",
       weight: "600",
       style: "normal",
     },
     {
-      path: "../public/fonts/suisse/SuisseIntl-Bold.ttf",
+      path: "../public/fonts/suisse/SuisseIntl-Bold.woff2",
       weight: "700",
       style: "normal",
     },
   ],
   variable: "--font-suisse",
+  preload: false,
 });
 
 const nohemi = localFont({
   src: [
-    {
-      path: "../public/fonts/Nohemi-Thin-BF6438cc57e2011.woff",
-      weight: "100",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/Nohemi-ExtraLight-BF6438cc581502c.woff",
-      weight: "200",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/Nohemi-Light-BF6438cc5702321.woff",
-      weight: "300",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/Nohemi-Regular-BF6438cc579d934.woff",
-      weight: "400",
-      style: "normal",
-    },
     {
       path: "../public/fonts/Nohemi-Medium-BF6438cc57ddecd.woff",
       weight: "500",
@@ -66,30 +48,17 @@ const nohemi = localFont({
       weight: "600",
       style: "normal",
     },
-    {
-      path: "../public/fonts/Nohemi-Bold-BF6438cc577b524.woff",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/Nohemi-ExtraBold-BF6438cc5761ae2.woff",
-      weight: "800",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/Nohemi-Black-BF6438cc565e67b.woff",
-      weight: "900",
-      style: "normal",
-    },
   ],
   variable: "--font-nohemi",
 });
 
 export const metadata = {
+  ...pageMetadata(),
   applicationName: "Ikeogoli Ishie Portfolio",
-  title: "Ikeogoli Ishie | Portfolio",
-  description:
-    "The portfolio of Ikeogoli Ishie, showcasing selected product design work across web and mobile experiences.",
+  // Without a public origin this base is used only for preview sharing assets.
+  // Canonical URLs and sitemap entries still require an explicit SITE_URL.
+  metadataBase: siteUrl || new URL(process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"),
+  ...(preventIndexing ? { robots: { index: false, follow: false } } : {}),
 };
 
 export default function RootLayout({ children }) {
@@ -113,6 +82,14 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="min-h-full w-full bg-neutral-900">
+        <AccessibilityControls />
+        {siteUrl && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            { "@type": "WebSite", "@id": `${siteUrl.href}#website`, url: siteUrl.href, name: "Ikeogoli Ishie Portfolio", inLanguage: "en" },
+            { "@type": "Person", "@id": `${siteUrl.href}#person`, name: "Ikeogoli Ishie", jobTitle: "Product Designer", url: siteUrl.href, sameAs: ["https://x.com/ikeogoliishie"] },
+          ],
+        }).replace(/</g, "\\u003c") }} />}
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

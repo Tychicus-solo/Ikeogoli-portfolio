@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import BackToTopArrow from "../public/assets/dark mode images/figma/icons/back-to-top-arrow.svg";
 import PortfolioLogo from "../public/assets/dark mode images/portfolio-logo.svg";
 import ThemedImage from "./ThemedImage";
@@ -9,7 +9,7 @@ import ThemedImage from "./ThemedImage";
 const SOCIAL_LINKS = [
   {
     label: "X (Twitter)",
-    href: "https://x.com/",
+    href: "https://x.com/ikeogoliishie",
   },
   {
     label: "LinkedIn",
@@ -33,6 +33,12 @@ const FooterLabel = ({ children }) => (
 
 const Footer = () => {
   const scrollAnimationRef = useRef(null);
+
+  useEffect(() => () => {
+    if (scrollAnimationRef.current !== null) {
+      window.cancelAnimationFrame(scrollAnimationRef.current);
+    }
+  }, []);
 
   const handleBackToTop = (event) => {
     event.preventDefault();

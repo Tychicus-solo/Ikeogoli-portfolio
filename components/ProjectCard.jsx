@@ -29,6 +29,8 @@ export default function ProjectCard({
       />
       <Link
         className="selected-work-arrow"
+        tabIndex={-1}
+        aria-hidden="true"
         href={work.href || "#works"}
         aria-label={`Open ${work.title} project`}
       >

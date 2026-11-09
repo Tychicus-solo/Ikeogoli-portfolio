@@ -14,7 +14,7 @@ import HeroNavigation from "../components/HeroNavigation";
 export default function Home() {
   return (
     <LandingMotion>
-      <div id="top">
+      <main id="main-content" tabIndex={-1}>
         <HeroNavigation mobile />
         <HeroSection />
         <MainNav />
@@ -26,7 +26,7 @@ export default function Home() {
         <AboutMe />
         <Contact />
         <Footer />
-      </div>
+      </main>
     </LandingMotion>
   );
 }

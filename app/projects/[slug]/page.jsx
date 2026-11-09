@@ -13,6 +13,7 @@ import { SELECTED_WORKS } from "../../../constants/selectworksconstants";
 import ProjectCard from "../../../components/ProjectCard";
 import RaanaaShowcase from "../../../components/RaanaaShowcase";
 
+import { pageMetadata } from "../../../lib/seo";
 import MainNav from "../../../components/MainNav";
 import HeroNavigation from "../../../components/HeroNavigation";
 
@@ -27,10 +28,11 @@ export const generateMetadata = async ({ params }) => {
     return {};
   }
 
-  return {
-    title: `${study.title} | Ikeogoli Ishie`,
-    description: study.intro,
-  };
+  return pageMetadata({
+    pageTitle: `${study.title} | Ikeogoli Ishie`,
+    summary: study.intro,
+    path: `/projects/${slug}`,
+  });
 };
 
 const getRelatedWork = (slug) => {
@@ -147,7 +149,8 @@ const CaseStudyPage = async ({ params }) => {
   const relatedWorks = getRelatedWork(slug);
 
   return (
-    <main className={`case-study-page case-study-page--${slug}`}>
+    <main id="main-content" tabIndex={-1} className={`case-study-page case-study-page--${slug}`}>
+      <span id="top" aria-hidden="true" />
       <CaseScrollProgress />
 
       <MainNav homePath="/" alwaysVisible />
@@ -214,7 +217,7 @@ const CaseStudyPage = async ({ params }) => {
           height={study.heroHeight || 1024}
           priority
           quality={study.heroQuality}
-          deferImages={slug === "jetseed"}
+          deferImages
           sizes="(max-width: 767px) 100vw, (max-width: 1279px) calc(100vw - 128px), 1648px"
         />
       </section>

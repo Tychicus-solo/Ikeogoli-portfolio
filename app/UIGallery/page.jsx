@@ -22,15 +22,14 @@ const UIGallery = () => {
         </div>
 
         <div className="ui-gallery-grid">
-          {GALLERY_IMAGES.map((image, index) => (
+          {GALLERY_IMAGES.map((image) => (
             <div className="ui-gallery-item" key={image.src}>
               <ThemedImage
                 src={image.src}
                 alt={image.alt}
                 width={1086}
                 height={954}
-                loading={index < 2 ? "eager" : "lazy"}
-                fetchPriority={index < 2 ? "high" : undefined}
+                loading="lazy"
                 sizes="(max-width: 767px) calc(100vw - 32px), (max-width: 1279px) calc(100vw - 128px), 724px"
                 className="ui-gallery-image"
               />

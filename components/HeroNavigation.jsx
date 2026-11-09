@@ -1,14 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useId, useRef, useState } from "react";
 import { NAV_LINKS } from "../constants/heroconstants";
 import PortfolioLogo from "../public/assets/dark mode images/portfolio-logo.svg";
 import ContactMeBtn from "./ContactMeBtn";
 import NavList from "./NavList";
 
 const SOCIAL_LINKS = [
-  { label: "X (Twitter)", href: "https://x.com/" },
+  { label: "X (Twitter)", href: "https://x.com/ikeogoliishie" },
   { label: "LinkedIn", href: "https://www.linkedin.com/" },
   { label: "Instagram", href: "https://www.instagram.com/" },
 ];
@@ -37,6 +37,12 @@ const MobileMenuLink = ({ href, isOpen, label, onClick }) => {
 
 const HeroNavigation = ({ mobile = false, homePath = "" }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuId = useId();
+  const menuButton = useRef(null);
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+    menuButton.current?.focus({ preventScroll: true });
+  };
 
   const handleBackToTop = (event) => {
     if (homePath) return;
@@ -53,13 +59,18 @@ const HeroNavigation = ({ mobile = false, homePath = "" }) => {
   return (
     <>
       {!mobile && <div className="hero-nav-desktop flex items-center w-full justify-between">
-        <h1 className="hero-name font-inter font-medium text-[20px] leading-[32px] tracking-normal text-neutral-250 ">
+        <p className="hero-name font-inter font-medium text-[20px] leading-[32px] tracking-normal text-neutral-250 ">
           Ikeogoli Ishie
-        </h1>
+        </p>
         <NavList homePath={homePath} />
       </div>}
 
-      {mobile && <div className="hero-nav-mobile">
+      {mobile && <div className="hero-nav-mobile" onKeyDown={(event) => {
+        if (event.key === "Escape" && isMenuOpen) {
+          event.preventDefault();
+          closeMenu();
+        }
+      }}>
         <div className="mobile-nav-header">
           <a className="mobile-nav-logo" href={`${homePath}#top`} aria-label="Ikeogoli Ishie — back to top" onClick={handleBackToTop}>
             <Image src={PortfolioLogo} width={48} height={48} alt="" />
@@ -69,6 +80,8 @@ const HeroNavigation = ({ mobile = false, homePath = "" }) => {
             type="button"
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMenuOpen}
+            aria-controls={menuId}
+            ref={menuButton}
             onClick={() => setIsMenuOpen((open) => !open)}
           >
             <span />
@@ -77,7 +90,7 @@ const HeroNavigation = ({ mobile = false, homePath = "" }) => {
           </button>
         </div>
 
-        <div className={`mobile-menu-panel ${isMenuOpen ? "is-open" : ""}`} aria-hidden={!isMenuOpen}>
+        <div id={menuId} inert={!isMenuOpen} className={`mobile-menu-panel ${isMenuOpen ? "is-open" : ""}`} aria-hidden={!isMenuOpen}>
           <nav className="mobile-menu-links" aria-label="Mobile navigation">
             {NAV_LINKS.map((link) => (
               <MobileMenuLink

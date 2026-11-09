@@ -226,10 +226,10 @@ html[data-theme="light"] .raanaa-products .raanaa-widget-heading > p, html[data-
   .raanaa-foundations .raanaa-type-samples p:last-child { font-size: clamp(20px, 6vw, 36px) !important; white-space: normal; }
   .raanaa-spacing-rows > div { grid-template-columns: 48px minmax(0, 1fr); }
 }
-@font-face { font-family: "Raanaa Geist"; src: url("/fonts/raanaa/geist-400.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: "Raanaa Geist"; src: url("/fonts/raanaa/geist-500.ttf") format("truetype"); font-weight: 500; font-style: normal; font-display: swap; }
-@font-face { font-family: "Raanaa Geist"; src: url("/fonts/raanaa/geist-600.ttf") format("truetype"); font-weight: 600; font-style: normal; font-display: swap; }
-@font-face { font-family: "Raanaa Geist Mono"; src: url("/fonts/raanaa/geist-mono-400.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Raanaa Geist"; src: url("/fonts/raanaa/geist-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Raanaa Geist"; src: url("/fonts/raanaa/geist-500.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Raanaa Geist"; src: url("/fonts/raanaa/geist-600.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Raanaa Geist Mono"; src: url("/fonts/raanaa/geist-mono-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
 .raanaa-component-library, .raanaa-products { font-family: "Raanaa Geist", var(--font-suisse), sans-serif; }
 .raanaa-widget h3, .raanaa-widget small, .raanaa-audit-product small { font-family: "Raanaa Geist Mono", ui-monospace, monospace; }
 

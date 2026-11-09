@@ -53,7 +53,7 @@ export default function TestimonialGlow() {
             alt=""
             width={2425.42}
             height={2258.23}
-            loading="eager"
+            loading="lazy"
             unoptimized
           />
           <Image
@@ -62,7 +62,7 @@ export default function TestimonialGlow() {
             alt=""
             width={2425.42}
             height={2258.23}
-            loading="eager"
+            loading="lazy"
             unoptimized
           />
         </div>

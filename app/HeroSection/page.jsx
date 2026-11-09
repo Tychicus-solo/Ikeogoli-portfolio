@@ -25,10 +25,10 @@ const HeroSection = () => {
               Phenomenal<br />
               Product designer
             </h1>
-            <h3 className="mt-[16px] text-white font-medium text-[20px] leading-[32px] tracking-normal font-suisse">
+            <p className="mt-[16px] text-white font-medium text-[20px] leading-[32px] tracking-normal font-suisse">
               Creating impactful web and mobile experiences that drive <br />{" "}
               business growth through human-centered solutions.
-            </h3>
+            </p>
           </div>
           <div className="mt-[40px] flex gap-x-[24px]">
             <ContactMeBtn />

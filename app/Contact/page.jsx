@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { ButtonSparkles, FlipLabel } from "../../components/ButtonEffects";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ThemedImage } from "../../components";
 import CopyIcon from "../../public/assets/dark mode images/copy-icon.svg";
 import MessageIcon from "../../public/assets/dark mode images/message-icon.svg";
@@ -11,11 +11,19 @@ const EMAIL = "ikeogoli.ishie@gmail.com";
 
 const Contact = () => {
   const [copied, setCopied] = useState(false);
+  const copyTimeout = useRef(null);
+
+  useEffect(() => () => window.clearTimeout(copyTimeout.current), []);
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(EMAIL);
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1800);
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      window.clearTimeout(copyTimeout.current);
+      setCopied(true);
+      copyTimeout.current = window.setTimeout(() => setCopied(false), 1800);
+    } catch {
+      setCopied(false);
+    }
   };
 
   return (
