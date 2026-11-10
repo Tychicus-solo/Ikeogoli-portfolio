@@ -8,10 +8,9 @@ export const contentType = "image/png";
 
 export default async function OpenGraphImage() {
   const thumbnail = await readFile(join(process.cwd(), "public/assets/social/portfolio-thumbnail.png"));
-  // Fit the complete 402:320 Figma lockup into the card with a 24px safe margin.
-  // The 3x PNG remains larger than its rendered dimensions; nothing is upscaled.
-  const height = size.height - 48;
-  const width = height * 402 / 320;
+  // Preserve the complete 1728:907 Figma thumbnail without cropping or stretching.
+  const width = size.width;
+  const height = width * 907 / 1728;
 
   return new ImageResponse(
     <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", background: "#1e1e1e" }}>
