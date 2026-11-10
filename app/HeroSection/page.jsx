@@ -1,7 +1,5 @@
-
-
 import React from "react";
-import PortfolioLogo from "../../public/assets/dark mode images/portfolio-logo.svg"
+import PortfolioLogo from "../../public/assets/dark mode images/portfolio-logo.svg";
 import Image from "next/image";
 import {
   HeroNavigation,
@@ -12,18 +10,23 @@ import {
   WorkScrollMask,
 } from "../../components";
 
-
 const HeroSection = () => {
   return (
     <section className="hero-section">
       <div className="left-col">
         <HeroNavigation />
         <div className="hero-copy">
-          <Image src={PortfolioLogo} width={88} height={88} alt="Ike Ogoli portfolio logo" />
+          <Image
+            src={PortfolioLogo}
+            width={88}
+            height={88}
+            alt="Ike Ogoli portfolio logo"
+          />
           <div className="mt-[40px]">
             <h1 className="header-text">
-              Phenomenal<br />
-              Product designer
+              Product Designer
+              <br />
+              Shaping Experiences
             </h1>
             <p className="mt-[16px] text-white font-medium text-[20px] leading-[32px] tracking-normal font-suisse">
               Creating impactful web and mobile experiences that drive <br />{" "}
@@ -41,7 +44,6 @@ const HeroSection = () => {
         <WorkScrollMask />
       </div>
       <ThemeToggle className="theme-toggle-hero" />
-
     </section>
   );
 };
