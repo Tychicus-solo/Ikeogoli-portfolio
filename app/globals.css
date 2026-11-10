@@ -62,12 +62,6 @@
 }
 
 html {
-  /* At 94% opacity, even a black/white image behind the glass cannot
-     push header text below 4.5:1 contrast. Blur is decorative only. */
-  --header-surface: rgb(74 82 100 / 94%);
-  --header-text: #e8eaed;
-  --header-text-active: #ffffff;
-  --header-focus: #ffffff;
   box-sizing: border-box;
   width: 100%;
   min-height: 100%;
@@ -87,13 +81,6 @@ body {
   padding: 0;
   overflow-x: hidden;
   transition: background-color 460ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-html[data-theme="light"] {
-  --header-surface: rgb(232 234 237 / 94%);
-  --header-text: #4a5264;
-  --header-text-active: #091225;
-  --header-focus: #091225;
 }
 
 html[data-theme="light"] body {
@@ -378,7 +365,6 @@ html.theme-transitioning::view-transition-new(root) {
   }
 
   .nav-list {
-    background-color: var(--header-surface);
     transition:
       background-color 360ms cubic-bezier(0.22, 1, 0.36, 1),
       box-shadow 360ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -431,12 +417,12 @@ html.theme-transitioning::view-transition-new(root) {
   .nav-label-copy {
     display: block;
     height: 20px;
-    color: var(--header-text);
+    color: #a0aec0;
     transition: color 360ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .nav-label-copy--active {
-    color: var(--header-text-active);
+    color: #ffffff;
   }
 
   .nav-box:hover .nav-label-stack,
@@ -2695,7 +2681,7 @@ html.theme-transitioning::view-transition-new(root) {
   }
 
   html[data-theme="light"] .nav-list {
-    background-color: var(--header-surface) !important;
+    background-color: rgba(232, 234, 237, 0.5) !important;
     border: 1px solid #d4dced80;
     box-shadow: 0px 4px 24px 0px #0b0f1a1a;
     backdrop-filter: blur(32px);
@@ -2706,7 +2692,7 @@ html.theme-transitioning::view-transition-new(root) {
   } */
 
   html[data-theme="light"] .nav-items {
-    color: var(--header-text) !important;
+    color: #6f7b92 !important;
   }
 
   html[data-theme="light"] .hero-name {
@@ -2714,11 +2700,11 @@ html.theme-transitioning::view-transition-new(root) {
   }
 
   html[data-theme="light"] .nav-label-copy--muted {
-    color: var(--header-text);
+    color: #6f7b92;
   }
 
   html[data-theme="light"] .nav-label-copy--active {
-    color: var(--header-text-active);
+    color: #4a5264;
   }
 
   html[data-theme="light"] .main-nav {
@@ -2737,7 +2723,7 @@ html.theme-transitioning::view-transition-new(root) {
     color: #091225;
   }
 
-  html[data-theme="light"] .hero-section .left-col h3,
+  html[data-theme="light"] .hero-copy > div > p,
   html[data-theme="light"] .experience-description,
   html[data-theme="light"] .about-body,
   html[data-theme="light"] .case-hero-copy p {
@@ -3553,7 +3539,7 @@ html.theme-transitioning::view-transition-new(root) {
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background-color: var(--header-surface);
+  background-color: rgba(74, 82, 100, 0.4);
   box-shadow: 0 4px 24px rgba(11, 15, 26, 0.1);
   backdrop-filter: blur(32px);
 }
@@ -3601,20 +3587,20 @@ html[data-theme="light"] .mobile-nav-logo {
 
 html[data-theme="light"] .mobile-menu-button,
 html[data-theme="light"] .mobile-menu-panel {
-  background-color: var(--header-surface);
+  background-color: rgba(232, 234, 237, 0.5);
 }
 
 html[data-theme="light"] .mobile-menu-button span {
-  background-color: var(--header-text-active);
+  background-color: #6f7b92;
 }
 
 html[data-theme="light"] .mobile-menu-links a,
 html[data-theme="light"] .mobile-menu-socials p {
-  color: var(--header-text-active);
+  color: #172136;
 }
 
 html[data-theme="light"] .mobile-menu-label-stack span {
-  color: var(--header-text);
+  color: #6f7b92;
 }
 
 html[data-theme="light"]
@@ -3622,15 +3608,15 @@ html[data-theme="light"]
   a:first-child
   .mobile-menu-label-stack
   span:first-child {
-  color: var(--header-text-active);
+  color: #172136;
 }
 
 html[data-theme="light"] .mobile-menu-label-stack span:last-child {
-  color: var(--header-text-active);
+  color: #ffffff;
 }
 
 html[data-theme="light"] .mobile-menu-socials a {
-  color: var(--header-text);
+  color: #6f7b92;
 }
 
 html[data-theme="light"] .mobile-menu-divider {
@@ -3733,7 +3719,7 @@ html[data-theme="light"] .mobile-menu-divider {
     flex-direction: column;
     gap: 24px;
     border-radius: 16px;
-    background-color: var(--header-surface);
+    background-color: rgba(74, 82, 100, 0.4);
     padding: 16px;
     box-shadow: 0 4px 24px rgba(11, 15, 26, 0.1);
     backdrop-filter: blur(32px);
@@ -3767,7 +3753,7 @@ html[data-theme="light"] .mobile-menu-divider {
   }
 
   .mobile-menu-links a {
-    color: var(--header-text);
+    color: #a0aec0;
     font-family: var(--font-suisse);
     font-size: 20px;
     font-weight: 500;
@@ -3791,13 +3777,13 @@ html[data-theme="light"] .mobile-menu-divider {
   .mobile-menu-label-stack span {
     display: block;
     height: 32px;
-    color: var(--header-text);
+    color: #a0aec0;
     transition: color 260ms ease-out;
   }
 
   .mobile-menu-links a:first-child .mobile-menu-label-stack span:first-child,
   .mobile-menu-label-stack span:last-child {
-    color: var(--header-text-active);
+    color: #ffffff;
   }
 
   .mobile-menu-links a:hover .mobile-menu-label-stack,
@@ -3806,7 +3792,7 @@ html[data-theme="light"] .mobile-menu-divider {
   }
 
   .mobile-menu-socials p {
-    color: var(--header-text-active);
+    color: #ffffff;
     font-family: var(--font-nohemi);
     font-size: 16px;
     font-weight: 500;
@@ -3814,7 +3800,7 @@ html[data-theme="light"] .mobile-menu-divider {
   }
 
   .mobile-menu-socials a {
-    color: var(--header-text);
+    color: #a0aec0;
     font-family: var(--font-suisse);
     font-size: 14px;
     font-weight: 500;
@@ -5377,24 +5363,32 @@ html[data-auto-motion-paused="true"] :is(.work-scroll-track, .trusted-brands-tra
 
 .case-study-page > #top { position: absolute; top: 0; width: 0; height: 0; }
 
-/* Keep header labels legible over artwork, including hover and keyboard states. */
-:is(.hero-nav-desktop, .main-nav) .nav-list {
-  background-color: var(--header-surface);
-}
-:is(.hero-nav-desktop, .main-nav) .nav-box:focus-visible {
-  outline: 2px solid var(--header-focus);
-  outline-offset: -2px;
-}
-.hero-nav-mobile :is(.mobile-menu-button, .mobile-menu-panel a):focus-visible {
-  outline: 2px solid var(--header-focus);
-  outline-offset: 3px;
+/* Blend only the visible nav labels. The glass surface, logo and purple CTA
+   retain their original colors. The label window owns blending so the
+   animated text stack can keep its existing transform and clipping. */
+@supports (mix-blend-mode: difference) {
+  .nav-list .nav-label-window,
+  .hero-nav-mobile .mobile-menu-label-window {
+    mix-blend-mode: difference;
+  }
+
+  .nav-list .nav-label-copy,
+  .hero-nav-mobile .mobile-menu-label-stack > span {
+    /* Difference needs a white source in both themes and hover states. */
+    color: #ffffff !important;
+    transition: none;
+  }
 }
 
-/* Preserve the original white contact label and envelope in both themes. */
-.main-nav .contact-btn-main,
-.mobile-menu-panel .contact-btn {
-  color: #ffffff;
-}
-:is(.main-nav .contact-btn-main, .mobile-menu-panel .contact-btn) .contact-btn-icon-stack img {
-  filter: brightness(0) invert(1);
+/* Respect system high-contrast colors rather than blending them. */
+@media (forced-colors: active) {
+  .nav-list .nav-label-window,
+  .hero-nav-mobile .mobile-menu-label-window {
+    mix-blend-mode: normal;
+  }
+
+  .nav-list .nav-label-copy,
+  .hero-nav-mobile .mobile-menu-label-stack > span {
+    color: LinkText !important;
+  }
 }
